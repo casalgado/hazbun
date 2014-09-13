@@ -1,3 +1,9 @@
+ActiveSupport::Inflector.inflections do |inflect|
+  inflect.irregular 'clienta', 'clientas'
+  inflect.irregular 'orden', 'ordenes'
+  inflect.irregular 'cita', 'citas'
+end
+
 # Be sure to restart your server when you modify this file.
 
 # Add new inflection rules using the following format. Inflections
