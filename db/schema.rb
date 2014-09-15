@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140913165724) do
+ActiveRecord::Schema.define(version: 20140914235414) do
+
+  create_table "abonos", force: true do |t|
+    t.integer  "orden_id"
+    t.datetime "fecha"
+    t.integer  "valor"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "citas", force: true do |t|
     t.integer  "orden_id"
@@ -38,6 +46,9 @@ ActiveRecord::Schema.define(version: 20140913165724) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

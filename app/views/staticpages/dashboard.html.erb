@@ -1,1 +1,11 @@
 
+
+<ul>
+	<% for cita in @citas_de_hoy %>
+		<ul>
+			<li><%= cita.tipo_de_cita_id %> </li>
+			<li><%= cita.orden.clienta.nombre_completo %> </li>
+			<li><%= cita.fecha %> </li>
+		</ul>
+	<% end %>
+</ul>

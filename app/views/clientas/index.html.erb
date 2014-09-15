@@ -1,0 +1,15 @@
+
+<% for clienta in @clientas %>
+	<ul>
+		<li> <%= clienta.nombre_completo %> </li>
+
+		<% unless clienta.ordenes.empty? %> 
+			<li> Activa </li>
+			<li> <%= link_to("nueva cita", "#") %> </li>
+		<% else %> 
+			<li> Dormida </li> 
+			<li> <%= link_to("nueva orden", "#") %> </li>
+		<% end %>
+	</ul>
+
+<% end %>

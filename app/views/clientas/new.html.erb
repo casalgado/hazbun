@@ -1,0 +1,22 @@
+
+
+<%= form_for @clienta do |f| %>
+
+	<%= f.label :nombre %>
+  <%= f.text_field(:nombre) %>
+
+  <%= f.label :apellido %>
+  <%= f.text_field(:apellido) %>
+
+  <%= f.label :email %>
+  <%= f.text_field(:email) %>
+
+ 	<%= f.label :direccion %>
+  <%= f.text_field(:direccion) %>
+
+ 	<%= f.label :telefono %>
+  <%= f.text_field(:telefono) %>
+
+  <%= f.submit "Crear Clienta"%>
+
+<% end %>
