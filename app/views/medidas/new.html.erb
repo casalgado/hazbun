@@ -1,0 +1,55 @@
+
+
+<h3> <%= @clienta.nombre_completo %> </h3>
+
+<%= form_for [@clienta, @medida] do |f| %>
+
+	<%= f.hidden_field :clienta_id, value: @clienta.id %>
+
+	<%= f.label :talle_frente %>
+  <%= f.text_field :talle_frente %>
+  <br />
+  
+  <%= f.label :talle_espalda %>
+  <%= f.text_field :talle_espalda %>
+  <br />
+  
+  <%= f.label :imperio %>
+	<%= f.text_field :imperio %>
+	<br />
+	
+	<%= f.label :contorno %>
+	<%= f.text_field :contorno %>
+	<br />
+	
+	<%= f.label :espalda %>
+	<%= f.text_field :espalda %>
+	<br />
+	
+	<%= f.label :busto %>
+	<%= f.text_field :busto %>
+	<br />
+	
+	<%= f.label :cintura %>
+	<%= f.text_field :cintura %>
+	<br />
+	
+	<%= f.label :cadera %>
+	<%= f.text_field :cadera %>
+	<br />
+	
+	<%= f.label :costado %>
+	<%= f.text_field :costado %>
+	<br />
+	
+	<%= f.label :cotilla %>
+	<%= f.text_field :cotilla %>
+	<br />
+	
+	<%= f.label :hombro %>
+	<%= f.text_field :hombro %>
+	<br />
+	
+	<%= f.submit %>
+
+	<% end %>

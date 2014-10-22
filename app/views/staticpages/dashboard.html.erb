@@ -1,11 +1,20 @@
 
 
 <ul>
+	<li><%=@hoy.mday%></li>
+	<li><%=@hoy.nombrar_dia%></li>
+</ul>
+
+<h3>Citas <%= link_to("+", '#') %></h3>
+
+<ul>
 	<% for cita in @citas_de_hoy %>
 		<ul>
-			<li><%= cita.tipo_de_cita_id %> </li>
-			<li><%= cita.orden.clienta.nombre_completo %> </li>
-			<li><%= cita.fecha %> </li>
+			<li><%= cita.tipo_de_cita.tipo_de_cita %> </li>
+
+			<li><%= link_to("#{cita.clienta.nombre_completo}", clienta_path(:id => cita.clienta.id)) %> </li>
+			<li><%= cita.fecha.strftime "%l:%M %P" %> </li>
+			<br />
 		</ul>
 	<% end %>
 </ul>

@@ -1,10 +1,22 @@
 
+
+<%= search_form_for @search do |f| %>
+	<%= f.label :nombre_cont, "Nombre" %>
+	<%= f.text_field :nombre_cont %>
+
+	<%= f.label :apellido_cont, "Apellido" %>
+	<%= f.text_field :apellido_cont %>
+
+	<%= f.submit "Buscar" %>
+<% end %>
+
+
 <% for clienta in @clientas %>
 	<ul>
-		<li> <%= clienta.nombre_completo %> </li>
+		<li> <%= link_to("#{clienta.nombre_completo}", clienta_path(:id => clienta.id)) %> </li>
 
 		<% unless clienta.ordenes.empty? %> 
-			<li> Activa </li>
+			<li> <%= link_to("Activa", clienta_orden_path(:clienta_id => clienta.id, :id => clienta.ordenes.last.id)) %> </li>
 			<li> <%= link_to("nueva cita", "#") %> </li>
 		<% else %> 
 			<li> Dormida </li> 

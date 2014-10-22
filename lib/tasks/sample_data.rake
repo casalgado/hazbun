@@ -5,6 +5,10 @@ namespace :db do
   task :populate => :environment do
     Rake::Task['db:reset'].invoke
 
+    TipoDePrenda.load
+    Ocasion.load
+    TipoDeCita.load
+
     judy = Marca.create!(:nombre    => "Judy",
                          :apellido  => "Habun",
                          :marca     => "Judy Hazbun",
@@ -28,16 +32,20 @@ namespace :db do
       
     judy.clientas.each do |clienta|
       3.times do |orden|
-        orden = clienta.ordenes.create!(:abierta     => false,
+        orden = clienta.ordenes.create!(:cerrada     => false,
                                         :valor_total => 1000 + rand(1000))
+        orden.prendas.create!(:tipo_de_prenda_id => rand(5)+1, :ocasion_id => rand(4)+1)
+
         4.times do |cita|
-        day = rand(20) + 1
+        day = rand(29) + 2
         time = 8 + rand(10)
-        orden.citas.create!(:fecha           => Time.new(2014, 9, day, time, 00, 00),
-                            :tipo_de_cita_id => rand(3)+1)
+        clienta.citas.create!(:fecha           => Time.new(2014, 10, day, time, 00, 00),
+                              :tipo_de_cita_id => rand(4)+1)
         end
       end
     end
+
+
 
   end
 end

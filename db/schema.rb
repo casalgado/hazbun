@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140914235414) do
+ActiveRecord::Schema.define(version: 20141016153159) do
 
   create_table "abonos", force: true do |t|
     t.integer  "orden_id"
@@ -22,7 +22,8 @@ ActiveRecord::Schema.define(version: 20140914235414) do
   end
 
   create_table "citas", force: true do |t|
-    t.integer  "orden_id"
+    t.integer  "prenda_id"
+    t.integer  "clienta_id"
     t.integer  "tipo_de_cita_id"
     t.datetime "fecha"
     t.datetime "created_at"
@@ -53,8 +54,17 @@ ActiveRecord::Schema.define(version: 20140914235414) do
     t.datetime "updated_at"
   end
 
+  add_index "clientas", ["confirmation_token"], name: "index_clientas_on_confirmation_token", unique: true
   add_index "clientas", ["email"], name: "index_clientas_on_email", unique: true
   add_index "clientas", ["reset_password_token"], name: "index_clientas_on_reset_password_token", unique: true
+
+  create_table "insumos", force: true do |t|
+    t.string   "tipo_de_insumo"
+    t.integer  "cantidad"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "prenda_id"
+  end
 
   create_table "marcas", force: true do |t|
     t.string   "nombre"
@@ -79,16 +89,67 @@ ActiveRecord::Schema.define(version: 20140914235414) do
   add_index "marcas", ["email"], name: "index_marcas_on_email", unique: true
   add_index "marcas", ["reset_password_token"], name: "index_marcas_on_reset_password_token", unique: true
 
+  create_table "materiales", force: true do |t|
+    t.integer  "tipo_de_material_id"
+    t.integer  "color_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "materiales_por_prendas", force: true do |t|
+    t.integer  "prenda_id"
+    t.integer  "material_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "medidas", force: true do |t|
+    t.integer  "clienta_id"
+    t.string   "talle_frente"
+    t.string   "talle_espalda"
+    t.string   "imperio"
+    t.string   "contorno"
+    t.string   "espalda"
+    t.string   "busto"
+    t.string   "cintura"
+    t.string   "cadera"
+    t.string   "costado"
+    t.string   "cotilla"
+    t.string   "hombro"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "ocasiones", force: true do |t|
+    t.string   "ocasion"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "ordenes", force: true do |t|
     t.integer  "clienta_id"
-    t.boolean  "abierta"
+    t.boolean  "cerrada",     default: false
     t.integer  "valor_total"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "prendas", force: true do |t|
+    t.integer  "ocasion_id"
+    t.integer  "tipo_de_prenda_id"
+    t.integer  "orden_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "tipo_de_citas", force: true do |t|
     t.string   "tipo_de_cita"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tipo_de_prendas", force: true do |t|
+    t.string   "tipo_de_prenda"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

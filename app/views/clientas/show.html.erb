@@ -1,10 +1,46 @@
 
 
+<h3>Datos</h3>
+	<ul>
+		<li> <%= @clienta.nombre_completo %>      </li>
+		<li> <%= @clienta.telefono  %>            </li>
+		<li> <%= @clienta.direccion %>            </li>
+		<li> <%= @clienta.email %>                </li>
+		<li> <%= @clienta.fecha_de_nacimiento  %> </li>
+	</ul>
 
-<ul>
-	<li> <%= @clienta.nombre_completo %>      </li>
-	<li> <%= @clienta.telefono  %>            </li>
-	<li> <%= @clienta.direccion %>            </li>
-	<li> <%= @clienta.email %>                </li>
-	<li> <%= @clienta.fecha_de_nacimiento  %> </li>
-</ul>
+<h3>Actividad</h3>
+	<ul>
+	<% for orden in @clienta.ordenes_abiertas %>
+		<li> <%= orden.id %> </li>
+		<ul>
+			<% for prenda in orden.prendas %>
+				<li> <%= prenda.ocasion.ocasion %> </li>
+			<% end %>
+		</ul>
+	<% end %>
+  </ul>
+
+<h3>Medidas</h3>
+	<% if @medida %>
+	<ul>
+		<li> Talle Frente: <%= @medida.talle_frente %> </li>
+		<li> Talle Espalda: <%= @medida.talle_espalda %> </li>
+		<li> Imperio: <%= @medida.imperio %> </li>
+		<li> Contorno: <%= @medida.contorno %> </li>
+		<li> Espalda: <%= @medida.espalda %> </li>
+		<li> Busto: <%= @medida.busto %> </li>
+		<li> Cintura: <%= @medida.cintura %> </li>
+		<li> Cadera: <%= @medida.cadera %> </li>
+		<li> Costado: <%= @medida.costado %> </li>
+		<li> Cotilla: <%= @medida.cotilla %> </li>
+		<li> Hombro: <%= @medida.hombro %> </li>
+  </ul>
+  <% end %>
+
+<p><%= link_to "Actualizar Medidas", new_clienta_medida_path(:clienta_id => @clienta.id) %></p>
+
+
+<p><%= link_to "Nueva Orden", new_clienta_orden_path(:clienta_id => @clienta.id) %></p>
+
+

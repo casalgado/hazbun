@@ -4,6 +4,7 @@ class StaticpagesController < ApplicationController
 
 	def dashboard
 		@citas_de_hoy = Cita.de_hoy.order("fecha ASC")
+		@hoy = Date.today
 	end
 	
 	def home

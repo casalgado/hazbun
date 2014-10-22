@@ -1,2 +1,25 @@
-<h1>Ordenes#show</h1>
-<p>Find me in app/views/ordenes/show.html.erb</p>
+<h1>Ordenes Show</h1>
+
+
+
+<ul>
+	<li><%= @orden.clienta.nombre_completo %> </li>
+	<% for prenda in @orden.prendas %>
+		<ul>
+			<li><%= prenda.tipo_de_prenda.tipo_de_prenda %></li>
+			<li><%= prenda.ocasion.ocasion %> </li>
+			<% for insumo in prenda.insumos %>
+				<ul>
+					<li> <%= insumo.tipo_de_insumo %> </li>
+					<li> <%= insumo.cantidad %> </li>
+				</ul>
+				<% end %>
+		</ul>
+	<% end %>
+
+	<%= link_to "nueva orden", new_clienta_orden_path %>
+	<%= link_to "editar orden", edit_clienta_orden_path(:id => @orden.id)%>
+	
+
+
+</ul>

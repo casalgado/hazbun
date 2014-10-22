@@ -1,0 +1,24 @@
+
+
+<%= form_for [@clienta, @cita] do |f| %>
+
+	<%= f.hidden_field :clienta_id, value: @clienta.id %>
+
+	<%= f.radio_button :tipo_de_cita, '1' %>
+	<%= f.label :tipo_de_cita, 'Primera', :value => '1' %>
+  
+	<%= f.radio_button :tipo_de_cita, '2' %>
+	<%= f.label :tipo_de_cita, 'Medicion', :value => '2' %>
+  
+	<%= f.radio_button :tipo_de_cita, '3' %>
+	<%= f.label :tipo_de_cita, 'Medicion Final', :value => '3' %>
+
+	<%= f.radio_button :tipo_de_cita, '4' %>
+	<%= f.label :tipo_de_cita, 'Entrega', :value => '4' %> 
+
+	<%= f.datetime_select :fecha, :ampm => true, :minute_step => 30 %>
+
+	<%= f.submit %>
+
+<% end %>
+

@@ -1,2 +1,22 @@
-<h1>Ordenes#edit</h1>
-<p>Find me in app/views/ordenes/edit.html.erb</p>
+<h3> Edit </h3>
+<h3> <%= @clienta.nombre_completo %> </h3>
+
+<%= form_for [@clienta, @orden] do |f| %>
+
+	<%= f.hidden_field :clienta_id, value: @clienta.id %>
+
+			<br />
+			<%= f.fields_for :prendas do |builder| %>
+			<br />
+
+				<%= render 'prendas_fields', :f => builder %>
+
+  		<% end %>
+
+  <%= link_to_add_fields "Agregar Prenda", f, :prendas %>		
+
+	<%= f.submit %>
+
+
+	<% end %>
+

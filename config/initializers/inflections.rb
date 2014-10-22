@@ -2,6 +2,10 @@ ActiveSupport::Inflector.inflections do |inflect|
   inflect.irregular 'clienta', 'clientas'
   inflect.irregular 'orden', 'ordenes'
   inflect.irregular 'cita', 'citas'
+  inflect.irregular 'ocasion', 'ocasiones'
+  inflect.irregular 'material', 'materiales'
+  inflect.irregular 'prenda', 'prendas'
+  inflect.irregular 'color', 'colores'
 end
 
 # Be sure to restart your server when you modify this file.

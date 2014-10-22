@@ -14,10 +14,13 @@ class ClientasController < ApplicationController
 
 	def show
 		@clienta = Clienta.find(params[:id])
+		@ordenes_abiertas = @clienta.ordenes_abiertas
+		@medida = @clienta.medidas.last
 	end
 
   def index
-    @clientas = Clienta.all
+  	@search = Clienta.search(params[:q])
+    @clientas = @search.result
   end
 
   private

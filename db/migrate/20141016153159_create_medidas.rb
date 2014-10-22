@@ -1,0 +1,19 @@
+class CreateMedidas < ActiveRecord::Migration
+  def change
+    create_table :medidas do |t|
+    	t.belongs_to :clienta
+    	t.string :talle_frente
+    	t.string :talle_espalda
+    	t.string :imperio
+    	t.string :contorno
+    	t.string :espalda
+    	t.string :busto
+    	t.string :cintura
+    	t.string :cadera
+    	t.string :costado
+    	t.string :cotilla
+    	t.string :hombro
+      t.timestamps
+    end
+  end
+end

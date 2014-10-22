@@ -1,12 +1,9 @@
 Hazbun::Application.routes.draw do
   
-
-
-	
   devise_for :clientas, path: 'c', :controllers => {:confirmations => 'confirmations'}
 	devise_for :marcas, controllers: { sessions: "marcas/sessions" }
 
-  resources :ordenes
+  
 
   devise_scope :clienta do
       put "/c/confirm" => "confirmations#confirm", :as => :clienta_confirm
@@ -18,6 +15,12 @@ Hazbun::Application.routes.draw do
 		get 'dashboard'
 	end
 
-  resources :clientas
+  resources :clientas do
+  	resources :ordenes
+    resources :medidas
+    resources :citas
+  end
+
+  
 
 end

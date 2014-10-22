@@ -1,0 +1,32 @@
+
+<fieldset>
+<%= f.label :tipo_de_prenda %>
+<%= f.select(:tipo_de_prenda_id, @tipos_de_prenda.collect {|c| [ c.tipo_de_prenda, c.id ] }) %>
+
+<%= f.label :ocasion %>
+<%= f.select(:ocasion_id, @ocasiones.collect {|c| [ c.ocasion, c.id ] }) %>
+
+<%= f.hidden_field :_destroy %>
+<%= link_to "eliminar", "#", class: "remove_link" %>
+
+<br />
+
+			<%= f.fields_for :insumos do |builder| %>
+
+			<%= render 'insumos_fields', :f => builder %>
+
+			<br />
+
+  		<% end %>
+
+<%= link_to_add_fields "Agregar Insumo", f, :insumos %>
+
+
+</fieldset>
+
+<!-- 	<%= f.hidden_field :_destroy %>
+<%= link_to "eliminar", "#", class: "remove_link" %>
+		 -->
+
+	<!-- 	<%= f.check_box :_destroy %>
+	<%= f.label :_destroy, "eliminar" %> -->

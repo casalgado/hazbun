@@ -10,6 +10,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
+gem 'ransack', "~> 1.2.3"
 
 group :doc do
   gem 'sdoc', require: false
@@ -18,6 +19,10 @@ group :doc do
 
 gem 'devise'
 gem 'debugger'
+
+
+# gem 'pry-rails', :group => :development
+gem 'byebug'
 
 # Rspec
 
