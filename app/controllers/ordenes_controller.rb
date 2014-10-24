@@ -39,6 +39,7 @@ class OrdenesController < ApplicationController
 
   def show
     @orden = Orden.find(params[:id])
+    @abono = Abono.new
   end
 
   def index

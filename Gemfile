@@ -10,6 +10,11 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
+
+# Agregadas por mi
+
+gem 'jquery-ui-rails'
+gem 'jquery-timepicker-addon-rails'
 gem 'ransack', "~> 1.2.3"
 
 group :doc do

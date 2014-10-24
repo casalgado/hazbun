@@ -17,8 +17,15 @@
 		</ul>
 	<% end %>
 
-	<%= link_to "nueva orden", new_clienta_orden_path %>
-	<%= link_to "editar orden", edit_clienta_orden_path(:id => @orden.id)%>
+	<% if @orden.cerrada == false %>
+		<%= link_to "editar orden", edit_clienta_orden_path(:id => @orden.id)%>
+	<% end %>
+	
+<h3>Abonos</h3>
+	
+	<%= @orden.valor_total %>
+	<%= @orden.abonos.last.valor %>
+	<%= render "ordenes/form_for_abono" %>
 	
 
 

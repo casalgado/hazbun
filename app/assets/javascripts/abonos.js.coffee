@@ -2,7 +2,5 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-
-
 jQuery ->
-	$('#cita_fecha').datetimepicker()
+	$('#abono_fecha').datetimepicker()

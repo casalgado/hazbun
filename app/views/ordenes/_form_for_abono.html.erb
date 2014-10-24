@@ -1,0 +1,15 @@
+
+<%= form_for [@orden, @abono] do |f| %>
+
+	<%= f.hidden_field :orden_id, value: @orden.id %>
+
+	<%= f.label :valor, 'Valor' %>
+	<%= f.text_field :valor  %>
+
+	<%= f.label :fecha, 'Fecha' %>
+	<%= f.text_field :fecha  %>
+
+	<%= f.submit %>
+
+
+	<% end %>
