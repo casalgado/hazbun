@@ -1,18 +1,7 @@
 Hazbun::Application.routes.draw do
   
-  get "abonos/new"
-  get "abonos/create"
-  get "abonos/edit"
-  get "abonos/update"
-  get "abonos/show"
-  get "abonos/index"
-  get "abonos/destroy"
-  get "new/create"
-  get "new/edit"
-  get "new/update"
-  get "new/show"
-  get "new/index"
-  get "new/destroy"
+
+
   devise_for :clientas, path: 'c', :controllers => {:confirmations => 'confirmations'}
 	devise_for :marcas, controllers: { sessions: "marcas/sessions" }
 
@@ -26,6 +15,7 @@ Hazbun::Application.routes.draw do
 
 	resource :staticpages, :path => '' do 
 		get 'dashboard'
+    get 'calendario'
 	end
 
   resources :clientas do
@@ -37,6 +27,5 @@ Hazbun::Application.routes.draw do
   resources :ordenes do
     resources :abonos
   end
-
 
 end

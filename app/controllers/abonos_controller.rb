@@ -5,9 +5,7 @@ class AbonosController < ApplicationController
   end
 
   def create
-    new_params = abono_params.clone
-    new_params["fecha"] = abono_params["fecha"].change_date_format
-    @abono = Abono.new(new_params)
+    @abono = Abono.new(abono_params)
     @abono.save
     redirect_to :back
   end

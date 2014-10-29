@@ -4,3 +4,4 @@
 
 jQuery ->
 	$('#abono_fecha').datetimepicker()
+

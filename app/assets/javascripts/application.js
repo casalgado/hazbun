@@ -15,6 +15,27 @@
 //= require jquery_ujs
 //= require jquery-ui/datepicker
 //= require jquery-ui/slider
+//= require fullcalendar
 
 //= require_tree .
  
+
+
+$(document).ready(function() {
+
+    // page is now ready, initialize the calendar...
+
+    $('#calendar').fullCalendar({
+    		events:    [{
+      title: 'Espe',
+      start: '2014-10-14'
+        },
+        {
+            title: 'Beto',
+            start: '2014-10-11'
+        }],
+        theme: true
+
+    })
+
+});

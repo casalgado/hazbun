@@ -5,4 +5,5 @@
 
 
 jQuery ->
-	$('#cita_fecha').datetimepicker()
+	$('#cita_fecha').datetimepicker
+		dateFormat: 'dd-mm-yy'
