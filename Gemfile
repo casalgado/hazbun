@@ -17,6 +17,7 @@ gem 'jquery-ui-rails'
 gem 'jquery-timepicker-addon-rails'
 gem 'ransack', "~> 1.2.3"
 gem 'fullcalendar-rails', "~> 2.0.2.0"
+gem 'gon'
 
 group :doc do
   gem 'sdoc', require: false

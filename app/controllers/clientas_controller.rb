@@ -14,13 +14,25 @@ class ClientasController < ApplicationController
 
 	def show
 		@clienta = Clienta.find(params[:id])
-		@ordenes_abiertas = @clienta.ordenes_abiertas
 		@medida = @clienta.medidas.last
 	end
 
   def index
-  	@search = Clienta.search(params[:q])
-    @clientas = @search.result
+  	@search = current_marca.clientas.search(params[:q])
+  	@q = params[:q]
+    @results = @search.result
+    @clientas = []
+    if params[:actividad] == '1'
+    	@results.each do |clienta|
+    		@clientas << clienta if clienta.activa?
+    	end
+    elsif params[:actividad] == '2'
+    	 @results.each do |clienta|
+    		@clientas << clienta unless clienta.activa?
+    	end
+    else
+    	@clientas = @results
+    end
   end
 
   private

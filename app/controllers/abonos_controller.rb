@@ -2,6 +2,7 @@ class AbonosController < ApplicationController
   
   def new
     @abono = Abono.new
+    @orden = Orden.find(params[:orden_id])
   end
 
   def create

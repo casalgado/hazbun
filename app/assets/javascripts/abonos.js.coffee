@@ -2,6 +2,8 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-jQuery ->
-	$('#abono_fecha').datetimepicker()
 
+
+jQuery ->
+	$('#abono_fecha').datetimepicker
+		dateFormat: 'dd-mm-yy'

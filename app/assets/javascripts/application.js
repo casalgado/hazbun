@@ -23,19 +23,31 @@
 
 $(document).ready(function() {
 
-    // page is now ready, initialize the calendar...
 
     $('#calendar').fullCalendar({
-    		events:    [{
-      title: 'Espe',
-      start: '2014-10-14'
-        },
-        {
-            title: 'Beto',
-            start: '2014-10-11'
-        }],
-        theme: true
+
+    		events: gon.citas,
+
+        theme: true,
+
+        header: {left:  'today',
+        				center: 'prev title next',
+    						right:  'month,agendaWeek,agendaDay' },
+
+    		themeButtonIcons: false,
+
+    		minTime: '08:00',
+    		maxTime: '21:00'
 
     })
 
+    
+
 });
+
+
+
+
+
+
+

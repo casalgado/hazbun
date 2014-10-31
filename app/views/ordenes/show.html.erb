@@ -1,6 +1,6 @@
 <h1>Ordenes Show</h1>
 
-
+<%= @orden.cerrada %>
 
 <ul>
 	<li><%= @orden.clienta.nombre_completo %> </li>
@@ -22,11 +22,33 @@
 	<% end %>
 	
 <h3>Abonos</h3>
+
+	<p> Valor total de la Orden: <%= @orden.valor_total %>
 	
-	<%= @orden.valor_total %>
-	<%= @orden.abonos.last.valor %>
+	<% if @orden.abonos.empty? %>
+		<p> Clienta no ha abonado a esta orden </p>
+	<% else %>
+		<p> Pagos efectuados </p>
+		<ul>
+			<% for abono in @orden.abonos %>
+			<li>$<%= abono.valor %> el dia <%= abono.fecha.strftime "%Y / %m / %d" %>
+			<% end %>
+		</ul>
+	<% end %>
+	
+	<p> Nuevo Pago: <p>
 	<%= render "ordenes/form_for_abono" %>
-	
+
+<h3>Citas</h3>
+
+	<p> Nueva Cita: <p>
+	<%= render "ordenes/form_for_cita" %>
+
+<br />
+<br />
+
+
+<%= link_to "cerrar orden", clienta_orden_path(@clienta, @orden, :cerrar => '1')%>
 
 
 </ul>

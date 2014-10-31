@@ -10,8 +10,8 @@ class Clienta < ActiveRecord::Base
   has_many   :medidas
   has_many   :abonos, through: :ordenes
 
-  validates :nombre  , presence: true, length: { minimum: 4}
-  validates :apellido, presence: true, length: { minimum: 4}
+  validates :nombre  , presence: true, length: { minimum: 4 }
+  validates :apellido, presence: true, length: { minimum: 4 }
 
 
   # Este metodo devuelve el nombre completo de una clienta
@@ -26,6 +26,16 @@ class Clienta < ActiveRecord::Base
 
   def ordenes_cerradas
     self.ordenes.where(:cerrada => true)
+  end
+
+  # para determinar si la clienta esta activa o no.
+
+  def activa?
+    if self.ordenes_abiertas.empty? == true
+      false
+    else
+      true
+    end
   end
   
   # Los siguientes tres metodos son para que una diseñadora pueda crear una clienta sin contraseña.

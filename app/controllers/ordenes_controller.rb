@@ -39,7 +39,16 @@ class OrdenesController < ApplicationController
 
   def show
     @orden = Orden.find(params[:id])
+    @clienta = Clienta.find(params[:clienta_id])
     @abono = Abono.new
+    @cita = Cita.new
+    if params[:cerrar]
+      if @orden.cerrable?
+        @orden.cerrar
+      else
+        #notice
+      end
+    end
   end
 
   def index

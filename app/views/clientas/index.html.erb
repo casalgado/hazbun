@@ -9,18 +9,20 @@
 
 	<%= f.submit "Buscar" %>
 <% end %>
+<%= link_to "Activas" , clientas_path(:actividad => "1", :q => @q) %>
+<%= link_to "Dormidas", clientas_path(:actividad => "2", :q => @q) %>
 
 
 <% for clienta in @clientas %>
 	<ul>
 		<li> <%= link_to("#{clienta.nombre_completo}", clienta_path(:id => clienta.id)) %> </li>
 
-		<% unless clienta.ordenes.empty? %> 
-			<li> <%= link_to("Activa", clienta_orden_path(:clienta_id => clienta.id, :id => clienta.ordenes.last.id)) %> </li>
-			<li> <%= link_to("nueva cita", "#") %> </li>
+		<% unless clienta.ordenes_abiertas.empty? %> 
+			<li> <%= link_to("Activa", clienta_orden_path(clienta, clienta.ordenes.last)) %> </li>
+			<li> <%= link_to("nueva cita", new_clienta_cita_path(clienta)) %> </li>
 		<% else %> 
 			<li> Dormida </li> 
-			<li> <%= link_to("nueva orden", "#") %> </li>
+			<li> <%= link_to("nueva orden", new_clienta_orden_path(clienta)) %> </li>
 		<% end %>
 	</ul>
 

@@ -9,6 +9,7 @@ class CitasController < ApplicationController
   def create
     @cita = Cita.new(cita_params)
     @cita.save
+    redirect_to :back
   end
 
 

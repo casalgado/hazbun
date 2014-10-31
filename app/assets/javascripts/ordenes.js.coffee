@@ -23,6 +23,10 @@ $(document).on('page:load', ready)
 
 
 
+jQuery ->
+	$('#abono_fecha').datetimepicker
+		dateFormat: 'dd-mm-yy'
+
 
 
 

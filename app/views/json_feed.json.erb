@@ -1,0 +1,10 @@
+
+[
+<% for cita in @citas %>
+{
+  title: <%= cita.clienta.nombre_completo %>,
+  start: <%= cita.fecha %>
+}, 
+
+<% end %>
+]

@@ -5,6 +5,7 @@ class Marca < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :clientas
+  has_many :citas, through: :clientas
 
   # Marca.new(email:'judy@judy.com', password:'judyjudy', password_confirmation:'judyjudy')
 end
