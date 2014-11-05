@@ -7,9 +7,14 @@ class CitasController < ApplicationController
   end
 
   def create
+    @clienta = Clienta.find(cita_params[:clienta_id])
     @cita = Cita.new(cita_params)
-    @cita.save
-    redirect_to :back
+    if
+      @cita.save
+      redirect_to :back
+    else
+      render :action => 'new'
+    end
   end
 
 

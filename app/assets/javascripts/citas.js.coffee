@@ -4,6 +4,10 @@
 
 
 
-jQuery ->
+set = ->
 	$('#cita_fecha').datetimepicker
 		dateFormat: 'dd-mm-yy'
+
+$(document).ready(set)
+$(document).on('page:load', set)
+

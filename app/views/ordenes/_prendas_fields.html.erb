@@ -6,6 +6,12 @@
 <%= f.label :ocasion %>
 <%= f.select(:ocasion_id, @ocasiones.collect {|c| [ c.ocasion, c.id ] }) %>
 
+<%= f.label :picture %>
+<%= f.file_field :picture %>
+
+<%= f.label :remote_picture_url %>
+<%= f.text_field :remote_picture_url %>
+
 <%= f.hidden_field :_destroy %>
 <%= link_to "eliminar", "#", class: "remove_link" %>
 

@@ -1,0 +1,11 @@
+en:
+  activerecord:
+    attributes:
+      orden:
+        cerrada: "Clienta"
+    errors:
+      models:
+        orden:
+          attributes:
+            cerrada:
+              unique: "is required"

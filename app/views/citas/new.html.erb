@@ -1,3 +1,6 @@
+<% @cita.errors.each do |attr,msg|  %>
+	 <%=msg%>
+	<% end %>
 
 <%= form_for [@clienta, @cita] do |f| %>
 

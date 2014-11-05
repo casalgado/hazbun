@@ -31,17 +31,22 @@ namespace :db do
     end
       
     judy.clientas.each do |clienta|
-      3.times do |orden|
+      1.times do |orden|
         orden = clienta.ordenes.create!(:cerrada     => false,
                                         :valor_total => 1000 + rand(1000))
-        orden.prendas.create!(:tipo_de_prenda_id => rand(5)+1, :ocasion_id => rand(4)+1)
+        num_of_prendas = rand(2)+1
+
+          num_of_prendas.times do |prenda|
+          orden.prendas.create!(:tipo_de_prenda_id => rand(5)+1, :ocasion_id => rand(4)+1)
+          end
 
         4.times do |cita|
-        day = rand(29) + 2
+        day = rand(30) + 1
         time = 8 + rand(10)
-        clienta.citas.create!(:fecha           => Time.new(2014, 10, day, time, 00, 00),
+        clienta.citas.create!(:fecha           => Time.new(2014, 11, day, time, 00, 00),
                               :tipo_de_cita_id => rand(4)+1)
         end
+        
       end
     end
 

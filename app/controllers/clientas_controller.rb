@@ -9,8 +9,27 @@ class ClientasController < ApplicationController
 
 	def create
 		@clienta = current_marca.clientas.new(clienta_params)
+    if
 		@clienta.save
+    redirect_to clienta_path(@clienta)
+    else
+    render :action => 'new'
+    end
 	end
+
+  def edit
+    @clienta = Clienta.find(params[:id])
+  end
+
+  def update
+    @clienta = Clienta.find(params[:id])
+    if
+      @clienta.update(clienta_params)
+      redirect_to clienta_path(:id => @clienta.id)
+    else
+      render :action => 'edit'
+    end
+  end
 
 	def show
 		@clienta = Clienta.find(params[:id])
@@ -38,7 +57,7 @@ class ClientasController < ApplicationController
   private
 
   def clienta_params
-    allow = [:nombre, :apellido, :direccion, :telefono, :email, :fecha_de_nacimiento]
+    allow = [:nombre, :apellido, :direccion, :telefono, :email, :fecha_de_nacimiento, :picture, :remote_picture_url]
     params.require(:clienta).permit(allow)
   end
 

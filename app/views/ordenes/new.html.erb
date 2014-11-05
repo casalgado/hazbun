@@ -1,4 +1,7 @@
-
+<% @orden.errors.each do |attr,msg|  %>
+	 <%=msg%>
+	<% end %>
+	
 <h3> <%= @clienta.nombre_completo %> </h3>
 
 <%= form_for [@clienta, @orden] do |f| %>

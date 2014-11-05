@@ -16,16 +16,18 @@ ready = ->
 		event.preventDefault()
 
 
+set = ->
+	$('#abono_fecha').datetimepicker
+		dateFormat: 'dd-mm-yy'
+
 
 
 $(document).ready(ready)
 $(document).on('page:load', ready)
 
+$(document).ready(set)
+$(document).on('page:load', set)
 
-
-jQuery ->
-	$('#abono_fecha').datetimepicker
-		dateFormat: 'dd-mm-yy'
 
 
 

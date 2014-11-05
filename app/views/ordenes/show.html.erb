@@ -1,19 +1,17 @@
 <h1>Ordenes Show</h1>
 
-<%= @orden.cerrada %>
-
 <ul>
-	<li><%= @orden.clienta.nombre_completo %> </li>
+	<li><%= link_to "#{@orden.clienta.nombre_completo}", clienta_path(@clienta) %> </li>
 	<% for prenda in @orden.prendas %>
 		<ul>
 			<li><%= prenda.tipo_de_prenda.tipo_de_prenda %></li>
-			<li><%= prenda.ocasion.ocasion %> </li>
 			<% for insumo in prenda.insumos %>
 				<ul>
-					<li> <%= insumo.tipo_de_insumo %> </li>
-					<li> <%= insumo.cantidad %> </li>
+					<li> <%= insumo.tipo_de_insumo %> - <%= insumo.cantidad %> </li>
 				</ul>
 				<% end %>
+			<li><div id="prenda_picture"> <%= image_tag prenda.picture_url(:thumb).to_s  %></div></li>
+			<li><%= prenda.ocasion.ocasion %> </li>
 		</ul>
 	<% end %>
 
@@ -47,8 +45,8 @@
 <br />
 <br />
 
-
-<%= link_to "cerrar orden", clienta_orden_path(@clienta, @orden, :cerrar => '1')%>
-
+<% if @orden.cerrada == false %>
+	<%= link_to "cerrar orden", clienta_orden_path(@clienta, @orden, :cerrar => '1')%>
+<% end %>
 
 </ul>

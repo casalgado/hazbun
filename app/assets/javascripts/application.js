@@ -20,33 +20,23 @@
 //= require_tree .
  
 
-
-$(document).ready(function() {
-
+var ready = function() {
 
     $('#calendar').fullCalendar({
-
-    		events: gon.citas,
-
+    	events: gon.citas,
         theme: true,
-
         header: {left:  'today',
-        				center: 'prev title next',
-    						right:  'month,agendaWeek,agendaDay' },
-
-    		themeButtonIcons: false,
-
-    		minTime: '08:00',
-    		maxTime: '21:00'
-
-    })
-
-    
-
-});
+        	   center: 'prev title next',
+    			right:  'month,agendaWeek,agendaDay' },
+    	themeButtonIcons: false,
+    	minTime: '08:00',
+    	maxTime: '21:00'
+    })  
+};
 
 
-
+$(document).ready(ready);
+$(document).on('page:load', ready);
 
 
 

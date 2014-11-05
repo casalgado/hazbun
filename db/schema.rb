@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141030133010) do
+ActiveRecord::Schema.define(version: 20141105170944) do
 
   create_table "abonos", force: true do |t|
     t.integer  "orden_id"
@@ -52,18 +52,13 @@ ActiveRecord::Schema.define(version: 20141030133010) do
     t.datetime "confirmation_sent_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "image"
+    t.string   "picture"
   end
 
   add_index "clientas", ["confirmation_token"], name: "index_clientas_on_confirmation_token", unique: true
   add_index "clientas", ["email"], name: "index_clientas_on_email", unique: true
   add_index "clientas", ["reset_password_token"], name: "index_clientas_on_reset_password_token", unique: true
-
-  create_table "events", force: true do |t|
-    t.string   "title"
-    t.datetime "start"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "insumos", force: true do |t|
     t.string   "tipo_de_insumo"
@@ -147,6 +142,7 @@ ActiveRecord::Schema.define(version: 20141030133010) do
     t.integer  "orden_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "picture"
   end
 
   create_table "tipo_de_citas", force: true do |t|

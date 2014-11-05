@@ -4,9 +4,9 @@ class TipoDeCita < ActiveRecord::Base
 
 	def self.load
 		citas = ['Primera', 'Medicion', 'Medicion Final', 'Entrega']
-		citas.each do |cita|
-			TipoDeCita.new(:tipo_de_cita => cita).save
-		end
+    citas.each do |cita|
+    TipoDeCita.new(:tipo_de_cita => cita).save
+    end
 	end
 
 end

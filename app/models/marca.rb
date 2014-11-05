@@ -6,6 +6,7 @@ class Marca < ActiveRecord::Base
 
   has_many :clientas
   has_many :citas, through: :clientas
+  has_many :ordenes, through: :clientas
 
   # Marca.new(email:'judy@judy.com', password:'judyjudy', password_confirmation:'judyjudy')
 end

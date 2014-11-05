@@ -17,8 +17,16 @@ class OrdenesController < ApplicationController
 
   def create
     @orden = Orden.new(orden_params)
-    @orden.save
-    redirect_to clienta_orden_path(:id => @orden.id)
+    @clienta = Clienta.find(orden_params[:clienta_id])
+    @tipos_de_prenda = TipoDePrenda.all
+    @ocasiones = Ocasion.all
+    @tipo_de_insumo = Insumo.all
+    @errors = @orden.errors
+    if @orden.save
+      redirect_to clienta_orden_path(:id => @orden.id)
+    else 
+      render :action => 'new'
+    end
   end
 
   def edit
@@ -30,10 +38,18 @@ class OrdenesController < ApplicationController
   end
 
   def update
+    @tipos_de_prenda = TipoDePrenda.all
+    @ocasiones = Ocasion.all
+    @tipo_de_insumo = Insumo.all
+    @clienta = Clienta.find(params[:clienta_id])
     @params = orden_params
     @orden = Orden.find(params[:id])
-    @orden.update(orden_params)
-    redirect_to clienta_orden_path(:id => @orden.id)
+    if
+      @orden.update(orden_params)
+      redirect_to clienta_orden_path(:id => @orden.id)
+    else
+      render :action => 'edit'
+    end
     
   end
 
@@ -52,6 +68,7 @@ class OrdenesController < ApplicationController
   end
 
   def index
+    @ordenes = current_marca.ordenes.where(:cerrada => false)
   end
 
   def destroy
@@ -60,6 +77,6 @@ class OrdenesController < ApplicationController
   private 
 
   def orden_params
-    params.require(:orden).permit(:id, :clienta_id, prendas_attributes: [:id, :tipo_de_prenda_id, :ocasion_id, :_destroy, insumos_attributes: [:id, :tipo_de_insumo, :cantidad, :_destroy]])
+    params.require(:orden).permit(:id, :clienta_id, prendas_attributes: [:id, :tipo_de_prenda_id, :ocasion_id, :_destroy, :picture, :remote_picture_url, insumos_attributes: [:id, :tipo_de_insumo, :cantidad, :_destroy]])
   end
 end

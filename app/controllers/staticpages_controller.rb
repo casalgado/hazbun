@@ -11,10 +11,6 @@ class StaticpagesController < ApplicationController
 	def calendario
 		@citas = current_marca.citas
 		gon.citas = @citas.to_fullcalendar
-		respond_to do |format|
-			format.html
-			format.json { render json: @citas.to_json }
-		end
   end
 
   def json_feed
