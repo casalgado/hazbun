@@ -7,7 +7,7 @@
 		<li> <%= @clienta.direccion %>            </li>
 		<li> <%= @clienta.email %>                </li>
 		<% if @clienta.fecha_de_nacimiento %>
-		<li> <%= @clienta.fecha_de_nacimiento.strftime '%b %d' %> </li>
+			<li> <%= @clienta.fecha_de_nacimiento.strftime '%b %d' %> </li>
 		<% end %>
 	</ul>
 	<div id="client_picture"> <%= image_tag @clienta.picture_url(:thumb).to_s  %></div>

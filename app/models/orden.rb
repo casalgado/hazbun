@@ -11,6 +11,7 @@ class Orden < ActiveRecord::Base
 	# Validations: 
 
 	validates_uniqueness_of :cerrada, scope: :clienta_id, message: "Clienta ya tiene una orden abierta"
+#	validates_presence_of :clienta_id
 
 	# Scopes:
 

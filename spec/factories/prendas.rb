@@ -2,9 +2,8 @@
 
 FactoryGirl.define do
   factory :prenda do
-    ocasion_id 1
+    association :orden
     tipo_de_prenda_id 1
-    orden_id 1
     materiales_por_prenda_id 1
   end
 end

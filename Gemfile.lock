@@ -243,7 +243,8 @@ DEPENDENCIES
   faker (~> 1.0.1)
   fullcalendar-rails (~> 2.0.2.0)
   gon
-  guard-rspec (~> 0.7.0)
+  guard
+  guard-rspec
   jbuilder (~> 1.2)
   jquery-rails
   jquery-timepicker-addon-rails
