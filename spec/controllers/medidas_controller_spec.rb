@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe MedidasController do
+RSpec.describe MedidasController do
 
 	 	before(:all) do
 			@clienta = Clienta.first
@@ -8,8 +8,7 @@ describe MedidasController do
 		end
 
 		before(:each) do
-			@request.env["devise.mapping"] = Devise.mappings[:marca]
-			sign_in @marca
+			login(:marca)
 		end
 
 		describe 'GET #new' do

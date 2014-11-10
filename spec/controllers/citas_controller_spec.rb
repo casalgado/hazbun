@@ -1,6 +1,7 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe CitasController do
+RSpec.describe CitasController do
+	render_views
 
 	 	before(:all) do
 			@clienta = create(:clienta)
@@ -8,8 +9,7 @@ describe CitasController do
 		end
 
 		before(:each) do
-			@request.env["devise.mapping"] = Devise.mappings[:marca]
-			sign_in @marca
+			login(:marca)
 		end
 
 		describe 'GET #new' do
@@ -26,7 +26,7 @@ describe CitasController do
 
 			it "renders new template" do
 				get :new, clienta_id: @clienta.id
-				response.should render_template :new
+				expect(response).to render_template('citas/new')
 			end	 
 		end
 
@@ -36,7 +36,7 @@ describe CitasController do
 
 				it "saves a new cita in the database" do
 					expect {
-						post :create, clienta_id: @clienta.id, cita: attributes_for(:next_month_cita, clienta_id: @clienta.id)
+						post :create, clienta_id: @clienta.id, cita: { attributes: attributes_for(:next_month_cita, clienta_id: @clienta.id)}
 					}.to change(Cita, :count).by(1)
 				end
 

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe StaticpagesController do
+RSpec.describe StaticpagesController do
 
 
 	 describe "client acces" do
@@ -12,8 +12,7 @@ describe StaticpagesController do
 		end
 
 		before(:each) do
-			@request.env["devise.mapping"] = Devise.mappings[:marca]
-			sign_in @marca
+			login(:marca)
 		end
 
 		 describe 'GET #dashboard' do

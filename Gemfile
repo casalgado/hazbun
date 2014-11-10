@@ -36,18 +36,18 @@ gem 'byebug'
 # Rspec
 
 group :development, :test do
-	gem "rspec-rails", "~> 2.10.1"
-	gem "factory_girl_rails", "~> 3.2.0"
-	gem "guard-rspec"
-	gem 'guard'
+	gem "rspec-rails", "~> 3.1.0"
+	gem "factory_girl_rails", "~> 4.5.0"
+	gem 'guard', '~> 2.8.2'
+	gem "guard-rspec", '~> 4.3.1'
 
 end
 
 group :test do
-	gem "faker", "~> 1.0.1"
-	gem "capybara", "~> 1.1.2"
-	gem "database_cleaner", "~> 0.7.2"
-	gem "launchy", "~> 2.1.0"
+	gem "faker", '~> 1.4.3'
+	gem "capybara", '~> 2.4.4'
+	gem "database_cleaner", '~> 1.3.0'
+	gem "launchy", '~> 2.4.3'
 
 end
 

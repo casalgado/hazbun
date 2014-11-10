@@ -11,7 +11,7 @@ TipoDeCita.load
 			@clienta   = create(:clienta)
 			@time_t    = Time.now + 86400
 			@time_y    = Time.now - 86400
-			@from_dashboard = Cita.find(3)
+			@from_dashboard = Cita.find(1)
 			@today     = create(:cita, fecha: Time.now, 	 			 clienta_id: @clienta.id, tipo_de_cita_id: "2")
 			@today_2   = create(:cita, fecha: Time.now,  	 			 clienta_id: @clienta.id, tipo_de_cita_id: "2")
 			@tomorrow  = create(:cita, fecha: Time.at(@time_t.to_i), clienta_id: @clienta.id, tipo_de_cita_id: "2")
