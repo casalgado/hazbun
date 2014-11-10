@@ -15,7 +15,7 @@ RSpec.describe ClientasController do
 
 			it "assigns a new clienta" do
 				get :new
-				expect(assigns(:sdfs)).to be_a_new(Clienta)
+				expect(assigns(:clienta)).to be_a_new(Clienta)
 			end
 
 		end

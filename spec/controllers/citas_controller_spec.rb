@@ -4,7 +4,6 @@ RSpec.describe CitasController do
 	render_views
 
 	 	before(:all) do
-			@clienta = create(:clienta)
 			@marca   = create(:marca)
 		end
 
@@ -14,9 +13,13 @@ RSpec.describe CitasController do
 
 		describe 'GET #new' do
 
+			before do
+				@clienta = create(:clienta)
+			end
+
 			it "assigns a new cita" do
 				get :new, clienta_id: @clienta.id
-				assigns[:cita] = Cita.new
+				assigns(:cita).should be_a_new(Cita)
 			end
 
 			it "assigns an existing clienta" do
@@ -26,11 +29,15 @@ RSpec.describe CitasController do
 
 			it "renders new template" do
 				get :new, clienta_id: @clienta.id
-				expect(response).to render_template('citas/new')
+				expect(response).to render_template("new")
 			end	 
 		end
 
 		describe 'POST #create' do
+
+			before do
+				@clienta = create(:clienta)
+			end
 
 			context "with valid attributes" do
 

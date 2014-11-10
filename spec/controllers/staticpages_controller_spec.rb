@@ -3,7 +3,7 @@ require 'spec_helper'
 RSpec.describe StaticpagesController do
 
 
-	 describe "client acces" do
+	 describe "marca acces" do
 
 	 	before(:all) do
 			@marca   = Marca.find(1)

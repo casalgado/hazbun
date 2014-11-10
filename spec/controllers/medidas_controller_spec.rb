@@ -3,7 +3,7 @@ require 'spec_helper'
 RSpec.describe MedidasController do
 
 	 	before(:all) do
-			@clienta = Clienta.first
+			@clienta = create(:clienta)
 			@marca   = Marca.first
 		end
 
@@ -24,7 +24,7 @@ RSpec.describe MedidasController do
 			end
 
 			it "renders new template" do
-				get :new, clienta_id: @clienta.id
+				get :new, clienta_id: @clienta
 				response.should render_template :new
 			end	 
 		end
