@@ -1,5 +1,6 @@
 class OrdenesController < ApplicationController
 
+  before_action :authenticate_marca!, :except => [:show]
 
   def new
     @orden = Orden.new

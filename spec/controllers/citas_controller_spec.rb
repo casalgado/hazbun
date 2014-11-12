@@ -5,6 +5,9 @@ RSpec.describe CitasController, :type => :controller do
 
 	 	before(:all) do
 			@marca = create(:marca)
+			Ocasion.load
+			TipoDeCita.load
+			TipoDePrenda.load
 		end
 
 		before(:each) do
@@ -19,12 +22,12 @@ RSpec.describe CitasController, :type => :controller do
 
 			it "assigns a new cita" do
 				get :new, clienta_id: @clienta.id
-				assigns[:cita] = Cita.new
+				expect(assigns(:cita)).to be_a_new(Cita)
 			end
 
 			it "assigns an existing clienta" do
 				get :new, clienta_id: @clienta.id
-				assigns[:clienta] = @clienta
+				expect(assigns(:clienta)).to eq(@clienta)
 			end
 
 			it "renders new template" do

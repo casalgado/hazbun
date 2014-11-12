@@ -25,7 +25,7 @@ RSpec.describe StaticpagesController, :type => :controller do
 
 			it "shows todays appointments" do
 				get :dashboard
-				assigns[:citas_de_hoy] = [@citas]
+				expect(assigns(:citas_de_hoy)).to eq([@citas])
 			end
 
 	 

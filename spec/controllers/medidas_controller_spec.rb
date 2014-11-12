@@ -16,12 +16,12 @@ RSpec.describe MedidasController, :type => :controller do
 
 			it "assigns a new medida" do
 				get :new, clienta_id: @clienta.id
-				assigns[:medida] = Medida.new
+				expect(assigns(:medida)).to be_a_new(Medida)
 			end
 
 			it "assigns an existing clienta" do
 				get :new, clienta_id: @clienta.id
-				assigns[:clienta] = @clienta
+				expect(assigns(:clienta)).to eq(@clienta)
 			end
 
 			it "renders new template" do

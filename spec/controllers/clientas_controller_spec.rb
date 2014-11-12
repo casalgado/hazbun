@@ -17,30 +17,31 @@ RSpec.describe ClientasController, :type => :controller do
 
 			it "assigns a new clienta" do
 				get :new
-				assigns[:clienta] = Clienta.new
+				expect(assigns(:clienta)).to be_a_new(Clienta)
 			end
 
 		end
 
 		describe 'GET #show' do
 
+			before(:each) do
+				@medida = create(:medida, clienta_id: @clienta.id)
+			end
+
 			it "assigns an existing clienta" do
 				get :show, id: @clienta
-				@medida = create(:medida, clienta_id: @clienta.id)
-				assigns[:clienta] = @clienta
-				assigns[:medida] = @clienta.medidas.last
+				expect(assigns(:clienta)).to eq(@clienta)
+				expect(assigns(:medida)).to eq(@clienta.medidas.last)
 				expect(@clienta.medidas.last.talle_frente).to eq("60")
 			end
 
 			it "assigns an existing clientas medidas" do
 				get :show, id: @clienta
-				@medida = create(:medida, clienta_id: @clienta.id)
-				assigns[:medida] = @clienta.medidas.last
+				expect(assigns(:medida)).to eq(@clienta.medidas.last)
 			end
 			
 			it "shows correct medida value" do
 				get :show, id: @clienta
-				@medida = create(:medida, clienta_id: @clienta.id)
 				expect(@clienta.medidas.last.talle_frente).to eq("60")
 			end
 
@@ -85,17 +86,17 @@ RSpec.describe ClientasController, :type => :controller do
 
 			it "assigns an existing clienta" do
 				get :edit, id: @clienta.id
-				assigns[:clienta] = @clienta
+				expect(assigns(:clienta)).to eq(@clienta)
 			end
 		end
  
-		describe 'POST #update' do
+		describe 'PUT #update' do
 
 			context "with valid attributes" do
 
 				it "locates clienta" do
 					put :update, id: @clienta, clienta: attributes_for(:clienta)
-					assigns[:clienta] = @clienta
+				expect(assigns(:clienta)).to eq(@clienta)
 				end
 
 				it "updates clienta attributes" do

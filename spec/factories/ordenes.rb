@@ -2,7 +2,8 @@
 FactoryGirl.define do 
 	factory :orden do
 		cerrada false
-		association :clienta		
+		association :clienta	
 	end
+
 end
 
