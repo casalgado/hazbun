@@ -36,10 +36,10 @@ gem 'byebug'
 # Rspec
 
 group :development, :test do
-	gem "rspec-rails", "~> 3.1.0"
-	gem "factory_girl_rails", "~> 4.5.0"
+	gem "rspec-rails", "~> 2.10.1"
+	gem "factory_girl_rails", "~> 3.2.0"
 	gem 'guard', '~> 2.8.2'
-	gem "guard-rspec", '~> 4.2.10'
+	gem "guard-rspec", '~> 1.2.1'
 
 end
 

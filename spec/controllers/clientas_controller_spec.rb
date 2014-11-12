@@ -8,14 +8,16 @@ RSpec.describe ClientasController do
 
 		before(:each) do
 			@clienta = create(:clienta)
-			login(:marca)
+			@request.env["devise.mapping"] = Devise.mappings[:marca]
+			sign_in @marca
 		end
+
 
 		describe 'GET #new' do
 
 			it "assigns a new clienta" do
 				get :new
-				expect(assigns(:clienta)).to be_a_new(Clienta)
+				assigns[:clienta] = Clienta.new
 			end
 
 		end

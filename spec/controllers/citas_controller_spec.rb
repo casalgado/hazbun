@@ -4,22 +4,22 @@ RSpec.describe CitasController do
 	render_views
 
 	 	before(:all) do
-			@marca   = create(:marca)
+			@marca = create(:marca)
 		end
 
 		before(:each) do
-			login(:marca)
+			@clienta = create(:clienta)
+			@request.env["devise.mapping"] = Devise.mappings[:marca]
+			sign_in @marca
 		end
 
 		describe 'GET #new' do
 
-			before do
-				@clienta = create(:clienta)
-			end
+
 
 			it "assigns a new cita" do
 				get :new, clienta_id: @clienta.id
-				assigns(:cita).should be_a_new(Cita)
+				assigns[:cita] = Cita.new
 			end
 
 			it "assigns an existing clienta" do
@@ -29,26 +29,24 @@ RSpec.describe CitasController do
 
 			it "renders new template" do
 				get :new, clienta_id: @clienta.id
-				expect(response).to render_template("new")
+				response.should render_template(:new)
 			end	 
 		end
 
 		describe 'POST #create' do
 
-			before do
-				@clienta = create(:clienta)
-			end
+
 
 			context "with valid attributes" do
 
 				it "saves a new cita in the database" do
 					expect {
-						post :create, clienta_id: @clienta.id, cita: { attributes: attributes_for(:next_month_cita, clienta_id: @clienta.id)}
+						post :create, clienta_id: @clienta.id, cita: attributes_for(:next_month_cita, clienta_id: @clienta.id)
 					}.to change(Cita, :count).by(1)
 				end
 
 				it "redirects to clienta show page" do
-					post :create, clienta_id: @clienta.id, cita: attributes_for(:next_month_cita, clienta_id: @clienta.id)
+					  post :create, clienta_id: @clienta.id, cita: attributes_for(:next_month_cita, clienta_id: @clienta.id)
 					response.should redirect_to clienta_path(@clienta)
 				end
 

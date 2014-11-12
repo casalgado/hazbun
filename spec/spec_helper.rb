@@ -14,7 +14,6 @@ RSpec.configure do |config|
   config.include Devise::TestHelpers, :type => :controller
   config.include LoginMacros
   config.include RequestHelpers
-  config.infer_spec_type_from_file_location!
 
   # ## Mock Framework
   #
