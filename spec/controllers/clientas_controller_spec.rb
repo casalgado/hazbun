@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe ClientasController do
+RSpec.describe ClientasController, :type => :controller do
 
 	 	before(:all) do
 			@marca = Marca.first
@@ -29,7 +29,7 @@ RSpec.describe ClientasController do
 				@medida = create(:medida, clienta_id: @clienta.id)
 				assigns[:clienta] = @clienta
 				assigns[:medida] = @clienta.medidas.last
-				@clienta.medidas.last.talle_frente.should eq("60")
+				expect(@clienta.medidas.last.talle_frente).to eq("60")
 			end
 
 			it "assigns an existing clientas medidas" do
@@ -41,7 +41,7 @@ RSpec.describe ClientasController do
 			it "shows correct medida value" do
 				get :show, id: @clienta
 				@medida = create(:medida, clienta_id: @clienta.id)
-				@clienta.medidas.last.talle_frente.should eq("60")
+				expect(@clienta.medidas.last.talle_frente).to eq("60")
 			end
 
 
@@ -60,7 +60,7 @@ RSpec.describe ClientasController do
 
 				it "redirects to clienta show page" do
 					post :create, clienta: attributes_for(:clienta)
-					response.should redirect_to clienta_path(Clienta.last)
+					expect(response).to redirect_to clienta_path(Clienta.last)
 				end
 
 			end
@@ -75,7 +75,7 @@ RSpec.describe ClientasController do
 
 				it "redirects to new clienta page" do
 						post :create, clienta: attributes_for(:clienta, email: nil)
-						response.should render_template :new
+						expect(response).to render_template :new
 				end
 
 			end
@@ -101,12 +101,12 @@ RSpec.describe ClientasController do
 				it "updates clienta attributes" do
 					put :update, id: @clienta, clienta: attributes_for(:clienta, nombre: "new_name")
 					@clienta.reload
-					@clienta.nombre.should eq("new_name")
+					expect(@clienta.nombre).to eq("new_name")
 				end
 
 				it "redirects to clienta show page" do
 					put :update, id: @clienta, clienta: attributes_for(:clienta, nombre: "new_name")
-					response.should redirect_to clienta_path(@clienta)
+					expect(response).to redirect_to clienta_path(@clienta)
 				end
 
 			end
@@ -117,12 +117,12 @@ RSpec.describe ClientasController do
 					email = @clienta.email
 					put :update, id: @clienta, clienta: attributes_for(:clienta, email: nil)
 					@clienta.reload
-					@clienta.email.should eq(email)
+					expect(@clienta.email).to eq(email)
 				end
 
 				it "redirects to edit clienta page" do
 					put :update, id: @clienta, clienta: attributes_for(:clienta, email: nil)
-					response.should render_template :edit
+					expect(response).to render_template :edit
 				end
 
 			end

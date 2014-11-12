@@ -1,4 +1,4 @@
 require 'spec_helper'
 
-describe MaterialesPorPrenda do
+describe MaterialesPorPrenda, :type => :model do
 end

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe CitasController do
+RSpec.describe CitasController, :type => :controller do
 	render_views
 
 	 	before(:all) do
@@ -29,7 +29,7 @@ RSpec.describe CitasController do
 
 			it "renders new template" do
 				get :new, clienta_id: @clienta.id
-				response.should render_template(:new)
+				expect(response).to render_template(:new)
 			end	 
 		end
 
@@ -47,7 +47,7 @@ RSpec.describe CitasController do
 
 				it "redirects to clienta show page" do
 					  post :create, clienta_id: @clienta.id, cita: attributes_for(:next_month_cita, clienta_id: @clienta.id)
-					response.should redirect_to clienta_path(@clienta)
+					expect(response).to redirect_to clienta_path(@clienta)
 				end
 
 			end
@@ -62,7 +62,7 @@ RSpec.describe CitasController do
 
 				it "redirects to new cita page" do
 						post :create, clienta_id: @clienta.id, cita: attributes_for(:invalid_cita, clienta_id: @clienta.id)
-						response.should render_template :new
+						expect(response).to render_template :new
 				end
 
 			end

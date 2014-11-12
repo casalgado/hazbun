@@ -2,28 +2,28 @@
 require 'spec_helper'
 require 'faker'
 
-describe Clienta do
+describe Clienta, :type => :model do
 
 	it "has a valid factory" do
-		create(:clienta).should be_valid
+		expect(create(:clienta)).to be_valid
 	end
 
 	it "is invalid without a first_name" do
-		build(:clienta, nombre: nil).should_not be_valid
+		expect(build(:clienta, nombre: nil)).not_to be_valid
 	end
 
 	it "is invalid without a last_name" do
-		build(:clienta, apellido: nil).should_not be_valid
+		expect(build(:clienta, apellido: nil)).not_to be_valid
 	end
 
 	it "is invalid with duplicate email address" do
 		@email = Faker::Internet.email
 		create(:clienta, email: @email)
-		build(:clienta, email: @email).should_not be_valid
+		expect(build(:clienta, email: @email)).not_to be_valid
 	end
 
 	it "nombre_completo method returns full name" do
-		create(:clienta, nombre: "Dominique", apellido: "Francon").nombre_completo.should eq "Dominique Francon"
+		expect(create(:clienta, nombre: "Dominique", apellido: "Francon").nombre_completo).to eq "Dominique Francon"
 	end
 
 end

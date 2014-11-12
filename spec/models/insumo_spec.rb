@@ -1,4 +1,4 @@
 require 'spec_helper'
 
-describe Insumo do
+describe Insumo, :type => :model do
 end

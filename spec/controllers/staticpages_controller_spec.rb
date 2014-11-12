@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe StaticpagesController do
+RSpec.describe StaticpagesController, :type => :controller do
 
 
 	 describe "marca acces" do
@@ -20,7 +20,7 @@ RSpec.describe StaticpagesController do
 
 			it "render the :dahsboard view" do
 				get :dashboard
-				response.should render_template :dashboard
+				expect(response).to render_template :dashboard
 			end
 
 			it "shows todays appointments" do

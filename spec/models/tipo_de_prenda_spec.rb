@@ -1,4 +1,4 @@
 require 'spec_helper'
 
-describe TipoDePrenda do
+describe TipoDePrenda, :type => :model do
 end

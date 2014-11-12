@@ -1,4 +1,4 @@
 require 'spec_helper'
 
-describe Material do
+describe Material, :type => :model do
 end

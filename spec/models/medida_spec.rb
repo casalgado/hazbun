@@ -1,4 +1,4 @@
 require 'spec_helper'
 
-describe Medida do
+describe Medida, :type => :model do
 end

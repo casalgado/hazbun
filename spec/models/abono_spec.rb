@@ -1,4 +1,4 @@
 require 'spec_helper'
 
-describe Abono do
+describe Abono, :type => :model do
 end

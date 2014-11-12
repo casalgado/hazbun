@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe MedidasController do
+RSpec.describe MedidasController, :type => :controller do
 
 	 	before(:all) do
 			@clienta = create(:clienta)
@@ -26,7 +26,7 @@ RSpec.describe MedidasController do
 
 			it "renders new template" do
 				get :new, clienta_id: @clienta
-				response.should render_template :new
+				expect(response).to render_template :new
 			end	 
 		end
 
@@ -42,7 +42,7 @@ RSpec.describe MedidasController do
 
 				it "redirects to clienta show page" do
 					  post :create, clienta_id: @clienta.id, medida: attributes_for(:medida, clienta_id: @clienta.id)
-					response.should redirect_to clienta_path(@clienta)
+					expect(response).to redirect_to clienta_path(@clienta)
 				end
 
 			end

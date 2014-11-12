@@ -1,4 +1,4 @@
 require 'spec_helper'
 
-describe Ocasion do
+describe Ocasion, :type => :model do
 end

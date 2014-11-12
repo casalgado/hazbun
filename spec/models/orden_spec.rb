@@ -2,23 +2,23 @@
 require 'spec_helper'
 
 
-describe Orden do
+describe Orden, :type => :model do
 
 	it "has a valid factory" do
-		create(:orden).should be_valid
+		expect(create(:orden)).to be_valid
 	end
 
 	it "allows create if previous orders are closed" do
 		clienta = create(:clienta)
 		create(:orden, clienta: clienta, cerrada: true)
-		build(:orden, clienta: clienta).should be_valid
+		expect(build(:orden, clienta: clienta)).to be_valid
 	end
 
 
 	it "only allows create when client has no open orders" do
 		clienta = create(:clienta)
 		create(:orden, clienta: clienta)
-		build(:orden, clienta: clienta).should_not be_valid
+		expect(build(:orden, clienta: clienta)).not_to be_valid
 	end
 
 	

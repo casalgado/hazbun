@@ -2,7 +2,7 @@
 require 'spec_helper'
 
 
-describe Cita do
+describe Cita, :type => :model do
 
 TipoDeCita.load
 
@@ -20,19 +20,19 @@ TipoDeCita.load
 
 		context "check positive test" do
 			it "should return only todays appointments" do
-				Cita.de_hoy.should eq [@from_dashboard, @today, @today_2]
+				expect(Cita.de_hoy).to eq [@from_dashboard, @today, @today_2]
 			end
 		end
 
 		context "check negative test 1" do
 			it "should not return appointments from yesterday" do
-				Cita.de_hoy.should_not include @yesterday
+				expect(Cita.de_hoy).not_to include @yesterday
 			end
 		end	
 
 		context "check negative test 2" do
 			it "should not return appointments from tomorrow" do
-				Cita.de_hoy.should_not include @tomorrow
+				expect(Cita.de_hoy).not_to include @tomorrow
 			end
 		end
 
