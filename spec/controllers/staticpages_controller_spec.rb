@@ -8,7 +8,7 @@ RSpec.describe StaticpagesController, :type => :controller do
 	 	before(:all) do
 			@marca   = Marca.find(1)
 			@clienta = create(:clienta)
-			@citas   = create(:cita, clienta: @clienta)
+			@appointments   = create(:appointment, clienta: @clienta)
 		end
 
 		before(:each) do
@@ -25,7 +25,7 @@ RSpec.describe StaticpagesController, :type => :controller do
 
 			it "shows todays appointments" do
 				get :dashboard
-				expect(assigns(:citas_de_hoy)).to eq([@citas])
+				expect(assigns(:citas_de_hoy)).to eq([@appointments])
 			end
 
 	 

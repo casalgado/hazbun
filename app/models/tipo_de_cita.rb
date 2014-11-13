@@ -1,6 +1,6 @@
 class TipoDeCita < ActiveRecord::Base
 
-	has_many :citas
+	has_many :appointments
 
 	def self.load
 		citas = ['Primera', 'Medicion', 'Medicion Final', 'Entrega']

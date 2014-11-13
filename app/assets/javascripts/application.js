@@ -23,7 +23,7 @@
 var ready = function() {
 
     $('#calendar').fullCalendar({
-    	events: gon.citas,
+    	events: gon.appointments,
         theme: true,
         header: {left:  'today',
         	   center: 'prev title next',

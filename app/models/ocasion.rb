@@ -2,7 +2,7 @@ class Ocasion < ActiveRecord::Base
 
 	# Associations:
 
-	has_many :prendas
+	has_many :items
 
 	# Validations:
 

@@ -1,4 +1,4 @@
 require 'spec_helper'
 
-describe Prenda, :type => :model do
+describe Item, :type => :model do
 end

@@ -10,10 +10,10 @@ class Clienta < ActiveRecord::Base
   # Associations:
 
   belongs_to :marca
-  has_many   :citas
-  has_many   :ordenes
+  has_many   :appointments
+  has_many   :orders
   has_many   :medidas
-  has_many   :abonos, through: :ordenes
+  has_many   :payments, through: :orders
 
   # Validations:
 
@@ -25,7 +25,7 @@ class Clienta < ActiveRecord::Base
   # Scopes
 
   scope :has_appointment, -> {
-    joins(:citas).group("clientas.id").merge(Cita.appointment_in_future)
+    joins(:appointments).group("clientas.id").merge(Appointment.appointment_in_future)
    }
 
   # Uploader:
@@ -40,13 +40,13 @@ class Clienta < ActiveRecord::Base
   	[self.nombre, self.apellido].join(" ")
   end
 
-  # Estos dos metodos devuelven las ordenes abiertas/cerradas que la clienta tenga. 
+  # Estos dos metodos devuelven las open/closed orders que la clienta tenga. 
   def ordenes_abiertas
-    self.ordenes.where(:cerrada => false)
+    self.orders.where(:closed => false)
   end
 
   def ordenes_cerradas
-    self.ordenes.where(:cerrada => true)
+    self.orders.where(:closed => true)
   end
 
   # para determinar si la clienta esta activa o no.
@@ -77,10 +77,10 @@ class Clienta < ActiveRecord::Base
     password == password_confirmation && !password.blank?
   end
 
-  # el siguiente metodo es para determinar si la clienta tiene una orden abierta. 
+  # el siguiente metodo es para determinar si la clienta tiene una open order. 
 
   def has_open_order?
-    if self.ordenes.last.cerrada == false
+    if self.orders.last.closed == false
       true
     else
       false

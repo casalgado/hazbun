@@ -1,9 +1,9 @@
 
 [
-<% for cita in @citas %>
+<% for appointment in @appointments %>
 {
-  title: <%= cita.clienta.nombre_completo %>,
-  start: <%= cita.fecha %>
+  title: <%= appointment.clienta.nombre_completo %>,
+  start: <%= appointment.fecha %>
 }, 
 
 <% end %>

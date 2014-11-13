@@ -2,7 +2,7 @@ class Insumo < ActiveRecord::Base
 	
 	# Associations
 
-	belongs_to :prenda
+	belongs_to :item
 
 	# Validations
 

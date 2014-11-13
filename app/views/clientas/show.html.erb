@@ -15,12 +15,12 @@
 
 <h3>Actividad</h3>
 	<ul>
-	<% for orden in @clienta.ordenes_abiertas %>
-		<li> <%= link_to "#{orden.created_at.strftime '%b %Y'}", clienta_orden_path(@clienta, orden)  %> </li>
+	<% for order in @clienta.ordenes_abiertas %>
+		<li> <%= link_to "#{order.created_at.strftime '%b %Y'}", clienta_order_path(@clienta, order)  %> </li>
 		<ul>
-			<% for prenda in orden.prendas %>
-				<li> <%= prenda.tipo_de_prenda.tipo_de_prenda %> para <%= prenda.ocasion.ocasion %> </li>
-				<li><div id="prenda_picture"> <%= image_tag prenda.picture_url(:thumb).to_s  %></div></li>
+			<% for item in order.items %>
+				<li> <%= item.item_type.item_type %> para <%= item.ocasion.ocasion %> </li>
+				<li><div id="item_picture"> <%= image_tag item.picture_url(:thumb).to_s  %></div></li>
 			<% end %>
 		</ul>
 	<% end %>
@@ -28,12 +28,12 @@
 
 <h3>Historia</h3>
 	<ul>
-	<% for orden in @clienta.ordenes_cerradas %>
-		<li> <%= link_to "#{orden.created_at.strftime '%b %Y'}", clienta_orden_path(@clienta, orden)  %> </li>
+	<% for order in @clienta.ordenes_cerradas %>
+		<li> <%= link_to "#{order.created_at.strftime '%b %Y'}", clienta_order_path(@clienta, order)  %> </li>
 		<ul>
-			<% for prenda in orden.prendas %>
-				<li> <%= prenda.tipo_de_prenda.tipo_de_prenda %> para <%= prenda.ocasion.ocasion %> </li>
-				<li><div id="prenda_picture"> <%= image_tag prenda.picture_url(:thumb).to_s  %></div></li>
+			<% for item in order.items %>
+				<li> <%= item.item_type.item_type %> para <%= item.ocasion.ocasion %> </li>
+				<li><div id="item_picture"> <%= image_tag item.picture_url(:thumb).to_s  %></div></li>
 			<% end %>
 		</ul>
 	<% end %>
@@ -58,14 +58,14 @@
 	
 <p><%= link_to "Actualizar Medidas", new_clienta_medida_path(:clienta_id => @clienta.id) %></p>
 
-<% unless @clienta.ordenes.empty? %>
+<% unless @clienta.orders.empty? %>
 	<% unless @clienta.has_open_order? %>
-		<p><%= link_to "Nueva Orden", new_clienta_orden_path(@clienta) %></p>
+		<p><%= link_to "Nueva Orden", new_clienta_order_path(@clienta) %></p>
 	<% end %>
 <% else %>
-	<p><%= link_to "Nueva Orden", new_clienta_orden_path(@clienta) %></p>
+	<p><%= link_to "Nueva Orden", new_clienta_order_path(@clienta) %></p>
 <% end %>
 
-<p><%= link_to "Nueva Cita" ,  new_clienta_cita_path(@clienta) %></p>
+<p><%= link_to "Nueva Cita" ,  new_clienta_appointment_path(@clienta) %></p>
 
 

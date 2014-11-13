@@ -13,19 +13,11 @@
 
 ActiveRecord::Schema.define(version: 20141105170944) do
 
-  create_table "abonos", force: true do |t|
-    t.integer  "orden_id"
-    t.datetime "fecha"
-    t.integer  "valor"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "citas", force: true do |t|
+  create_table "appointments", force: true do |t|
     t.integer  "prenda_id"
     t.integer  "clienta_id"
     t.integer  "tipo_de_cita_id"
-    t.datetime "fecha"
+    t.datetime "date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -65,7 +57,22 @@ ActiveRecord::Schema.define(version: 20141105170944) do
     t.integer  "cantidad"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "prenda_id"
+    t.integer  "item_id"
+  end
+
+  create_table "item_types", force: true do |t|
+    t.string   "item_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "items", force: true do |t|
+    t.integer  "ocasion_id"
+    t.integer  "item_type_id"
+    t.integer  "order_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "picture"
   end
 
   create_table "marcas", force: true do |t|
@@ -99,7 +106,7 @@ ActiveRecord::Schema.define(version: 20141105170944) do
   end
 
   create_table "materiales_por_prendas", force: true do |t|
-    t.integer  "prenda_id"
+    t.integer  "item_id"
     t.integer  "material_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -128,31 +135,24 @@ ActiveRecord::Schema.define(version: 20141105170944) do
     t.datetime "updated_at"
   end
 
-  create_table "ordenes", force: true do |t|
+  create_table "orders", force: true do |t|
     t.integer  "clienta_id"
-    t.boolean  "cerrada",     default: false
-    t.integer  "valor_total"
+    t.boolean  "closed",      default: false
+    t.integer  "total_value"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "prendas", force: true do |t|
-    t.integer  "ocasion_id"
-    t.integer  "tipo_de_prenda_id"
-    t.integer  "orden_id"
+  create_table "payments", force: true do |t|
+    t.integer  "order_id"
+    t.datetime "date"
+    t.integer  "amount"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "picture"
   end
 
   create_table "tipo_de_citas", force: true do |t|
     t.string   "tipo_de_cita"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "tipo_de_prendas", force: true do |t|
-    t.string   "tipo_de_prenda"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

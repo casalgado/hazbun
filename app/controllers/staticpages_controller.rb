@@ -4,17 +4,17 @@ class StaticpagesController < ApplicationController
 	before_action :authenticate_marca!, :only => [:dashboard, :calendario]
 
 	def dashboard
-		@citas_de_hoy = current_marca.citas.de_hoy.order("fecha ASC")
+		@citas_de_hoy = current_marca.appointments.de_hoy.order("date ASC")
 		@hoy = Date.today
 	end
 
 	def calendario
-		@citas = current_marca.citas
-		gon.citas = @citas.to_fullcalendar
+		@appointments = current_marca.appointments
+		gon.appointments = @appointments.to_fullcalendar
   end
 
   def json_feed
-  	@citas = current_marca.citas.all
+  	@appointments = current_marca.appointments.all
   	render :file => "json_feed.json.erb", :content_type => 'application/json'
   end
 	

@@ -5,7 +5,7 @@ namespace :db do
   task :populate => :environment do
     Rake::Task['db:reset'].invoke
 
-    TipoDePrenda.load
+    ItemType.load
     Ocasion.load
     TipoDeCita.load
 
@@ -31,19 +31,19 @@ namespace :db do
     end
       
     judy.clientas.each do |clienta|
-      1.times do |orden|
-        orden = clienta.ordenes.create!(:cerrada     => false,
-                                        :valor_total => 1000 + rand(1000))
-        num_of_prendas = rand(2)+1
+      1.times do |order|
+        order = clienta.orders.create!(:closed      => false,
+                                       :total_value => 1000 + rand(1000))
+        num_of_items = rand(2)+1
 
-          num_of_prendas.times do |prenda|
-          orden.prendas.create!(:tipo_de_prenda_id => rand(5)+1, :ocasion_id => rand(4)+1)
+          num_of_items.times do |item|
+          order.items.create!(:item_type_id => rand(5)+1, :ocasion_id => rand(4)+1)
           end
 
-        4.times do |cita|
+        4.times do |appointment|
         day = rand(30) + 1
         time = 8 + rand(10)
-        clienta.citas.create!(:fecha           => Time.new(2014, 11, day, time, 00, 00),
+        clienta.appointments.create!(:date     => Time.new(2014, 12, day, time, 00, 00),
                               :tipo_de_cita_id => rand(4)+1)
         end
         

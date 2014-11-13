@@ -1,4 +1,4 @@
-
+appointment
 <p> <%= link_to("Nueva Clienta", new_clienta_path) %></p>
 
 <%= search_form_for @search do |f| %>
@@ -19,12 +19,12 @@
 		<li> <%= link_to("#{clienta.nombre_completo}", clienta_path(:id => clienta.id)) %> </li>
 
 		<% unless clienta.ordenes_abiertas.empty? %> 
-			<li> <%= link_to("Activa", clienta_orden_path(clienta, clienta.ordenes.last)) %> </li>
-			<li> <%= link_to("nueva cita", new_clienta_cita_path(clienta)) %> </li>
+			<li> <%= link_to("Activa", clienta_order_path(clienta, clienta.orders.last)) %> </li>
+			<li> <%= link_to("nueva cita", new_clienta_appointment_path(clienta)) %> </li>
 		<% else %> 
 			<li> Dormida </li> 
-			<li> <%= link_to("nueva orden", new_clienta_orden_path(clienta)) %> </li>
-			<li> <%= link_to("nueva cita", new_clienta_cita_path(clienta)) %> </li>
+			<li> <%= link_to("nueva orden", new_clienta_order_path(clienta)) %> </li>
+			<li> <%= link_to("nueva cita", new_clienta_appointment_path(clienta)) %> </li>
 		<% end %>
 	</ul>
 

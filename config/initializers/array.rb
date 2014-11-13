@@ -4,8 +4,8 @@ class Array
 
 	def to_fullcalendar
 		fullcalendar = []
-		self.each do |cita|
-			fullcalendar << cita.to_event_format
+		self.each do |appointment|
+			fullcalendar << appointment.to_event_format
 		end
 		fullcalendar
 		

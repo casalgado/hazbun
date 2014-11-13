@@ -3,9 +3,9 @@
 one:
   belongs_to: 
   abierta: false
-  valor_total: 1
+  total_value: 1
 
 two:
   belongs_to: 
   abierta: false
-  valor_total: 1
+  total_value: 1

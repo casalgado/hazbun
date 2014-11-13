@@ -20,13 +20,13 @@ Hazbun::Application.routes.draw do
 	end
 
   resources :clientas do
-  	resources :ordenes
+  	resources :orders
     resources :medidas
-    resources :citas
+    resources :appointments
   end
 
-  resources :ordenes do
-    resources :abonos
+  resources :orders do
+    resources :payments
   end
 
 end

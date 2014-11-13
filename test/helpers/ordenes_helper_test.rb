@@ -1,4 +1,4 @@
 require 'test_helper'
 
-class OrdenesHelperTest < ActionView::TestCase
+class OrdersHelperTest < ActionView::TestCase
 end
