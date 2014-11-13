@@ -7,10 +7,10 @@ class Item < ActiveRecord::Base
 	belongs_to :item_type
 	has_many   :appointments
 
-	has_many :materiales_por_prenda
-	has_many :materiales, through: :materiales_por_prenda
-	has_many :insumos, :dependent => :destroy
-	accepts_nested_attributes_for :insumos, :reject_if => lambda { |a| a[:cantidad].blank? }, allow_destroy: true, update_only: true
+	has_many :supplies_per_item
+	has_many :supplies, through: :supplies_per_item
+	has_many :supplies, :dependent => :destroy
+	accepts_nested_attributes_for :supplies, :reject_if => lambda { |a| a[:quantity].blank? }, allow_destroy: true, update_only: true
 
 	# Validations:
 

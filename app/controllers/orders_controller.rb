@@ -11,9 +11,9 @@ class OrdersController < ApplicationController
     @ocasiones = Ocasion.all
     1.times do 
       item = @order.items.build
-      1.times { item.insumos.build }
+      1.times { item.supplies.build }
      end
-    @tipo_de_insumo = Insumo.all
+    @supply_type = Supply.all
   end
 
   def create
@@ -21,7 +21,7 @@ class OrdersController < ApplicationController
     @clienta = Clienta.find(order_params[:clienta_id])
     @item_types = ItemType.all
     @ocasiones = Ocasion.all
-    @tipo_de_insumo = Insumo.all
+    @supply_type = Supply.all
     @errors = @order.errors
     if @order.save
       redirect_to clienta_order_path(:id => @order.id)
@@ -33,7 +33,7 @@ class OrdersController < ApplicationController
   def edit
     @item_types = ItemType.all
     @ocasiones = Ocasion.all
-    @tipo_de_insumo = Insumo.all
+    @supply_type = Supply.all
     @order = Order.find(params[:id])
     @clienta = Clienta.find(params[:clienta_id])
   end
@@ -41,7 +41,7 @@ class OrdersController < ApplicationController
   def update
     @item_types = ItemType.all
     @ocasiones = Ocasion.all
-    @tipo_de_insumo = Insumo.all
+    @supply_type = Supply.all
     @clienta = Clienta.find(params[:clienta_id])
     @params = order_params
     @order = Order.find(params[:id])
@@ -78,6 +78,6 @@ class OrdersController < ApplicationController
   private 
 
   def order_params
-    params.require(:order).permit(:id, :clienta_id, items_attributes: [:id, :item_type_id, :ocasion_id, :_destroy, :picture, :remote_picture_url, insumos_attributes: [:id, :tipo_de_insumo, :cantidad, :_destroy]])
+    params.require(:order).permit(:id, :clienta_id, items_attributes: [:id, :item_type_id, :ocasion_id, :_destroy, :picture, :remote_picture_url, supplies_attributes: [:id, :supply_type, :quantity, :_destroy]])
   end
 end

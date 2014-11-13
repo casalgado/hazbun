@@ -5,9 +5,9 @@
 	<% for item in @order.items %>
 		<ul>
 			<li><%= item.item_type.item_type %></li>
-			<% for insumo in item.insumos %>
+			<% for supply in item.supplies %>
 				<ul>
-					<li> <%= insumo.tipo_de_insumo %> - <%= insumo.cantidad %> </li>
+					<li> <%= supply.supply_type %> - <%= supply.quantity %> </li>
 				</ul>
 				<% end %>
 			<li><div id="item_picture"> <%= image_tag item.picture_url(:thumb).to_s  %></div></li>

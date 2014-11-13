@@ -52,14 +52,6 @@ ActiveRecord::Schema.define(version: 20141105170944) do
   add_index "clientas", ["email"], name: "index_clientas_on_email", unique: true
   add_index "clientas", ["reset_password_token"], name: "index_clientas_on_reset_password_token", unique: true
 
-  create_table "insumos", force: true do |t|
-    t.string   "tipo_de_insumo"
-    t.integer  "cantidad"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "item_id"
-  end
-
   create_table "item_types", force: true do |t|
     t.string   "item_type"
     t.datetime "created_at"
@@ -149,6 +141,14 @@ ActiveRecord::Schema.define(version: 20141105170944) do
     t.integer  "amount"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "supplies", force: true do |t|
+    t.string   "supply_type"
+    t.integer  "quantity"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "item_id"
   end
 
   create_table "tipo_de_citas", force: true do |t|

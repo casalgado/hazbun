@@ -17,15 +17,15 @@
 
 <br />
 
-			<%= f.fields_for :insumos do |builder| %>
+			<%= f.fields_for :supplies do |builder| %>
 
-			<%= render 'insumos_fields', :f => builder %>
+			<%= render 'supplies_fields', :f => builder %>
 
 			<br />
 
   		<% end %>
 
-<%= link_to_add_fields "Agregar Insumo", f, :insumos %>
+<%= link_to_add_fields "Agregar Insumo", f, :supplies %>
 
 
 </fieldset>

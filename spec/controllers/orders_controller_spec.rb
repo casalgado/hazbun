@@ -45,9 +45,9 @@ RSpec.describe OrdersController, :type => :controller do
 				expect(assigns(:ocasiones)).to eq(Ocasion.all)
 			end
 			
-			it "assigns tipo de insumo list" do
+			it "assigns supply type list" do
 				get :new, clienta_id: @clienta.id
-				expect(assigns(:tipo_de_insumo)).to eq(Insumo.all)
+				expect(assigns(:supply_type)).to eq(Supply.all)
 			end
 
 
@@ -135,9 +135,9 @@ RSpec.describe OrdersController, :type => :controller do
 				expect(assigns(:ocasiones)).to eq(Ocasion.all)
 			end
 			
-			it "assigns tipo de insumo list" do
+			it "assigns supply type list" do
 				get :edit, clienta_id: @clienta.id, id: @order.id
-				expect(assigns(:tipo_de_insumo)).to eq(Insumo.all)
+				expect(assigns(:supply_type)).to eq(Supply.all)
 			end
 
 		end
