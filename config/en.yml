@@ -2,7 +2,7 @@ en:
   activerecord:
     attributes:
       order:
-        closed: "Client"
+        closed: "Clienta"
     errors:
       models:
         order:

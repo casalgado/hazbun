@@ -91,7 +91,7 @@ RSpec.describe OrdersController, :type => :controller do
 
 			context "invalid orders" do
 
-				it "does not belong to a client" do
+				it "does not belong to a clienta" do
 				end
 
 				it "there exists an open order" do

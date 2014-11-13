@@ -33,7 +33,7 @@ class ClientasController < ApplicationController
 
 	def show
 		@clienta = Clienta.find(params[:id])
-		@medida = @clienta.medidas.last
+		@measurement = @clienta.measurements.last
 	end
 
   def index

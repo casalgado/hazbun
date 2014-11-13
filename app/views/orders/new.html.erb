@@ -2,11 +2,11 @@
 	 <%=msg%>
 	<% end %>
 	
-<h3> <%= @client.nombre_completo %> </h3>
+<h3> <%= @clienta.nombre_completo %> </h3>
 
-<%= form_for [@client, @order] do |f| %>
+<%= form_for [@clienta, @order] do |f| %>
 
-	<%= f.hidden_field :client_id, value: @client.id %>
+	<%= f.hidden_field :clienta_id, value: @clienta.id %>
 
 			<br />
 			<%= f.fields_for :items do |builder| %>

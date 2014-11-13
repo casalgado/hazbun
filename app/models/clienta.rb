@@ -12,7 +12,7 @@ class Clienta < ActiveRecord::Base
   belongs_to :marca
   has_many   :appointments
   has_many   :orders
-  has_many   :medidas
+  has_many   :measurements
   has_many   :payments, through: :orders
 
   # Validations:

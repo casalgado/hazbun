@@ -3,7 +3,7 @@ require 'faker'
 
 
 FactoryGirl.define do 
-	factory :client do
+	factory :clienta do
 		nombre   { Faker::Name.first_name }
 		apellido { Faker::Name.last_name }
 		email    { Faker::Internet.email }
@@ -11,7 +11,7 @@ FactoryGirl.define do
 		password "password"
 		password_confirmation "password"
 
-		factory :amalin_client do
+		factory :amalin_clienta do
 			marca_id "2"
 		end
 

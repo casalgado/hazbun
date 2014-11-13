@@ -1,5 +1,5 @@
 appointment
-<p> <%= link_to("Nueva Client", new_client_path) %></p>
+<p> <%= link_to("Nueva Clienta", new_clienta_path) %></p>
 
 <%= search_form_for @search do |f| %>
 	<%= f.label :nombre_cont, "Nombre" %>
@@ -10,21 +10,21 @@ appointment
 
 	<%= f.submit "Buscar" %>
 <% end %>
-<%= link_to "Activas" , clients_path(:actividad => "1", :q => @q) %>
-<%= link_to "Dormidas", clients_path(:actividad => "2", :q => @q) %>
+<%= link_to "Activas" , clientas_path(:actividad => "1", :q => @q) %>
+<%= link_to "Dormidas", clientas_path(:actividad => "2", :q => @q) %>
 
 
-<% for client in @clients %>
+<% for clienta in @clientas %>
 	<ul>
-		<li> <%= link_to("#{client.nombre_completo}", client_path(:id => client.id)) %> </li>
+		<li> <%= link_to("#{clienta.nombre_completo}", clienta_path(:id => clienta.id)) %> </li>
 
-		<% unless client.ordenes_abiertas.empty? %> 
-			<li> <%= link_to("Activa", client_order_path(client, client.orders.last)) %> </li>
-			<li> <%= link_to("nueva cita", new_client_appointment_path(client)) %> </li>
+		<% unless clienta.ordenes_abiertas.empty? %> 
+			<li> <%= link_to("Activa", clienta_order_path(clienta, clienta.orders.last)) %> </li>
+			<li> <%= link_to("nueva cita", new_clienta_appointment_path(clienta)) %> </li>
 		<% else %> 
 			<li> Dormida </li> 
-			<li> <%= link_to("nueva orden", new_client_order_path(client)) %> </li>
-			<li> <%= link_to("nueva cita", new_client_appointment_path(client)) %> </li>
+			<li> <%= link_to("nueva orden", new_clienta_order_path(clienta)) %> </li>
+			<li> <%= link_to("nueva cita", new_clienta_appointment_path(clienta)) %> </li>
 		<% end %>
 	</ul>
 

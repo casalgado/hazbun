@@ -1,11 +1,11 @@
 
 <ul>
-<% @client.errors.each do |attr,msg|  %>
+<% @clienta.errors.each do |attr,msg|  %>
 	 <li><%=msg%></li>
 	<% end %>
 </ul>
 
-<%= form_for @client, :html => { :multipart => true } do |f| %>
+<%= form_for @clienta, :html => { :multipart => true } do |f| %>
 
 	<%= f.label :nombre %>
   <%= f.text_field(:nombre) %>

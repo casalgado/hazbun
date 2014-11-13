@@ -2,21 +2,21 @@
 
 <h3>Datos</h3>
 	<ul>
-		<li> <%= @client.nombre_completo %>      </li>
-		<li> <%= @client.telefono  %>            </li>
-		<li> <%= @client.direccion %>            </li>
-		<li> <%= @client.email %>                </li>
-		<% if @client.fecha_de_nacimiento %>
-			<li> <%= @client.fecha_de_nacimiento.strftime '%b %d' %> </li>
+		<li> <%= @clienta.nombre_completo %>      </li>
+		<li> <%= @clienta.telefono  %>            </li>
+		<li> <%= @clienta.direccion %>            </li>
+		<li> <%= @clienta.email %>                </li>
+		<% if @clienta.fecha_de_nacimiento %>
+			<li> <%= @clienta.fecha_de_nacimiento.strftime '%b %d' %> </li>
 		<% end %>
 	</ul>
-	<div id="client_picture"> <%= image_tag @client.picture_url(:thumb).to_s  %></div>
-<p><%= link_to "Editar" ,  edit_client_path(@client) %></p>
+	<div id="clienta_picture"> <%= image_tag @clienta.picture_url(:thumb).to_s  %></div>
+<p><%= link_to "Editar" ,  edit_clienta_path(@clienta) %></p>
 
 <h3>Actividad</h3>
 	<ul>
-	<% for order in @client.ordenes_abiertas %>
-		<li> <%= link_to "#{order.created_at.strftime '%b %Y'}", client_order_path(@client, order)  %> </li>
+	<% for order in @clienta.ordenes_abiertas %>
+		<li> <%= link_to "#{order.created_at.strftime '%b %Y'}", clienta_order_path(@clienta, order)  %> </li>
 		<ul>
 			<% for item in order.items %>
 				<li> <%= item.item_type.item_type %> para <%= item.occasion.occasion %> </li>
@@ -28,8 +28,8 @@
 
 <h3>Historia</h3>
 	<ul>
-	<% for order in @client.ordenes_cerradas %>
-		<li> <%= link_to "#{order.created_at.strftime '%b %Y'}", client_order_path(@client, order)  %> </li>
+	<% for order in @clienta.ordenes_cerradas %>
+		<li> <%= link_to "#{order.created_at.strftime '%b %Y'}", clienta_order_path(@clienta, order)  %> </li>
 		<ul>
 			<% for item in order.items %>
 				<li> <%= item.item_type.item_type %> para <%= item.occasion.occasion %> </li>
@@ -56,16 +56,16 @@
   </ul>
   <% end %>
 	
-<p><%= link_to "Actualizar Medidas", new_client_measurement_path(:client_id => @client.id) %></p>
+<p><%= link_to "Actualizar Medidas", new_clienta_measurement_path(:clienta_id => @clienta.id) %></p>
 
-<% unless @client.orders.empty? %>
-	<% unless @client.has_open_order? %>
-		<p><%= link_to "Nueva Orden", new_client_order_path(@client) %></p>
+<% unless @clienta.orders.empty? %>
+	<% unless @clienta.has_open_order? %>
+		<p><%= link_to "Nueva Orden", new_clienta_order_path(@clienta) %></p>
 	<% end %>
 <% else %>
-	<p><%= link_to "Nueva Orden", new_client_order_path(@client) %></p>
+	<p><%= link_to "Nueva Orden", new_clienta_order_path(@clienta) %></p>
 <% end %>
 
-<p><%= link_to "Nueva Cita" ,  new_client_appointment_path(@client) %></p>
+<p><%= link_to "Nueva Cita" ,  new_clienta_appointment_path(@clienta) %></p>
 
 

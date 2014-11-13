@@ -8,14 +8,14 @@ AppointmentType.load
 
 	describe "de_hoy method returns only citas de hoy" do
 		before :each do
-			@client   = create(:client)
+			@clienta   = create(:clienta)
 			@time_t    = Time.now + 86400
 			@time_y    = Time.now - 86400
 			@from_dashboard = Appointment.find(1)
-			@today     = create(:appointment, date: Time.now, 	   	  		 client_id: @client.id, appointment_type_id: "2")
-			@today_2   = create(:appointment, date: Time.now,  	   	  		 client_id: @client.id, appointment_type_id: "2")
-			@tomorrow  = create(:appointment, date: Time.at(@time_t.to_i), client_id: @client.id, appointment_type_id: "2")
-			@yesterday  = build(:appointment, date: Time.at(@time_y.to_i), client_id: @client.id, appointment_type_id: "2")
+			@today     = create(:appointment, date: Time.now, 	   	  		 clienta_id: @clienta.id, appointment_type_id: "2")
+			@today_2   = create(:appointment, date: Time.now,  	   	  		 clienta_id: @clienta.id, appointment_type_id: "2")
+			@tomorrow  = create(:appointment, date: Time.at(@time_t.to_i), clienta_id: @clienta.id, appointment_type_id: "2")
+			@yesterday  = build(:appointment, date: Time.at(@time_y.to_i), clienta_id: @clienta.id, appointment_type_id: "2")
 		end
 
 		context "check positive test" do

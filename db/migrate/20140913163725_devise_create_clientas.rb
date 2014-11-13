@@ -3,13 +3,13 @@ class DeviseCreateClientas < ActiveRecord::Migration
     create_table(:clientas) do |t|
       ## Database authenticatable
       t.belongs_to :marca
-      t.string :nombre
-      t.string :apellido
-      t.string :direccion
-      t.string :telefono
-      t.date :fecha_de_nacimiento
-      t.string :email,              null: false, default: ""
-      t.string :encrypted_password, null: false, default: ""
+      t.string     :nombre
+      t.string     :apellido
+      t.string     :direccion
+      t.string     :telefono
+      t.date       :fecha_de_nacimiento
+      t.string     :email,              null: false, default: ""
+      t.string     :encrypted_password, null: false, default: ""
 
       ## Recoverable
       t.string   :reset_password_token

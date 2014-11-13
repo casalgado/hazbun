@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :measurement do
-  	association :client
+  	association :clienta
 		talle_frente  "60"
 		talle_espalda "60"
 		imperio       "60"

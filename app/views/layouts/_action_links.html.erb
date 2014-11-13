@@ -2,11 +2,11 @@
 	<% if marca_signed_in? %>
 
 	  <li> <%= link_to("Ordenes",    orders_path) %> </li>
-	  <li> <%= link_to("Clients",   clients_path) %> </li>
+	  <li> <%= link_to("Clientas",   clientas_path) %> </li>
 	  <li> <%= link_to("Calendario", calendario_staticpages_path, method: :get) %> </li>
 	  <li> <%= link_to("Inventario", '#') %> </li>
 
-	<% elsif client_signed_in? %>
+	<% elsif clienta_signed_in? %>
 
 		<li> <%= link_to("Perfil",     '#') %> </li>
 

@@ -1,7 +1,7 @@
 
-<%= form_for [@client, @appointment] do |f| %>
+<%= form_for [@clienta, @appointment] do |f| %>
 
-	<%= f.hidden_field :client_id, value: @client.id %>
+	<%= f.hidden_field :clienta_id, value: @clienta.id %>
 
 	<%= f.radio_button :appointment_type_id, '1' %>
 	<%= f.label :appointment_type_id, 'Primera', :value => '1' %>

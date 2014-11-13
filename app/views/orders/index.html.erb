@@ -3,13 +3,13 @@
 <% for order in @orders %>
 
 	<ul>
-		<li><%= link_to("#{order.client.nombre_completo}", client_path(order.client)) %></li>
+		<li><%= link_to("#{order.clienta.nombre_completo}", clienta_path(order.clienta)) %></li>
 		<ul>
 			<% for item in order.items %>
 				<li><%= item.item_type.item_type %> para <%= item.occasion.occasion %> </li>
 			<% end %>
 		</ul>
-		<li><%= link_to("ver orden", client_order_path(order.client, order)) %></li>
+		<li><%= link_to("ver orden", clienta_order_path(order.clienta, order)) %></li>
 		<% if order.next_appointment %>
 		    <li> Proxima cita: <%= order.next_appointment.date.strftime "%b %d %l %P" %></li>
 		<% else %>
