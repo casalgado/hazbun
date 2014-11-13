@@ -1,0 +1,23 @@
+<h1>Ordenes Abiertas</h1>
+
+<% for order in @orders %>
+
+	<ul>
+		<li><%= link_to("#{order.clienta.nombre_completo}", clienta_path(order.clienta)) %></li>
+		<ul>
+			<% for item in order.items %>
+				<li><%= item.item_type.item_type %> para <%= item.ocasion.ocasion %> </li>
+			<% end %>
+		</ul>
+		<li><%= link_to("ver orden", clienta_order_path(order.clienta, order)) %></li>
+		<% if order.next_appointment %>
+		    <li> Proxima cita: <%= order.next_appointment.date.strftime "%b %d %l %P" %></li>
+		<% else %>
+		    <li> No hay cita programada </li>
+		<% end %>
+
+
+	</ul>
+
+
+<% end %>

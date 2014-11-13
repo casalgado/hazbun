@@ -1,0 +1,52 @@
+<h1>Orden</h1>
+
+<ul>
+	<li><%= link_to "#{@order.clienta.nombre_completo}", clienta_path(@clienta) %> </li>
+	<% for item in @order.items %>
+		<ul>
+			<li><%= item.item_type.item_type %></li>
+			<% for insumo in item.insumos %>
+				<ul>
+					<li> <%= insumo.tipo_de_insumo %> - <%= insumo.cantidad %> </li>
+				</ul>
+				<% end %>
+			<li><div id="item_picture"> <%= image_tag item.picture_url(:thumb).to_s  %></div></li>
+			<li><%= item.ocasion.ocasion %> </li>
+		</ul>
+	<% end %>
+
+	<% if @order.closed == false %>
+		<%= link_to "editar orden", edit_clienta_order_path(:id => @order.id)%>
+	<% end %>
+	
+<h3>Abonos</h3>
+
+	<p> Valor total de la Orden: <%= @order.total_value %>
+	
+	<% if @order.payments.empty? %>
+		<p> Clienta no ha abonado a esta order </p>
+	<% else %>
+		<p> Pagos efectuados </p>
+		<ul>
+			<% for payment in @order.payments %>
+			<li>$<%= payment.amount %> el dia <%= payment.date.strftime "%Y / %m / %d" %>
+			<% end %>
+		</ul>
+	<% end %>
+	
+	<p> Nuevo Pago: <p>
+	<%= render "orders/form_for_payment" %>
+
+<h3>Citas</h3>
+
+	<p> Nueva Cita: <p>
+	<%= render "orders/form_for_appointment" %>
+
+<br />
+<br />
+
+<% if @order.closed == false %>
+	<%= link_to "cerrar orden", clienta_order_path(@clienta, @order, :cerrar => '1')%>
+<% end %>
+
+</ul>

@@ -1,0 +1,13 @@
+
+<%= form_for [@order, @payment] do |f| %>
+
+	<%= f.label :amount %>
+  <%= f.text_field(:amount) %>
+
+	<%= f.label :date, 'Fecha' %>
+	<%= f.text_field :date  %>
+
+	<%= f.submit %>
+
+
+	<% end %>

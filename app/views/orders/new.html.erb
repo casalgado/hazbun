@@ -1,0 +1,24 @@
+<% @order.errors.each do |attr,msg|  %>
+	 <%=msg%>
+	<% end %>
+	
+<h3> <%= @clienta.nombre_completo %> </h3>
+
+<%= form_for [@clienta, @order] do |f| %>
+
+	<%= f.hidden_field :clienta_id, value: @clienta.id %>
+
+			<br />
+			<%= f.fields_for :items do |builder| %>
+			<br />
+
+				<%= render 'items_fields', :f => builder %>
+
+  		<% end %>
+
+  <%= link_to_add_fields "Agregar Prenda", f, :items %>
+
+	<%= f.submit %>
+
+
+	<% end %>

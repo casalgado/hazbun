@@ -1,0 +1,38 @@
+
+<fieldset>
+<%= f.label :item_type %>
+<%= f.select(:item_type_id, @item_types.collect {|c| [ c.item_type, c.id ] }) %>
+
+<%= f.label :ocasion %>
+<%= f.select(:ocasion_id, @ocasiones.collect {|c| [ c.ocasion, c.id ] }) %>
+
+<%= f.label :picture %>
+<%= f.file_field :picture %>
+
+<%= f.label :remote_picture_url %>
+<%= f.text_field :remote_picture_url %>
+
+<%= f.hidden_field :_destroy %>
+<%= link_to "eliminar", "#", class: "remove_link" %>
+
+<br />
+
+			<%= f.fields_for :insumos do |builder| %>
+
+			<%= render 'insumos_fields', :f => builder %>
+
+			<br />
+
+  		<% end %>
+
+<%= link_to_add_fields "Agregar Insumo", f, :insumos %>
+
+
+</fieldset>
+
+<!-- 	<%= f.hidden_field :_destroy %>
+<%= link_to "eliminar", "#", class: "remove_link" %>
+		 -->
+
+	<!-- 	<%= f.check_box :_destroy %>
+	<%= f.label :_destroy, "eliminar" %> -->
