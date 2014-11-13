@@ -2,14 +2,14 @@ class Appointment < ActiveRecord::Base
 
 	# Associations:
 
-	belongs_to :clienta
-	belongs_to :tipo_de_cita
+	belongs_to :client
+	belongs_to :appointment_type
 	belongs_to :item
 
 	# Validations:
 
-	validates :tipo_de_cita, presence: { message: "Debe seleccionar tipo de cita"}
-	validates :clienta_id, presence: true
+	validates :appointment_type, presence: { message: "Debe seleccionar tipo de cita"}
+	validates :client_id, presence: true
 	validate :date_must_be_later_than_today
 
 	# Scopes:
@@ -35,15 +35,15 @@ class Appointment < ActiveRecord::Base
 
 	def to_event_format
 		new_time = self.date.one_hour
-		event = {title: self.clienta.nombre_completo, start: self.date, end: new_time, backgroundColor: self.backgroundcolor, borderColor: self.backgroundcolor}
+		event = {title: self.client.nombre_completo, start: self.date, end: new_time, backgroundColor: self.background_color, borderColor: self.background_color}
 		event
 	end
 
-	def backgroundcolor
-		color = '#88c656' if self.tipo_de_cita_id == 1
-		color = '#f9ab53' if self.tipo_de_cita_id == 2
-		color = '#ec7151' if self.tipo_de_cita_id == 3
-		color = '#28abdb' if self.tipo_de_cita_id == 4
+	def background_color
+		color = '#88c656' if self.appointment_type_id == 1
+		color = '#f9ab53' if self.appointment_type_id == 2
+		color = '#ec7151' if self.appointment_type_id == 3
+		color = '#28abdb' if self.appointment_type_id == 4
 		color
 	end
 

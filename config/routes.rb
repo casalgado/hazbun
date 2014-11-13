@@ -21,7 +21,7 @@ Hazbun::Application.routes.draw do
 
   resources :clientas do
   	resources :orders
-    resources :medidas
+    resources :measurements
     resources :appointments
   end
 

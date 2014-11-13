@@ -5,26 +5,25 @@ class OrdersController < ApplicationController
   def new
     @order = Order.new
     @item = Item.new
-    @material = Material.new
-    @clienta = Clienta.find(params[:clienta_id])
+    @client = Client.find(params[:client_id])
     @item_types = ItemType.all
-    @ocasiones = Ocasion.all
+    @occasions = Occasion.all
     1.times do 
       item = @order.items.build
       1.times { item.supplies.build }
      end
-    @supply_type = Supply.all
+    @supplies = Supply.all
   end
 
   def create
     @order = Order.new(order_params)
-    @clienta = Clienta.find(order_params[:clienta_id])
+    @client = Client.find(order_params[:client_id])
     @item_types = ItemType.all
-    @ocasiones = Ocasion.all
-    @supply_type = Supply.all
+    @occasions = Occasion.all
+    @supplies = Supply.all
     @errors = @order.errors
     if @order.save
-      redirect_to clienta_order_path(:id => @order.id)
+      redirect_to client_order_path(:id => @order.id)
     else 
       render :action => 'new'
     end
@@ -32,22 +31,22 @@ class OrdersController < ApplicationController
 
   def edit
     @item_types = ItemType.all
-    @ocasiones = Ocasion.all
-    @supply_type = Supply.all
+    @occasions = Occasion.all
+    @supplies = Supply.all
     @order = Order.find(params[:id])
-    @clienta = Clienta.find(params[:clienta_id])
+    @client = Client.find(params[:client_id])
   end
 
   def update
     @item_types = ItemType.all
-    @ocasiones = Ocasion.all
-    @supply_type = Supply.all
-    @clienta = Clienta.find(params[:clienta_id])
+    @occasions = Occasion.all
+    @supplies = Supply.all
+    @client = Client.find(params[:client_id])
     @params = order_params
     @order = Order.find(params[:id])
     if
       @order.update(order_params)
-      redirect_to clienta_order_path(:id => @order.id)
+      redirect_to client_order_path(:id => @order.id)
     else
       render :action => 'edit'
     end
@@ -56,7 +55,7 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    @clienta = Clienta.find(params[:clienta_id])
+    @client = Client.find(params[:client_id])
     @payment = Payment.new
     @appointment = Appointment.new
     if params[:cerrar]
@@ -78,6 +77,6 @@ class OrdersController < ApplicationController
   private 
 
   def order_params
-    params.require(:order).permit(:id, :clienta_id, items_attributes: [:id, :item_type_id, :ocasion_id, :_destroy, :picture, :remote_picture_url, supplies_attributes: [:id, :supply_type, :quantity, :_destroy]])
+    params.require(:order).permit(:id, :client_id, items_attributes: [:id, :item_type_id, :occasion_id, :_destroy, :picture, :remote_picture_url, supplies_per_items_attributes: [:id, :supply_id, :quantity, :_destroy]])
   end
 end

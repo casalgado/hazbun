@@ -1,0 +1,18 @@
+<fieldset>
+	
+	<%= f.label :supply %>
+	<%= f.select(:supply_id, @supplies.collect {|c| [ c.supply_name, c.id ] }) %>
+
+	<%= f.label :quantity %>
+	<%= f.text_field :quantity %>
+
+	<%= f.hidden_field :_destroy %>
+	<%= link_to "eliminar", "#", class: "remove_link" %>
+
+</fieldset>
+
+
+
+
+<!-- 	<%= f.check_box :_destroy %>
+	<%= f.label :_destroy, "eliminar" %> -->

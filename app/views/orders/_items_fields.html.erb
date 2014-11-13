@@ -3,8 +3,8 @@
 <%= f.label :item_type %>
 <%= f.select(:item_type_id, @item_types.collect {|c| [ c.item_type, c.id ] }) %>
 
-<%= f.label :ocasion %>
-<%= f.select(:ocasion_id, @ocasiones.collect {|c| [ c.ocasion, c.id ] }) %>
+<%= f.label :occasion %>
+<%= f.select(:occasion_id, @occasions.collect {|c| [ c.occasion, c.id ] }) %>
 
 <%= f.label :picture %>
 <%= f.file_field :picture %>
@@ -17,15 +17,15 @@
 
 <br />
 
-			<%= f.fields_for :supplies do |builder| %>
+			<%= f.fields_for :supplies_per_items do |builder| %>
 
-			<%= render 'supplies_fields', :f => builder %>
+			<%= render 'supplies_per_items_fields', :f => builder %>
 
 			<br />
 
   		<% end %>
 
-<%= link_to_add_fields "Agregar Insumo", f, :supplies %>
+<%= link_to_add_fields "Agregar Insumo", f, :supplies_per_items %>
 
 
 </fieldset>

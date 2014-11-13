@@ -1,11 +1,11 @@
 
 <ul>
-<% @clienta.errors.each do |attr,msg|  %>
+<% @client.errors.each do |attr,msg|  %>
 	 <li><%=msg%></li>
 	<% end %>
 </ul>
 
-<%= form_for @clienta, :html => { :multipart => true } do |f| %>
+<%= form_for @client, :html => { :multipart => true } do |f| %>
 
 	<%= f.label :nombre %>
   <%= f.text_field(:nombre) %>
@@ -31,6 +31,6 @@
   <%= f.label :remote_picture_url %>
   <%= f.text_field :remote_picture_url %>
 
-  <%= f.submit "Crear Clienta"%>
+  <%= f.submit "Crear Client"%>
 
 <% end %>

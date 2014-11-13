@@ -2,7 +2,7 @@ class Order < ActiveRecord::Base
 
 	# Associations:
 
-	belongs_to :clienta
+	belongs_to :client
 	has_many   :payments
 	
 	has_many   :items, :dependent => :destroy
@@ -10,8 +10,8 @@ class Order < ActiveRecord::Base
 
 	# Validations: 
 
-	validates_uniqueness_of :closed, scope: :clienta_id, message: "Clienta ya tiene una orden abierta"
-#	validates_presence_of :clienta_id
+	validates_uniqueness_of :closed, scope: :client_id, message: "Client ya tiene una orden abierta"
+#	validates_presence_of :client_id
 
 	# Scopes:
 
@@ -49,7 +49,7 @@ class Order < ActiveRecord::Base
 	# (1) para calcular si tiene y cuando es la proxima cita
 
 	def next_appointment
-		appointment = self.clienta.appointments.last || nil
+		appointment = self.client.appointments.last || nil
 		if appointment && appointment.date >= Date.today
 			appointment
 		end

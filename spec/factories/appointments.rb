@@ -1,8 +1,8 @@
 
 FactoryGirl.define do 
 	factory :appointment do
-		association :clienta
-		tipo_de_cita_id '1'
+		association :client
+		appointment_type_id '1'
 		date Time.new(Date.today.year, Date.today.month, Date.today.mday, 14, 00, 00)
 
 		factory :next_month_appointment do
@@ -12,7 +12,7 @@ FactoryGirl.define do
 		end
 
 		factory :invalid_appointment do
-			tipo_de_cita_id nil
+			appointment_type_id nil
 		end
 
 	end

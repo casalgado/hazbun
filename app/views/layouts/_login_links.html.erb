@@ -4,10 +4,10 @@
 	  <li> <%= link_to("#{current_marca.marca}", edit_marca_registration_path) %> </li>
 	  <li> <%= link_to('Cerrar Sesion', destroy_marca_session_path, :method => :delete) %> </li>
 
-	<% elsif clienta_signed_in? %> 
+	<% elsif client_signed_in? %> 
 
-		<li> <%= link_to("#{current_clienta.first_name}", edit_clienta_registration_path) %> </li>
-	  <li> <%= link_to('Cerrar Sesion', destroy_clienta_session_path, :method => :delete) %> </li>
+		<li> <%= link_to("#{current_client.first_name}", edit_client_registration_path) %> </li>
+	  <li> <%= link_to('Cerrar Sesion', destroy_client_session_path, :method => :delete) %> </li>
 
 	<% end %>
 	

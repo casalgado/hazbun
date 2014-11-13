@@ -4,9 +4,9 @@ class Marca < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :clientas
-  has_many :appointments, through: :clientas
-  has_many :orders, through: :clientas
+  has_many :clients
+  has_many :appointments, through: :clients
+  has_many :orders, through: :clients
 
   # Marca.new(email:'judy@judy.com', password:'judyjudy', password_confirmation:'judyjudy')
 end

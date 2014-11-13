@@ -6,8 +6,8 @@ namespace :db do
     Rake::Task['db:reset'].invoke
 
     ItemType.load
-    Ocasion.load
-    TipoDeCita.load
+    Occasion.load
+    AppointmentType.load
 
     judy = Marca.create!(:nombre    => "Judy",
                          :apellido  => "Habun",
@@ -37,14 +37,14 @@ namespace :db do
         num_of_items = rand(2)+1
 
           num_of_items.times do |item|
-          order.items.create!(:item_type_id => rand(5)+1, :ocasion_id => rand(4)+1)
+          order.items.create!(:item_type_id => rand(5)+1, :occasion_id => rand(4)+1)
           end
 
         4.times do |appointment|
         day = rand(30) + 1
         time = 8 + rand(10)
         clienta.appointments.create!(:date     => Time.new(2014, 12, day, time, 00, 00),
-                              :tipo_de_cita_id => rand(4)+1)
+                          :appointment_type_id => rand(4)+1)
         end
         
       end

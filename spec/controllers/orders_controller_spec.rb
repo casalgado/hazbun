@@ -25,10 +25,6 @@ RSpec.describe OrdersController, :type => :controller do
 				expect(assigns(:item)).to be_a_new(Item)
 			end
 			
-			it "assigns a new material" do
-				get :new, clienta_id: @clienta.id
-				expect(assigns(:material)).to be_a_new(Material)
-			end
 			
 		  it "assigns an existing clienta" do
 		  	get :new, clienta_id: @clienta.id
@@ -40,14 +36,14 @@ RSpec.describe OrdersController, :type => :controller do
 				expect(assigns(:item_types)).to eq(ItemType.all)
 			end
 			
-			it "assigns ocasion list" do
+			it "assigns occasion list" do
 				get :new, clienta_id: @clienta.id
-				expect(assigns(:ocasiones)).to eq(Ocasion.all)
+				expect(assigns(:occasions)).to eq(Occasion.all)
 			end
 			
 			it "assigns supply type list" do
 				get :new, clienta_id: @clienta.id
-				expect(assigns(:supply_type)).to eq(Supply.all)
+				expect(assigns(:supplies)).to eq(Supply.all)
 			end
 
 
@@ -62,10 +58,10 @@ RSpec.describe OrdersController, :type => :controller do
 			it "assigns an existing clienta" do
 			end
 
-			it "assigns an existing clientas medidas" do
+			it "assigns an existing clientas measurements" do
 			end
 			
-			it "shows correct medida value" do
+			it "shows correct measurement value" do
 			end
 
 
@@ -130,14 +126,14 @@ RSpec.describe OrdersController, :type => :controller do
 				expect(assigns(:item_types)).to eq(ItemType.all)
 			end
 			
-			it "assigns ocasion list" do
+			it "assigns occasion list" do
 				get :edit, clienta_id: @clienta.id, id: @order.id
-				expect(assigns(:ocasiones)).to eq(Ocasion.all)
+				expect(assigns(:occasions)).to eq(Occasion.all)
 			end
 			
 			it "assigns supply type list" do
 				get :edit, clienta_id: @clienta.id, id: @order.id
-				expect(assigns(:supply_type)).to eq(Supply.all)
+				expect(assigns(:supplies)).to eq(Supply.all)
 			end
 
 		end

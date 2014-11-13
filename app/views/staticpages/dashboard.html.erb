@@ -10,9 +10,9 @@
 
 	<% for appointment in @citas_de_hoy %>
 		<ul>
-			<li><%= appointment.tipo_de_cita.tipo_de_cita %> </li>
+			<li><%= appointment.appointment_type.appointment_type %> </li>
 
-			<li><%= link_to("#{appointment.clienta.nombre_completo}", clienta_path(:id => appointment.clienta.id)) %> </li>
+			<li><%= link_to("#{appointment.client.nombre_completo}", client_path(:id => appointment.client.id)) %> </li>
 			<li><%= appointment.date.strftime "%l:%M %P" %> </li>
 			<br />
 		</ul>

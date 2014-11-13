@@ -1,19 +1,19 @@
 
-<%= form_for [@clienta, @appointment] do |f| %>
+<%= form_for [@client, @appointment] do |f| %>
 
-	<%= f.hidden_field :clienta_id, value: @clienta.id %>
+	<%= f.hidden_field :client_id, value: @client.id %>
 
-	<%= f.radio_button :tipo_de_cita_id, '1' %>
-	<%= f.label :tipo_de_cita_id, 'Primera', :value => '1' %>
+	<%= f.radio_button :appointment_type_id, '1' %>
+	<%= f.label :appointment_type_id, 'Primera', :value => '1' %>
   
-	<%= f.radio_button :tipo_de_cita_id, '2' %>
-	<%= f.label :tipo_de_cita_id, 'Medicion', :value => '2' %>
+	<%= f.radio_button :appointment_type_id, '2' %>
+	<%= f.label :appointment_type_id, 'Medicion', :value => '2' %>
   
-	<%= f.radio_button :tipo_de_cita_id, '3' %>
-	<%= f.label :tipo_de_cita_id, 'Medicion Final', :value => '3' %>
+	<%= f.radio_button :appointment_type_id, '3' %>
+	<%= f.label :appointment_type_id, 'Medicion Final', :value => '3' %>
 
-	<%= f.radio_button :tipo_de_cita_id, '4' %>
-	<%= f.label :tipo_de_cita_id, 'Entrega', :value => '4' %> 
+	<%= f.radio_button :appointment_type_id, '4' %>
+	<%= f.label :appointment_type_id, 'Entrega', :value => '4' %> 
 
 	<%= f.label :date, 'Fecha' %>
 	<%= f.text_field :date  %>

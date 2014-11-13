@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  belongs_to: 
+  abierta: false
+  total_value: 1
+
+two:
+  belongs_to: 
+  abierta: false
+  total_value: 1

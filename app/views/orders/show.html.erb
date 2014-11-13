@@ -1,22 +1,23 @@
 <h1>Orden</h1>
 
 <ul>
-	<li><%= link_to "#{@order.clienta.nombre_completo}", clienta_path(@clienta) %> </li>
+	<li><%= link_to "#{@order.client.nombre_completo}", client_path(@client) %> </li>
 	<% for item in @order.items %>
 		<ul>
 			<li><%= item.item_type.item_type %></li>
 			<% for supply in item.supplies %>
 				<ul>
-					<li> <%= supply.supply_type %> - <%= supply.quantity %> </li>
+					<li> <%= supply.supply_name %> - <%= supply.supply_color %> </li>
+	<!--		<li> <%= supply.supplies_per_items.last.quantity %> </li>   -->
 				</ul>
 				<% end %>
 			<li><div id="item_picture"> <%= image_tag item.picture_url(:thumb).to_s  %></div></li>
-			<li><%= item.ocasion.ocasion %> </li>
+			<li><%= item.occasion.occasion %> </li>
 		</ul>
 	<% end %>
 
 	<% if @order.closed == false %>
-		<%= link_to "editar orden", edit_clienta_order_path(:id => @order.id)%>
+		<%= link_to "editar orden", edit_client_order_path(:id => @order.id)%>
 	<% end %>
 	
 <h3>Abonos</h3>
@@ -24,7 +25,7 @@
 	<p> Valor total de la Orden: <%= @order.total_value %>
 	
 	<% if @order.payments.empty? %>
-		<p> Clienta no ha abonado a esta order </p>
+		<p> Client no ha abonado a esta order </p>
 	<% else %>
 		<p> Pagos efectuados </p>
 		<ul>
@@ -46,7 +47,7 @@
 <br />
 
 <% if @order.closed == false %>
-	<%= link_to "cerrar orden", clienta_order_path(@clienta, @order, :cerrar => '1')%>
+	<%= link_to "cerrar orden", client_order_path(@client, @order, :cerrar => '1')%>
 <% end %>
 
 </ul>

@@ -13,10 +13,16 @@
 
 ActiveRecord::Schema.define(version: 20141105170944) do
 
+  create_table "appointment_types", force: true do |t|
+    t.string   "appointment_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "appointments", force: true do |t|
     t.integer  "prenda_id"
     t.integer  "clienta_id"
-    t.integer  "tipo_de_cita_id"
+    t.integer  "appointment_type_id"
     t.datetime "date"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -59,7 +65,7 @@ ActiveRecord::Schema.define(version: 20141105170944) do
   end
 
   create_table "items", force: true do |t|
-    t.integer  "ocasion_id"
+    t.integer  "occasion_id"
     t.integer  "item_type_id"
     t.integer  "order_id"
     t.datetime "created_at"
@@ -90,21 +96,7 @@ ActiveRecord::Schema.define(version: 20141105170944) do
   add_index "marcas", ["email"], name: "index_marcas_on_email", unique: true
   add_index "marcas", ["reset_password_token"], name: "index_marcas_on_reset_password_token", unique: true
 
-  create_table "materiales", force: true do |t|
-    t.integer  "tipo_de_material_id"
-    t.integer  "color_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "materiales_por_prendas", force: true do |t|
-    t.integer  "item_id"
-    t.integer  "material_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "medidas", force: true do |t|
+  create_table "measurements", force: true do |t|
     t.integer  "clienta_id"
     t.string   "talle_frente"
     t.string   "talle_espalda"
@@ -121,8 +113,8 @@ ActiveRecord::Schema.define(version: 20141105170944) do
     t.datetime "updated_at"
   end
 
-  create_table "ocasiones", force: true do |t|
-    t.string   "ocasion"
+  create_table "occasions", force: true do |t|
+    t.string   "occasion"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -144,15 +136,18 @@ ActiveRecord::Schema.define(version: 20141105170944) do
   end
 
   create_table "supplies", force: true do |t|
+    t.string   "supply_name"
     t.string   "supply_type"
-    t.integer  "quantity"
+    t.string   "supply_color"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "item_id"
   end
 
-  create_table "tipo_de_citas", force: true do |t|
-    t.string   "tipo_de_cita"
+  create_table "supplies_per_items", force: true do |t|
+    t.integer  "item_id"
+    t.integer  "supply_id"
+    t.integer  "quantity"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
