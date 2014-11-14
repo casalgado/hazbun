@@ -25,24 +25,24 @@ RSpec.describe ClientasController, :type => :controller do
 		describe 'GET #show' do
 
 			before(:each) do
-				@medida = create(:medida, clienta_id: @clienta.id)
+				@measurement = create(:measurement, clienta_id: @clienta.id)
 			end
 
 			it "assigns an existing clienta" do
 				get :show, id: @clienta
 				expect(assigns(:clienta)).to eq(@clienta)
-				expect(assigns(:medida)).to eq(@clienta.medidas.last)
-				expect(@clienta.medidas.last.talle_frente).to eq("60")
+				expect(assigns(:measurement)).to eq(@clienta.measurements.last)
+				expect(@clienta.measurements.last.talle_frente).to eq("60")
 			end
 
-			it "assigns an existing clientas medidas" do
+			it "assigns an existing clientas measurements" do
 				get :show, id: @clienta
-				expect(assigns(:medida)).to eq(@clienta.medidas.last)
+				expect(assigns(:measurement)).to eq(@clienta.measurements.last)
 			end
 			
-			it "shows correct medida value" do
+			it "shows correct measurement value" do
 				get :show, id: @clienta
-				expect(@clienta.medidas.last.talle_frente).to eq("60")
+				expect(@clienta.measurements.last.talle_frente).to eq("60")
 			end
 
 
