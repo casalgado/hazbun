@@ -5,9 +5,6 @@ namespace :db do
   task :populate => :environment do
     Rake::Task['db:reset'].invoke
 
-    ItemType.load
-    Occasion.load
-    AppointmentType.load
 
     judy = Marca.create!(:nombre    => "Judy",
                          :apellido  => "Habun",

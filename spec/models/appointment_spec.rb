@@ -4,7 +4,7 @@ require 'spec_helper'
 
 describe Appointment, :type => :model do
 
-AppointmentType.load
+
 
 	describe "de_hoy method returns only citas de hoy" do
 		before :each do

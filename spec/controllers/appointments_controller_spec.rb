@@ -5,9 +5,7 @@ RSpec.describe AppointmentsController, :type => :controller do
 
 	 	before(:all) do
 			@marca = create(:marca)
-			Occasion.load
-			AppointmentType.load
-			ItemType.load
+
 		end
 
 		before(:each) do

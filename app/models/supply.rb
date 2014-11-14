@@ -9,12 +9,5 @@ class Supply < ActiveRecord::Base
 
 	# Methods
 
-	def self.load
-		supply_names = ['chiffon', 'tafeta', 'seda', 'drill', 'lino']
-		color        = ['azul', 'verde', 'rojo']
-		supply_names.each do |supply|
-			Supply.create(:supply_name => supply, :supply_color => 'azul', :supply_type => 'tela')
-		end
-	end
 
 end
