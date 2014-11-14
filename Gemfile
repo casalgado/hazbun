@@ -13,6 +13,7 @@ gem 'jbuilder', '~> 1.2'
 
 # Agregadas por mi
 
+gem 'devise'
 gem 'jquery-ui-rails'
 gem 'jquery-timepicker-addon-rails'
 gem 'ransack', "~> 1.2.3"
@@ -23,15 +24,9 @@ gem 'carrierwave'
 
 group :doc do
   gem 'sdoc', require: false
-
-# Agregadas por mi
-
-gem 'devise'
-gem 'debugger'
-
+end
 
 # gem 'pry-rails', :group => :development
-gem 'byebug'
 
 # Rspec
 
@@ -40,6 +35,8 @@ group :development, :test do
 	gem "factory_girl_rails", "~> 4.5.0"
 	gem 'guard', '~> 2.8.2'
 	gem "guard-rspec", '~> 4.3.1'
+	gem 'debugger'
+	gem 'byebug'
 
 end
 
@@ -54,5 +51,5 @@ end
 
 
 
-end
+
 
