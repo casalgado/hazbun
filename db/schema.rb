@@ -28,8 +28,31 @@ ActiveRecord::Schema.define(version: 20141105170944) do
     t.datetime "updated_at"
   end
 
+  create_table "brands", force: true do |t|
+    t.string   "nombre"
+    t.string   "apellido"
+    t.string   "direccion"
+    t.string   "telefono"
+    t.string   "marca"
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "brands", ["email"], name: "index_brands_on_email", unique: true
+  add_index "brands", ["reset_password_token"], name: "index_brands_on_reset_password_token", unique: true
+
   create_table "clientas", force: true do |t|
-    t.integer  "marca_id"
+    t.integer  "brand_id"
     t.string   "nombre"
     t.string   "apellido"
     t.string   "direccion"

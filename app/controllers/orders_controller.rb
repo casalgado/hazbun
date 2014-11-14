@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
 
-  before_action :authenticate_marca!, :except => [:show]
+  before_action :authenticate_brand!, :except => [:show]
 
   def new
     @order      = Order.new
@@ -68,7 +68,7 @@ class OrdersController < ApplicationController
   end
 
   def index
-    @orders = current_marca.orders.where(:closed => false)
+    @orders = current_brand.orders.where(:closed => false)
   end
 
   def destroy

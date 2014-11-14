@@ -9,7 +9,7 @@ namespace :db do
 
 
 
-    judy = Marca.create!(:nombre    => "Judy",
+    judy = Brand.create!(:nombre    => "Judy",
                          :apellido  => "Habun",
                          :marca     => "Judy Hazbun",
                          :email     => "judy@hazbun.com",

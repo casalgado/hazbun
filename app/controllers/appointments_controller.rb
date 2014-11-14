@@ -1,6 +1,6 @@
 class AppointmentsController < ApplicationController
   
-  before_action :authenticate_marca!
+  before_action :authenticate_brand!
 
   def new
   	@clienta = Clienta.find(params[:clienta_id])

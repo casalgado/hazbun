@@ -3,23 +3,23 @@ source 'https://rubygems.org'
 # Rails Gems
 
 gem 'rails', '4.0.2'
-gem 'sass-rails', '4.0.0'
+gem 'sass-rails', '4.0.4'
 gem 'uglifier', '2.5.3'
-gem 'coffee-rails', '4.0.0'
-gem 'jquery-rails'
-gem 'turbolinks'
+gem 'coffee-rails', '4.0.1'
+gem 'jquery-rails', '3.1.2'
+gem 'turbolinks', '2.5.2'
 gem 'jbuilder', '1.2'
 
 # Agregadas por mi
 
-gem 'devise'
-gem 'jquery-ui-rails'
-gem 'jquery-timepicker-addon-rails'
+gem 'devise', '3.4.1'
+gem 'jquery-ui-rails', '5.0.2'
+gem 'jquery-timepicker-addon-rails', '1.4.1'
 gem 'ransack', "1.2.3"
 gem 'fullcalendar-rails', "2.0.2.0"
-gem 'gon'
+gem 'gon', '5.2.3'
 gem 'mini_magick', "~> 4.0.0.rc"
-gem 'carrierwave'
+gem 'carrierwave', '0.10.0'
 
 group :doc do
   gem 'sdoc', require: false
@@ -31,12 +31,12 @@ end
 
 group :development, :test do
 	gem "rspec-rails", "3.1.0"
-	gem 'sqlite3'
+	gem 'sqlite3', '1.3.10'
 	gem "factory_girl_rails", "4.5.0"
 	gem 'guard', '2.8.2'
 	gem "guard-rspec", '4.3.1'
-	gem 'debugger'
-	gem 'byebug'
+	gem 'debugger', '1.6.8'
+	gem 'byebug', '3.5.1'
 
 end
 

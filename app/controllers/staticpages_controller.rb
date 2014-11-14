@@ -1,25 +1,25 @@
 
 class StaticpagesController < ApplicationController
 
-	before_action :authenticate_marca!, :only => [:dashboard, :calendario]
+	before_action :authenticate_brand!, :only => [:dashboard, :calendario]
 
 	def dashboard
-		@citas_de_hoy = current_marca.appointments.de_hoy.order("date ASC")
+		@citas_de_hoy = current_brand.appointments.de_hoy.order("date ASC")
 		@hoy = Date.today
 	end
 
 	def calendario
-		@appointments = current_marca.appointments
+		@appointments = current_brand.appointments
 		gon.appointments = @appointments.to_fullcalendar
   end
 
   def json_feed
-  	@appointments = current_marca.appointments.all
+  	@appointments = current_brand.appointments.all
   	render :file => "json_feed.json.erb", :content_type => 'application/json'
   end
 	
 	def home
-		if marca_signed_in?
+		if brand_signed_in?
 			redirect_to dashboard_staticpages_path
 		end
 	end

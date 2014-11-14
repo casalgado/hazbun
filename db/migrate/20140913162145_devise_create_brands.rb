@@ -1,15 +1,14 @@
-class DeviseCreateClientas < ActiveRecord::Migration
+class DeviseCreateBrands < ActiveRecord::Migration
   def change
-    create_table(:clientas) do |t|
+    create_table(:brands) do |t|
       ## Database authenticatable
-      t.belongs_to :brand
-      t.string     :nombre
-      t.string     :apellido
-      t.string     :direccion
-      t.string     :telefono
-      t.date       :fecha_de_nacimiento
-      t.string     :email,              null: false, default: ""
-      t.string     :encrypted_password, null: false, default: ""
+      t.string :nombre
+      t.string :apellido
+      t.string :direccion
+      t.string :telefono
+      t.string :marca
+      t.string :email,              null: false, default: ""
+      t.string :encrypted_password, null: false, default: ""
 
       ## Recoverable
       t.string   :reset_password_token
@@ -26,9 +25,9 @@ class DeviseCreateClientas < ActiveRecord::Migration
       t.string   :last_sign_in_ip
 
       ## Confirmable
-      t.string   :confirmation_token
-      t.datetime :confirmed_at
-      t.datetime :confirmation_sent_at
+      # t.string   :confirmation_token
+      # t.datetime :confirmed_at
+      # t.datetime :confirmation_sent_at
       # t.string   :unconfirmed_email # Only if using reconfirmable
 
       ## Lockable
@@ -37,13 +36,12 @@ class DeviseCreateClientas < ActiveRecord::Migration
       # t.datetime :locked_at
 
 
-
       t.timestamps
     end
 
-    add_index :clientas, :email,                unique: true
-    add_index :clientas, :reset_password_token, unique: true
-    add_index :clientas, :confirmation_token,   unique: true
-    # add_index :clientas, :unlock_token,         unique: true
+    add_index :brands, :email,                unique: true
+    add_index :brands, :reset_password_token, unique: true
+    # add_index :brands, :confirmation_token,   unique: true
+    # add_index :brands, :unlock_token,         unique: true
   end
 end

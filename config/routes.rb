@@ -2,8 +2,9 @@ Hazbun::Application.routes.draw do
   
 
 
+  devise_for :brands, controllers: { sessions: "brands/sessions" }
   devise_for :clientas, path: 'c', :controllers => {:confirmations => 'confirmations'}
-	devise_for :marcas, controllers: { sessions: "marcas/sessions" }
+	devise_for :marcas
 
   
 

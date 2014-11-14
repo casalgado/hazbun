@@ -9,7 +9,7 @@ class Clienta < ActiveRecord::Base
 
   # Associations:
 
-  belongs_to :marca
+  belongs_to :brand
   has_many   :appointments
   has_many   :orders
   has_many   :measurements
@@ -19,7 +19,7 @@ class Clienta < ActiveRecord::Base
 
   validates :nombre  , presence: { message: "Nombre no debe estar en blanco" }  , length: { minimum: 3, message: "Nombre muy corto (minimo 3 caracteres)" } 
   validates :apellido, presence: { message: "Apellido no debe estar en blanco" }, length: { minimum: 3, message: "Apellido muy corto (minimo 3 caracteres)" }
-  validates :marca_id, presence: true
+  validates :brand_id, presence: true
   validates :email, presence: { message: "Email no debe estar en blanco" }, format: { with: /\A[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})\z/, message: "Email invalido" }
 
   # Scopes

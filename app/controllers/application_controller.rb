@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   # El siguiente method es para determinar adonde va devise leugo del sign-in
 
   def after_sign_in_path_for(resource)
-    if current_marca
+    if current_brand
       dashboard_staticpages_path(resource)
     end
   end

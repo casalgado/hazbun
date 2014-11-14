@@ -1,7 +1,7 @@
 <ul>
-	<% if marca_signed_in? %>
+	<% if brand_signed_in? %>
 
-	  <li> <%= link_to("#{current_marca.marca}", edit_marca_registration_path) %> </li>
+	  <li> <%= link_to("#{current_brand.marca}", edit_marca_registration_path) %> </li>
 	  <li> <%= link_to('Cerrar Sesion', destroy_marca_session_path, :method => :delete) %> </li>
 
 	<% elsif clienta_signed_in? %> 

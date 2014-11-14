@@ -1,14 +1,14 @@
 
 class ClientasController < ApplicationController
 
-	before_action :authenticate_marca!, :only => [:new, :create]
+	before_action :authenticate_brand!, :only => [:new, :create]
 
 	def new
 		@clienta = Clienta.new
 	end
 
 	def create
-		@clienta = current_marca.clientas.new(clienta_params)
+		@clienta = current_brand.clientas.new(clienta_params)
     if
 		@clienta.save
     redirect_to clienta_path(@clienta)
@@ -37,7 +37,7 @@ class ClientasController < ApplicationController
 	end
 
   def index
-  	@search = current_marca.clientas.search(params[:q])
+  	@search = current_brand.clientas.search(params[:q])
   	@q = params[:q]
     @results = @search.result
     @clientas = []
