@@ -44,7 +44,7 @@ namespace :db do
         day = rand(30) + 1
         time = 8 + rand(10)
         clienta.appointments.create!(:date     => Time.new(2014, 12, day, time, 00, 00),
-                          :appointment_type_id => rand(3)+1)
+                          :appointment_type_id => rand(4)+1)
         end
         
       end

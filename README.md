@@ -13,11 +13,19 @@ Things you may want to cover:
 
 * Database creation
 
-	run db:seed after migrating
+	run 
+	
+		rake db:seed 
+	
+	after migrating
 
 * Database initialization
 
 * How to run the test suite
+
+	before test run:
+	
+		RAILS_ENV=test rake db:prepare
 
 * Services (job queues, cache servers, search engines, etc.)
 

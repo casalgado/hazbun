@@ -3,11 +3,11 @@ class OrdersController < ApplicationController
   before_action :authenticate_marca!, :except => [:show]
 
   def new
-    @order = Order.new
-    @item = Item.new
-    @clienta = Clienta.find(params[:clienta_id])
+    @order      = Order.new
+    @item       = Item.new
+    @clienta    = Clienta.find(params[:clienta_id])
     @item_types = ItemType.all
-    @occasions = Occasion.all
+    @occasions  = Occasion.all
     1.times do 
       item = @order.items.build
       1.times { item.supplies.build }
@@ -16,11 +16,11 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new(order_params)
-    @clienta = Clienta.find(order_params[:clienta_id])
+    @order      = Order.new(order_params)
+    @clienta    = Clienta.find(order_params[:clienta_id])
     @item_types = ItemType.all
-    @occasions = Occasion.all
-    @supplies = Supply.all
+    @occasions  = Occasion.all
+    @supplies   = Supply.all
     @errors = @order.errors
     if @order.save
       redirect_to clienta_order_path(:id => @order.id)
@@ -31,19 +31,19 @@ class OrdersController < ApplicationController
 
   def edit
     @item_types = ItemType.all
-    @occasions = Occasion.all
-    @supplies = Supply.all
-    @order = Order.find(params[:id])
-    @clienta = Clienta.find(params[:clienta_id])
+    @occasions  = Occasion.all
+    @supplies   = Supply.all
+    @order      = Order.find(params[:id])
+    @clienta    = Clienta.find(params[:clienta_id])
   end
 
   def update
     @item_types = ItemType.all
-    @occasions = Occasion.all
-    @supplies = Supply.all
-    @clienta = Clienta.find(params[:clienta_id])
-    @params = order_params
-    @order = Order.find(params[:id])
+    @occasions  = Occasion.all
+    @supplies   = Supply.all
+    @clienta    = Clienta.find(params[:clienta_id])
+    @params     = order_params
+    @order      = Order.find(params[:id])
     if
       @order.update(order_params)
       redirect_to clienta_order_path(:id => @order.id)
@@ -54,9 +54,9 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.find(params[:id])
-    @clienta = Clienta.find(params[:clienta_id])
-    @payment = Payment.new
+    @order       = Order.find(params[:id])
+    @clienta     = Clienta.find(params[:clienta_id])
+    @payment     = Payment.new
     @appointment = Appointment.new
     if params[:cerrar]
       if @order.cerrable?
