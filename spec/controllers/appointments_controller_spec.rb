@@ -5,7 +5,6 @@ RSpec.describe AppointmentsController, :type => :controller do
 
 	 	before(:all) do
 			@marca = create(:marca)
-
 		end
 
 		before(:each) do

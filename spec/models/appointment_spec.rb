@@ -5,11 +5,13 @@ require 'spec_helper'
 describe Appointment, :type => :model do
 
 
+
 	describe "de_hoy method returns only citas de hoy" do
 		before :each do
 			@clienta   = create(:clienta)
 			@time_t    = Time.now + 86400
 			@time_y    = Time.now - 86400
+			@from_dashboard = Appointment.find(1)
 			@today     = create(:appointment, date: Time.now, 	   	  		 clienta_id: @clienta.id, appointment_type_id: "2")
 			@today_2   = create(:appointment, date: Time.now,  	   	  		 clienta_id: @clienta.id, appointment_type_id: "2")
 			@tomorrow  = create(:appointment, date: Time.at(@time_t.to_i), clienta_id: @clienta.id, appointment_type_id: "2")
@@ -17,8 +19,8 @@ describe Appointment, :type => :model do
 		end
 
 		context "check positive test" do
-			it "should return only todays appointments" do 
-				expect(Appointment.de_hoy).to eq [@today, @today_2]
+			it "should return only todays appointments" do
+				expect(Appointment.de_hoy).to eq [@from_dashboard, @today, @today_2]
 			end
 		end
 
