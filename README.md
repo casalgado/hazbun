@@ -13,6 +13,8 @@ Things you may want to cover:
 
 * Database creation
 
+	run db:seed after migrating
+
 * Database initialization
 
 * How to run the test suite
