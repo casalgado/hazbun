@@ -1,5 +1,5 @@
 ActiveSupport::Inflector.inflections do |inflect|
-  inflect.irregular 'clienta', 'clientas'
+  inflect.irregular 'customer', 'customers'
   inflect.irregular 'orden', 'ordenes'
   inflect.irregular 'cita', 'citas'
   inflect.irregular 'ocasion', 'ocasiones'

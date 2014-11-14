@@ -9,16 +9,16 @@ describe Order, :type => :model do
 	end
 
 	it "allows create if previous orders are closed" do
-		clienta = create(:clienta)
-		create(:order, clienta: clienta, closed: true)
-		expect(build(:order, clienta: clienta)).to be_valid
+		customer = create(:customer)
+		create(:order, customer: customer, closed: true)
+		expect(build(:order, customer: customer)).to be_valid
 	end
 
 
-	it "only allows create when clienta has no open orders" do
-		clienta = create(:clienta)
-		create(:order, clienta: clienta)
-		expect(build(:order, clienta: clienta)).not_to be_valid
+	it "only allows create when customer has no open orders" do
+		customer = create(:customer)
+		create(:order, customer: customer)
+		expect(build(:order, customer: customer)).not_to be_valid
 	end
 
 	

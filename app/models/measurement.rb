@@ -1,5 +1,5 @@
 class Measurement < ActiveRecord::Base
 
-	belongs_to :clienta
+	belongs_to :customer
 
 end

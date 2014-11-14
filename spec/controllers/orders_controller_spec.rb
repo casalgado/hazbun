@@ -7,7 +7,7 @@ RSpec.describe OrdersController, :type => :controller do
 		end
 
 		before(:each) do
-			@clienta = create(:clienta)
+			@customer = create(:customer)
 			@request.env["devise.mapping"] = Devise.mappings[:marca]
 			sign_in @marca
 		end
@@ -16,33 +16,33 @@ RSpec.describe OrdersController, :type => :controller do
 		describe 'GET #new' do
 
 			it "assigns a new order" do
-				get :new, clienta_id: @clienta.id
+				get :new, customer_id: @customer.id
 				expect(assigns(:order)).to be_a_new(Order)
 			end
 			
 			it "assigns a new item" do
-				get :new, clienta_id: @clienta.id
+				get :new, customer_id: @customer.id
 				expect(assigns(:item)).to be_a_new(Item)
 			end
 			
 			
-		  it "assigns an existing clienta" do
-		  	get :new, clienta_id: @clienta.id
-				expect(assigns(:clienta)).to eq(@clienta)
+		  it "assigns an existing customer" do
+		  	get :new, customer_id: @customer.id
+				expect(assigns(:customer)).to eq(@customer)
 			end
 			
 			it "assigns tipo de prenda list" do
-				get :new, clienta_id: @clienta.id
+				get :new, customer_id: @customer.id
 				expect(assigns(:item_types)).to eq(ItemType.all)
 			end
 			
 			it "assigns occasion list" do
-				get :new, clienta_id: @clienta.id
+				get :new, customer_id: @customer.id
 				expect(assigns(:occasions)).to eq(Occasion.all)
 			end
 			
 			it "assigns supply type list" do
-				get :new, clienta_id: @clienta.id
+				get :new, customer_id: @customer.id
 				expect(assigns(:supplies)).to eq(Supply.all)
 			end
 
@@ -55,10 +55,10 @@ RSpec.describe OrdersController, :type => :controller do
 
 			end
 
-			it "assigns an existing clienta" do
+			it "assigns an existing customer" do
 			end
 
-			it "assigns an existing clientas measurements" do
+			it "assigns an existing customers measurements" do
 			end
 			
 			it "shows correct measurement value" do
@@ -78,26 +78,26 @@ RSpec.describe OrdersController, :type => :controller do
 
 				it "saves a new order in the database" do
 					expect {
-						post :create, clienta_id: @clienta.id, order: attributes_for(:order, clienta_id: @clienta.id)
+						post :create, customer_id: @customer.id, order: attributes_for(:order, customer_id: @customer.id)
 					}.to change(Order, :count).by(1)
 				end
 
-				it "redirects to clienta show page" do
-					post :create, clienta_id: @clienta.id, order: attributes_for(:order, clienta_id: @clienta.id)
-					expect(response).to redirect_to clienta_order_path(:id => Order.last.id)
+				it "redirects to customer show page" do
+					post :create, customer_id: @customer.id, order: attributes_for(:order, customer_id: @customer.id)
+					expect(response).to redirect_to customer_order_path(:id => Order.last.id)
 				end
 
 			end
 
 			context "invalid orders" do
 
-				it "does not belong to a clienta" do
+				it "does not belong to a customer" do
 				end
 
 				it "there exists an open order" do
-					post :create, clienta_id: @clienta.id, order: attributes_for(:order, clienta_id: @clienta.id)
+					post :create, customer_id: @customer.id, order: attributes_for(:order, customer_id: @customer.id)
 					expect {
-						post :create, clienta_id: @clienta.id, order: attributes_for(:order, clienta_id: @clienta.id)
+						post :create, customer_id: @customer.id, order: attributes_for(:order, customer_id: @customer.id)
 					}.to_not change(Order, :count)
 				end
 
@@ -107,32 +107,32 @@ RSpec.describe OrdersController, :type => :controller do
 		describe 'GET #edit' do
 
 			before(:each) do
-				@order = create(:order, clienta_id: @clienta.id)
+				@order = create(:order, customer_id: @customer.id)
 			end			
 
-			it "assigns an existing clienta" do
-				get :edit, clienta_id: @clienta.id, id: @order.id
-				expect(assigns(:clienta)).to eq(@clienta)
+			it "assigns an existing customer" do
+				get :edit, customer_id: @customer.id, id: @order.id
+				expect(assigns(:customer)).to eq(@customer)
 			end
 						
 			it "assigns an existing order" do
-				get :edit, clienta_id: @clienta.id, id: @order.id
+				get :edit, customer_id: @customer.id, id: @order.id
 				expect(assigns(:order)).to eq(@order)
 			end
 
 
 			it "assigns tipo de prenda list" do
-				get :edit, clienta_id: @clienta.id, id: @order.id
+				get :edit, customer_id: @customer.id, id: @order.id
 				expect(assigns(:item_types)).to eq(ItemType.all)
 			end
 			
 			it "assigns occasion list" do
-				get :edit, clienta_id: @clienta.id, id: @order.id
+				get :edit, customer_id: @customer.id, id: @order.id
 				expect(assigns(:occasions)).to eq(Occasion.all)
 			end
 			
 			it "assigns supply type list" do
-				get :edit, clienta_id: @clienta.id, id: @order.id
+				get :edit, customer_id: @customer.id, id: @order.id
 				expect(assigns(:supplies)).to eq(Supply.all)
 			end
 
@@ -141,40 +141,40 @@ RSpec.describe OrdersController, :type => :controller do
 		describe 'PUT #update' do
 
 			before(:each) do
-				@order = create(:order, clienta_id: @clienta.id)
+				@order = create(:order, customer_id: @customer.id)
 			end		
 
 			#context "with valid attributes" do
 #
-			#	it "locates clienta" do
-			#		put :update, clienta_id: @clienta.id, id: @order.id
-			#		expect(assigns(:clienta)).to eq(@clienta)
+			#	it "locates customer" do
+			#		put :update, customer_id: @customer.id, id: @order.id
+			#		expect(assigns(:customer)).to eq(@customer)
 			#	end
 #
 			#	it "locates order" do
-			#		put :update, clienta_id: @clienta.id, id: @order.id
+			#		put :update, customer_id: @customer.id, id: @order.id
 			#		expect(assigns(:order)).to eq(@order)
 			#	end
 #
 			#	it "updates order attributes" do
-			#		put :update, clienta_id: @clienta, id: @order.id, order: attributes_for(:order, closed: true)
+			#		put :update, customer_id: @customer, id: @order.id, order: attributes_for(:order, closed: true)
 			#		@order.reload
 			#		expect(@order.closed).to eq(true)
 			#	end
 #
-			#	it "redirects to clienta show page" do
-			#		put :update, clienta_id: @clienta, id: @order.id, order: attributes_for(:order, closed: true)
-			#		expect(response).to redirect_to clienta_order_path(:id => @order.id)
+			#	it "redirects to customer show page" do
+			#		put :update, customer_id: @customer, id: @order.id, order: attributes_for(:order, closed: true)
+			#		expect(response).to redirect_to customer_order_path(:id => @order.id)
 			#	end
 #
 			#end
 
 			context "with in-valid attributes" do
 
-				it "does not update clienta" do
+				it "does not update customer" do
 				end
 
-				it "redirects to edit clienta page" do
+				it "redirects to edit customer page" do
 				end
 
 			end

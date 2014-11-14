@@ -2,9 +2,9 @@
 	 <%=msg%>
 	<% end %>
 
-<%= form_for [@clienta, @appointment] do |f| %>
+<%= form_for [@customer, @appointment] do |f| %>
 
-	<%= f.hidden_field :clienta_id, value: @clienta.id %>
+	<%= f.hidden_field :customer_id, value: @customer.id %>
 
 	<%= f.radio_button :appointment_type_id, '1' %>
 	<%= f.label :appointment_type_id, 'Primera', :value => '1' %>

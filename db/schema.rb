@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20141105170944) do
 
   create_table "appointments", force: true do |t|
     t.integer  "prenda_id"
-    t.integer  "clienta_id"
+    t.integer  "customer_id"
     t.integer  "appointment_type_id"
     t.datetime "date"
     t.datetime "created_at"
@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 20141105170944) do
   add_index "brands", ["email"], name: "index_brands_on_email", unique: true
   add_index "brands", ["reset_password_token"], name: "index_brands_on_reset_password_token", unique: true
 
-  create_table "clientas", force: true do |t|
+  create_table "customers", force: true do |t|
     t.integer  "brand_id"
     t.string   "nombre"
     t.string   "apellido"
@@ -77,9 +77,9 @@ ActiveRecord::Schema.define(version: 20141105170944) do
     t.string   "picture"
   end
 
-  add_index "clientas", ["confirmation_token"], name: "index_clientas_on_confirmation_token", unique: true
-  add_index "clientas", ["email"], name: "index_clientas_on_email", unique: true
-  add_index "clientas", ["reset_password_token"], name: "index_clientas_on_reset_password_token", unique: true
+  add_index "customers", ["confirmation_token"], name: "index_customers_on_confirmation_token", unique: true
+  add_index "customers", ["email"], name: "index_customers_on_email", unique: true
+  add_index "customers", ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
 
   create_table "item_types", force: true do |t|
     t.string   "item_type"
@@ -120,7 +120,7 @@ ActiveRecord::Schema.define(version: 20141105170944) do
   add_index "marcas", ["reset_password_token"], name: "index_marcas_on_reset_password_token", unique: true
 
   create_table "measurements", force: true do |t|
-    t.integer  "clienta_id"
+    t.integer  "customer_id"
     t.string   "talle_frente"
     t.string   "talle_espalda"
     t.string   "imperio"
@@ -143,7 +143,7 @@ ActiveRecord::Schema.define(version: 20141105170944) do
   end
 
   create_table "orders", force: true do |t|
-    t.integer  "clienta_id"
+    t.integer  "customer_id"
     t.boolean  "closed",      default: false
     t.integer  "total_value"
     t.datetime "created_at"

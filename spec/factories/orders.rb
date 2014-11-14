@@ -2,7 +2,7 @@
 FactoryGirl.define do 
 	factory :order do
 		closed false
-		association :clienta	
+		association :customer	
 	end
 
 end

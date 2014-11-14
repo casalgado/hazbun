@@ -1,10 +1,10 @@
 
 
-<h3> <%= @clienta.nombre_completo %> </h3>
+<h3> <%= @customer.nombre_completo %> </h3>
 
-<%= form_for [@clienta, @measurement] do |f| %>
+<%= form_for [@customer, @measurement] do |f| %>
 
-	<%= f.hidden_field :clienta_id, value: @clienta.id %>
+	<%= f.hidden_field :customer_id, value: @customer.id %>
 
 	<%= f.label :talle_frente %>
   <%= f.text_field :talle_frente %>

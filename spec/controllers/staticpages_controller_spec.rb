@@ -7,8 +7,8 @@ RSpec.describe StaticpagesController, :type => :controller do
 
 	 	before(:all) do
 			@marca   = Marca.find(1)
-			@clienta = create(:clienta)
-			@appointments   = create(:appointment, clienta: @clienta)
+			@customer = create(:customer)
+			@appointments   = create(:appointment, customer: @customer)
 		end
 
 		before(:each) do

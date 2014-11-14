@@ -1,7 +1,7 @@
 class CreateMeasurements < ActiveRecord::Migration
   def change
     create_table :measurements do |t|
-    	t.belongs_to :clienta
+    	t.belongs_to :customer
     	t.string :talle_frente
     	t.string :talle_espalda
     	t.string :imperio

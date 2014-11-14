@@ -25,7 +25,7 @@ class Customer < ActiveRecord::Base
   # Scopes
 
   scope :has_appointment, -> {
-    joins(:appointments).group("clientas.id").merge(Appointment.appointment_in_future)
+    joins(:appointments).group("customers.id").merge(Appointment.appointment_in_future)
    }
 
   # Uploader:
@@ -35,12 +35,12 @@ class Customer < ActiveRecord::Base
   # Methods:
 
 
-  # Este metodo devuelve el nombre completo de una clienta
+  # Este metodo devuelve el nombre completo de una customer
   def nombre_completo
   	[self.nombre, self.apellido].join(" ")
   end
 
-  # Estos dos metodos devuelven las open/closed orders que la clienta tenga. 
+  # Estos dos metodos devuelven las open/closed orders que la customer tenga. 
   def ordenes_abiertas
     self.orders.where(:closed => false)
   end
@@ -49,7 +49,7 @@ class Customer < ActiveRecord::Base
     self.orders.where(:closed => true)
   end
 
-  # para determinar si la clienta esta activa o no.
+  # para determinar si la customer esta activa o no.
 
   def activa?
     if self.ordenes_abiertas.empty? == true
@@ -59,8 +59,8 @@ class Customer < ActiveRecord::Base
     end
   end
   
-  # Los siguientes tres metodos son para que una diseñadora pueda crear una clienta sin contraseña.
-  # Luego la clienta puede crear una contraseña para entrar a su cuenta siguiendo el mail de confirmacion.
+  # Los siguientes tres metodos son para que una diseñadora pueda crear una customer sin contraseña.
+  # Luego la customer puede crear una contraseña para entrar a su cuenta siguiendo el mail de confirmacion.
 
   def only_if_unconfirmed
     pending_any_confirmation {yield}
@@ -77,7 +77,7 @@ class Customer < ActiveRecord::Base
     password == password_confirmation && !password.blank?
   end
 
-  # el siguiente metodo es para determinar si la clienta tiene una open order. 
+  # el siguiente metodo es para determinar si la customer tiene una open order. 
 
   def has_open_order?
     if self.orders.last.closed == false

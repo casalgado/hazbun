@@ -2,14 +2,14 @@ class Appointment < ActiveRecord::Base
 
 	# Associations:
 
-	belongs_to :clienta
+	belongs_to :customer
 	belongs_to :appointment_type
 	belongs_to :item
 
 	# Validations:
 
 	validates :appointment_type, presence: { message: "Debe seleccionar tipo de cita"}
-	validates :clienta_id, presence: true
+	validates :customer_id, presence: true
 	validate :date_must_be_later_than_today
 
 	# Scopes:
@@ -35,7 +35,7 @@ class Appointment < ActiveRecord::Base
 
 	def to_event_format
 		new_time = self.date.one_hour
-		event = {title: self.clienta.nombre_completo, start: self.date, end: new_time, backgroundColor: self.background_color, borderColor: self.background_color}
+		event = {title: self.customer.nombre_completo, start: self.date, end: new_time, backgroundColor: self.background_color, borderColor: self.background_color}
 		event
 	end
 

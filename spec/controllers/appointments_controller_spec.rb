@@ -8,7 +8,7 @@ RSpec.describe AppointmentsController, :type => :controller do
 		end
 
 		before(:each) do
-			@clienta = create(:clienta)
+			@customer = create(:customer)
 			@request.env["devise.mapping"] = Devise.mappings[:marca]
 			sign_in @marca
 		end
@@ -18,17 +18,17 @@ RSpec.describe AppointmentsController, :type => :controller do
 
 
 			it "assigns a new appointment" do
-				get :new, clienta_id: @clienta.id
+				get :new, customer_id: @customer.id
 				expect(assigns(:appointment)).to be_a_new(Appointment)
 			end
 
-			it "assigns an existing clienta" do
-				get :new, clienta_id: @clienta.id
-				expect(assigns(:clienta)).to eq(@clienta)
+			it "assigns an existing customer" do
+				get :new, customer_id: @customer.id
+				expect(assigns(:customer)).to eq(@customer)
 			end
 
 			it "renders new template" do
-				get :new, clienta_id: @clienta.id
+				get :new, customer_id: @customer.id
 				expect(response).to render_template(:new)
 			end	 
 		end
@@ -41,13 +41,13 @@ RSpec.describe AppointmentsController, :type => :controller do
 
 				it "saves a new appointment in the database" do
 					expect {
-						post :create, clienta_id: @clienta.id, appointment: attributes_for(:next_month_appointment, clienta_id: @clienta.id)
+						post :create, customer_id: @customer.id, appointment: attributes_for(:next_month_appointment, customer_id: @customer.id)
 					}.to change(Appointment, :count).by(1)
 				end
 
-				it "redirects to clienta show page" do
-					  post :create, clienta_id: @clienta.id, appointment: attributes_for(:next_month_appointment, clienta_id: @clienta.id)
-					expect(response).to redirect_to clienta_path(@clienta)
+				it "redirects to customer show page" do
+					  post :create, customer_id: @customer.id, appointment: attributes_for(:next_month_appointment, customer_id: @customer.id)
+					expect(response).to redirect_to customer_path(@customer)
 				end
 
 			end
@@ -56,12 +56,12 @@ RSpec.describe AppointmentsController, :type => :controller do
 
 				it "does not save the new appointment in the database" do
 					expect {
-						post :create, clienta_id: @clienta.id, appointment: attributes_for(:invalid_appointment, clienta_id: @clienta.id)
+						post :create, customer_id: @customer.id, appointment: attributes_for(:invalid_appointment, customer_id: @customer.id)
 					}.to_not change(Appointment, :count)
 				end
 
 				it "redirects to new appointment page" do
-						post :create, clienta_id: @clienta.id, appointment: attributes_for(:invalid_appointment, clienta_id: @clienta.id)
+						post :create, customer_id: @customer.id, appointment: attributes_for(:invalid_appointment, customer_id: @customer.id)
 						expect(response).to render_template :new
 				end
 

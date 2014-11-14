@@ -12,7 +12,7 @@
 		<ul>
 			<li><%= appointment.appointment_type.appointment_type %> </li>
 
-			<li><%= link_to("#{appointment.clienta.nombre_completo}", clienta_path(:id => appointment.clienta.id)) %> </li>
+			<li><%= link_to("#{appointment.customer.nombre_completo}", customer_path(:id => appointment.customer.id)) %> </li>
 			<li><%= appointment.date.strftime "%l:%M %P" %> </li>
 			<br />
 		</ul>

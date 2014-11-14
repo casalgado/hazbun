@@ -23,16 +23,16 @@ namespace :db do
       password = '12341234'
       password_confirmation = '12341234'
 
-      judy.clientas.create!(:nombre    => nombre,
+      judy.customers.create!(:nombre    => nombre,
                             :apellido  => apellido,
                             :email     => email,
                             :password  => password,
                             :password_confirmation => password_confirmation)
     end
       
-    judy.clientas.each do |clienta|
+    judy.customers.each do |customer|
       1.times do |order|
-        order = clienta.orders.create!(:closed      => false,
+        order = customer.orders.create!(:closed      => false,
                                        :total_value => 1000 + rand(1000))
         num_of_items = rand(2)+1
 
@@ -43,7 +43,7 @@ namespace :db do
         4.times do |appointment|
         day = rand(30) + 1
         time = 8 + rand(10)
-        clienta.appointments.create!(:date     => Time.new(2014, 12, day, time, 00, 00),
+        customer.appointments.create!(:date     => Time.new(2014, 12, day, time, 00, 00),
                           :appointment_type_id => rand(4)+1)
         end
         

@@ -1,13 +1,13 @@
 require 'rails_helper'
 
-RSpec.describe ClientasController, :type => :controller do
+RSpec.describe CustomersController, :type => :controller do
 
 	 	before(:all) do
 			@marca = Marca.first
 		end
 
 		before(:each) do
-			@clienta = create(:clienta)
+			@customer = create(:customer)
 			@request.env["devise.mapping"] = Devise.mappings[:marca]
 			sign_in @marca
 		end
@@ -15,9 +15,9 @@ RSpec.describe ClientasController, :type => :controller do
 
 		describe 'GET #new' do
 
-			it "assigns a new clienta" do
+			it "assigns a new customer" do
 				get :new
-				expect(assigns(:clienta)).to be_a_new(Clienta)
+				expect(assigns(:customer)).to be_a_new(Customer)
 			end
 
 		end
@@ -25,24 +25,24 @@ RSpec.describe ClientasController, :type => :controller do
 		describe 'GET #show' do
 
 			before(:each) do
-				@measurement = create(:measurement, clienta_id: @clienta.id)
+				@measurement = create(:measurement, customer_id: @customer.id)
 			end
 
-			it "assigns an existing clienta" do
-				get :show, id: @clienta
-				expect(assigns(:clienta)).to eq(@clienta)
-				expect(assigns(:measurement)).to eq(@clienta.measurements.last)
-				expect(@clienta.measurements.last.talle_frente).to eq("60")
+			it "assigns an existing customer" do
+				get :show, id: @customer
+				expect(assigns(:customer)).to eq(@customer)
+				expect(assigns(:measurement)).to eq(@customer.measurements.last)
+				expect(@customer.measurements.last.talle_frente).to eq("60")
 			end
 
-			it "assigns an existing clientas measurements" do
-				get :show, id: @clienta
-				expect(assigns(:measurement)).to eq(@clienta.measurements.last)
+			it "assigns an existing customers measurements" do
+				get :show, id: @customer
+				expect(assigns(:measurement)).to eq(@customer.measurements.last)
 			end
 			
 			it "shows correct measurement value" do
-				get :show, id: @clienta
-				expect(@clienta.measurements.last.talle_frente).to eq("60")
+				get :show, id: @customer
+				expect(@customer.measurements.last.talle_frente).to eq("60")
 			end
 
 
@@ -53,29 +53,29 @@ RSpec.describe ClientasController, :type => :controller do
 
 			context "with valid attributes" do
 
-				it "saves a new clienta in the database" do
+				it "saves a new customer in the database" do
 					expect {
-						post :create, clienta: attributes_for(:clienta)
-					}.to change(Clienta, :count).by(1)
+						post :create, customer: attributes_for(:customer)
+					}.to change(Customer, :count).by(1)
 				end
 
-				it "redirects to clienta show page" do
-					post :create, clienta: attributes_for(:clienta)
-					expect(response).to redirect_to clienta_path(Clienta.last)
+				it "redirects to customer show page" do
+					post :create, customer: attributes_for(:customer)
+					expect(response).to redirect_to customer_path(Customer.last)
 				end
 
 			end
 
 			context "with in-valid attributes" do
 
-				it "does not save the new clienta in the database" do
+				it "does not save the new customer in the database" do
 					expect {
-						post :create, clienta: attributes_for(:clienta, email: nil)
-					}.to_not change(Clienta, :count)
+						post :create, customer: attributes_for(:customer, email: nil)
+					}.to_not change(Customer, :count)
 				end
 
-				it "redirects to new clienta page" do
-						post :create, clienta: attributes_for(:clienta, email: nil)
+				it "redirects to new customer page" do
+						post :create, customer: attributes_for(:customer, email: nil)
 						expect(response).to render_template :new
 				end
 
@@ -84,9 +84,9 @@ RSpec.describe ClientasController, :type => :controller do
 
 		describe 'GET #edit' do
 
-			it "assigns an existing clienta" do
-				get :edit, id: @clienta.id
-				expect(assigns(:clienta)).to eq(@clienta)
+			it "assigns an existing customer" do
+				get :edit, id: @customer.id
+				expect(assigns(:customer)).to eq(@customer)
 			end
 		end
  
@@ -94,35 +94,35 @@ RSpec.describe ClientasController, :type => :controller do
 
 			context "with valid attributes" do
 
-				it "locates clienta" do
-					put :update, id: @clienta, clienta: attributes_for(:clienta)
-				expect(assigns(:clienta)).to eq(@clienta)
+				it "locates customer" do
+					put :update, id: @customer, customer: attributes_for(:customer)
+				expect(assigns(:customer)).to eq(@customer)
 				end
 
-				it "updates clienta attributes" do
-					put :update, id: @clienta, clienta: attributes_for(:clienta, nombre: "new_name")
-					@clienta.reload
-					expect(@clienta.nombre).to eq("new_name")
+				it "updates customer attributes" do
+					put :update, id: @customer, customer: attributes_for(:customer, nombre: "new_name")
+					@customer.reload
+					expect(@customer.nombre).to eq("new_name")
 				end
 
-				it "redirects to clienta show page" do
-					put :update, id: @clienta, clienta: attributes_for(:clienta, nombre: "new_name")
-					expect(response).to redirect_to clienta_path(@clienta)
+				it "redirects to customer show page" do
+					put :update, id: @customer, customer: attributes_for(:customer, nombre: "new_name")
+					expect(response).to redirect_to customer_path(@customer)
 				end
 
 			end
 
 			context "with in-valid attributes" do
 
-				it "does not update clienta" do
-					email = @clienta.email
-					put :update, id: @clienta, clienta: attributes_for(:clienta, email: nil)
-					@clienta.reload
-					expect(@clienta.email).to eq(email)
+				it "does not update customer" do
+					email = @customer.email
+					put :update, id: @customer, customer: attributes_for(:customer, email: nil)
+					@customer.reload
+					expect(@customer.email).to eq(email)
 				end
 
-				it "redirects to edit clienta page" do
-					put :update, id: @clienta, clienta: attributes_for(:clienta, email: nil)
+				it "redirects to edit customer page" do
+					put :update, id: @customer, customer: attributes_for(:customer, email: nil)
 					expect(response).to render_template :edit
 				end
 
