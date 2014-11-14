@@ -10,7 +10,7 @@ FactoryGirl.define do
 		password "password"
 		password_confirmation "password"
 
-		factory :amalin_consumer do
+		factory :amalin_customer do
 			brand_id "2"
 		end
 

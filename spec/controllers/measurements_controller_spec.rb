@@ -4,12 +4,12 @@ RSpec.describe MeasurementsController, :type => :controller do
 
 	 	before(:all) do
 			@customer = create(:customer)
-			@marca   = Marca.first
+			@brand   = Brand.first
 		end
 
 		before(:each) do
-			@request.env["devise.mapping"] = Devise.mappings[:marca]
-			sign_in @marca
+			@request.env["devise.mapping"] = Devise.mappings[:brand]
+			sign_in @brand
 		end
 
 		describe 'GET #new' do

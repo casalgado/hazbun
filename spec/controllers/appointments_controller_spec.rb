@@ -4,13 +4,13 @@ RSpec.describe AppointmentsController, :type => :controller do
 	render_views
 
 	 	before(:all) do
-			@marca = create(:marca)
+			@brand = create(:brand)
 		end
 
 		before(:each) do
 			@customer = create(:customer)
-			@request.env["devise.mapping"] = Devise.mappings[:marca]
-			sign_in @marca
+			@request.env["devise.mapping"] = Devise.mappings[:brand]
+			sign_in @brand
 		end
 
 		describe 'GET #new' do

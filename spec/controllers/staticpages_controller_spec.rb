@@ -3,17 +3,17 @@ require 'spec_helper'
 RSpec.describe StaticpagesController, :type => :controller do
 
 
-	 describe "marca acces" do
+	 describe "brand acces" do
 
 	 	before(:all) do
-			@marca   = Marca.find(1)
+			@brand   = Brand.find(1)
 			@customer = create(:customer)
 			@appointments   = create(:appointment, customer: @customer)
 		end
 
 		before(:each) do
-			@request.env["devise.mapping"] = Devise.mappings[:marca]
-			sign_in @marca
+			@request.env["devise.mapping"] = Devise.mappings[:brand]
+			sign_in @brand
 		end
 
 		 describe 'GET #dashboard' do

@@ -3,13 +3,13 @@ require 'rails_helper'
 RSpec.describe OrdersController, :type => :controller do
 
 	 	before(:all) do
-			@marca = Marca.first
+			@brand = Brand.first
 		end
 
 		before(:each) do
 			@customer = create(:customer)
-			@request.env["devise.mapping"] = Devise.mappings[:marca]
-			sign_in @marca
+			@request.env["devise.mapping"] = Devise.mappings[:brand]
+			sign_in @brand
 		end
 
 
