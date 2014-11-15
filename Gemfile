@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-# Rails Gems
+# Rails Gems:
 
 gem 'rails', '4.0.2'
 gem 'sass-rails', '4.0.4'
@@ -10,7 +10,7 @@ gem 'jquery-rails', '3.1.2'
 gem 'turbolinks', '2.5.2'
 gem 'jbuilder', '1.2'
 
-# Agregadas por mi
+# Added by me:
 
 gem 'devise', '3.4.1'
 gem 'jquery-ui-rails', '5.0.2'
@@ -20,6 +20,8 @@ gem 'fullcalendar-rails', "2.0.2.0"
 gem 'gon', '5.2.3'
 gem 'mini_magick', "~> 4.0.0.rc"
 gem 'carrierwave', '0.10.0'
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'autoprefixer-rails'
 
 group :doc do
   gem 'sdoc', require: false

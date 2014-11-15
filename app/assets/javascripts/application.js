@@ -16,7 +16,7 @@
 //= require jquery-ui/datepicker
 //= require jquery-ui/slider
 //= require fullcalendar
-
+//= require bootstrap-sprockets
 //= require_tree .
  
 
