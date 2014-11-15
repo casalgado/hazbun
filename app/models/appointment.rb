@@ -10,7 +10,8 @@ class Appointment < ActiveRecord::Base
 
 	validates :appointment_type, presence: { message: "Debe seleccionar tipo de cita"}
 	validates :customer_id, presence: true
-	validate :date_must_be_later_than_today
+	validates :date, presence: true
+	validate  :date_must_be_later_than_today
 
 	# Scopes:
 

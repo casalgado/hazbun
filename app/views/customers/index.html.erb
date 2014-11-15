@@ -1,5 +1,5 @@
 appointment
-<p> <%= link_to("Nueva Customer", new_customer_path) %></p>
+<p> <%= link_to("Nueva Clienta", new_customer_path) %></p>
 
 <%= search_form_for @search do |f| %>
 	<%= f.label :nombre_cont, "Nombre" %>
@@ -25,7 +25,7 @@ appointment
 		<% else %> 
 			<li> Dormida </li> 
 			<li> <%= link_to("nueva orden", new_customer_order_path(customer)) %> </li>
-			<li> <%= link_to("nueva cita", new_customer_appointment_path(customer)) %> </li>
+			<li> <%= link_to("nueva cita" , new_customer_appointment_path(customer)) %> </li>
 		<% end %>
 	</ul>
 
