@@ -1,0 +1,10 @@
+
+
+		<% if customer_signed_in? or brand_signed_in? %>
+		<% else %>
+		<div id="navbar-links" class="center">
+			<ul class="center">
+		<%= render 'layouts/navbar_links' %>
+			</ul>
+		</div>
+		<% end %>

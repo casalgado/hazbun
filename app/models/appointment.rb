@@ -8,6 +8,8 @@ class Appointment < ActiveRecord::Base
 
 	# Validations:
 
+	# no se p dos a l misma hora
+
 	validates :appointment_type, presence: { message: "Debe seleccionar tipo de cita"}
 	validates :customer_id, presence: true
 	validates :date, presence: true

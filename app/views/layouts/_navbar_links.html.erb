@@ -1,0 +1,22 @@
+
+
+<% if brand_signed_in? %>
+
+	<li class="back-hover"> <%= link_to("Ordenes",    orders_path) %> </li>
+	<li class="back-hover"> <%= link_to("Clientas",   customers_path) %> </li>
+	<li class="back-hover"> <%= link_to("Calendario", calendario_staticpages_path, method: :get) %> </li>
+
+<% elsif customer_signed_in? %>
+
+	<li class="back-hover"> <%= link_to("Perfil",     '#') %> </li>
+
+<% else %>
+
+   <li class="back-hover"> <%= link_to("Amalin",     '#') %> </li>
+	 <li class="back-hover"> <%= link_to("Judy",       '#') %> </li>
+	 <li class="back-hover"> <%= link_to("Contacto",   '#') %> </li>
+	 <li class="back-hover"> <%= link_to("Historia",   '#') %> </li>
+
+<% end %>
+
+

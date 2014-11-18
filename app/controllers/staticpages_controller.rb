@@ -9,6 +9,7 @@ class StaticpagesController < ApplicationController
 	end
 
 	def calendario
+		# agregar citas desde el calendar view
 		@appointments = current_brand.appointments
 		gon.appointments = @appointments.to_fullcalendar
   end

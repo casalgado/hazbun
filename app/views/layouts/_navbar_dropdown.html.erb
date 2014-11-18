@@ -1,0 +1,25 @@
+
+	<% if brand_signed_in? %>
+
+    <li class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><%= "#{current_brand.marca}" %> <span class="caret"></span></a>
+      <ul class="dropdown-menu" role="menu">
+	  		 <li role="presentation"><%= link_to('Perfil', edit_marca_registration_path) %></li>
+        <li class="divider"></li>
+        	<li role="presentation"><a role="menuitem" tabindex="-1" ><%= link_to('Cerrar Sesion', destroy_marca_session_path, :method => :delete) %></a></li>
+      </ul>
+    </li>
+
+	<% elsif customer_signed_in? %> 
+
+    <li class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><%= "#{current_customer.first_name}" %> <span class="caret"></span></a>
+      <ul class="dropdown-menu" role="menu">
+	  		 <li role="presentation"><%= link_to('Perfil', edit_marca_registration_path) %></li>
+        <li class="divider"></li>
+        	<li role="presentation"><a role="menuitem" tabindex="-1" ><%= link_to('Cerrar Sesion', destroy_customer_session_path, :method => :delete) %></a></li>
+      </ul>
+    </li>
+
+
+	<% end %>

@@ -1,20 +1,44 @@
+<div class="container">
+	<div class="row">
+
+		<div id="" class="col-md-6">
+		</div>
+
+		<div id="appointment-column" class="col-md-6">
+
+				<div class="row">
+
+					<div id="" class="col-md-3">
+						<ul>
+							<li id="appointment-day"><%=@hoy.mday%></li>
+							<li id="appointment-day-text"><%=@hoy.nombrar_dia.upcase%></li>
+						</ul>
+					</div>
+
+					<div id="" class="col-md-9">
+
+						<h3> Citas </h3>
+					</div>
+
+				</div>
+		
+
+				<div class='center appointment-width'>
+					<% for appointment in @citas_de_hoy %>
+						<ul >
+							<li><%= appointment.appointment_type.appointment_type %> </li>
+							<li><%= link_to("#{appointment.customer.nombre_completo}", customer_path(:id => appointment.customer.id)) %> </li>
+							<li><%= appointment.date.strftime "%l:%M %P" %> </li>
+							<br />
+						</ul>
+					<% end %>
+				</div>
+
+		</div>
+	</div>
+</div>
 
 
-<ul>
-	<li><%=@hoy.mday%></li>
-	<li><%=@hoy.nombrar_dia%></li>
-</ul>
-
-<h3> Citas </h3>
 
 
-	<% for appointment in @citas_de_hoy %>
-		<ul>
-			<li><%= appointment.appointment_type.appointment_type %> </li>
-
-			<li><%= link_to("#{appointment.customer.nombre_completo}", customer_path(:id => appointment.customer.id)) %> </li>
-			<li><%= appointment.date.strftime "%l:%M %P" %> </li>
-			<br />
-		</ul>
-	<% end %>
 

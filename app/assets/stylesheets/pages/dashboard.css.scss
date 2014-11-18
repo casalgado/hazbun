@@ -1,0 +1,20 @@
+@import "partials/sizes";
+@import "partials/typography";
+
+.appointment-width {
+	width: $appointment-width;
+}
+
+#appointment-column li {
+	 list-style-type: none;
+}
+
+#appointment-day {
+	font-size: $appointment-day;
+	text-align: center;
+}
+
+#appointment-day-text {
+	text-align: center;
+	font-family: sans-serif;	
+}

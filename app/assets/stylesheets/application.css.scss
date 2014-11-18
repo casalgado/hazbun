@@ -15,11 +15,41 @@
  *= require_tree .
  */
 
+@import "partials/sizes";
+@import "partials/typography";
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+// Navbar
+
+li.back-hover a:hover { 
+	background-color: black !important; 
+	color: lightgray !important;
+}
+
+.dropdown-menu li:hover .sub-menu {
+    visibility: visible;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+// Positioning
+
+	// Alignment
+
+.center {
+	margin-right: auto;
+	margin-left: auto;
+	}
+
 
 #calendar {
 	margin-right: 80px;
 	margin-left:  80px;
 }
+
+
+
 

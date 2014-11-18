@@ -1,21 +1,36 @@
-<h2>Log in</h2>
+<%= render 'staticpages/big_logo' %>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  
-<div><%= f.label :email %><br />
-<%= f.email_field :email, autofocus: true %></div>
+<div class="container">
+  <div class="row">
+		<div id="welcome-client" class="welcome col-md-6">
+			<%= link_to image_tag("WelcomeCustomer.jpg"), new_customer_session_path %>
+		</div>
+    <div id="designer-login" class="welcome col-md-6">
+      
+			<h2>Log in</h2>
 
-  
-<div><%= f.label :password %><br />
-<%= f.password_field :password, autocomplete: "off" %></div>
+			<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+			  
+			<div><%= f.label :email %><br />
+			<%= f.email_field :email, autofocus: true %></div>
+
+			  
+			<div><%= f.label :password %><br />
+			<%= f.password_field :password, autocomplete: "off" %></div>
 
 
-<% if devise_mapping.rememberable? -%>    
-<div>  <%= f.check_box :remember_me %>
-       <%= f.label :remember_me %></div>
-  <% end -%>
+			<% if devise_mapping.rememberable? -%>    
+			<div>  <%= f.check_box :remember_me %>
+			       <%= f.label :remember_me %></div>
+			  <% end -%>
 
-<div><%= f.submit "Log in" %></div>
-<% end %>
+			<div><%= f.submit "Log in" %></div>
+			<% end %>
 
-<%= render "brands/shared/links" %>
+			<%= render "brands/shared/links" %>
+
+    </div>
+  </div>
+</div>
+
+

@@ -1,0 +1,23 @@
+
+@import "partials/sizes";
+@import "partials/typography";
+
+// Logo
+
+.logo-container {
+	width: $app-width;
+	border: 1px solid lightgrey;
+	margin-top: 15px;
+}
+
+#big-logo {
+	overflow: auto;
+	width: $big-logo-width;
+	border: $big-logo-border solid black;
+}
+
+// Navbar
+
+
+
+
