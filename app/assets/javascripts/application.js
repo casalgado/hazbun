@@ -25,6 +25,7 @@ var ready = function() {
     $('#calendar').fullCalendar({
     	events: gon.appointments,
         theme: true,
+        height: 550,
         header: {left:  'today',
         	   center: 'prev title next',
     			right:  'month,agendaWeek,agendaDay' },

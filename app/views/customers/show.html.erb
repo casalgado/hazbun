@@ -1,71 +1,123 @@
+<div class="container customer-show">
+	<div class="row">
+		<div id="" class="show-col col-md-6">
 
+				<div >
+					<h3 id="datos">Datos</h3>
 
-<h3>Datos</h3>
-	<ul>
-		<li> <%= @customer.nombre_completo %>      </li>
-		<li> <%= @customer.telefono  %>            </li>
-		<li> <%= @customer.direccion %>            </li>
-		<li> <%= @customer.email %>                </li>
-		<% if @customer.fecha_de_nacimiento %>
-			<li> <%= @customer.fecha_de_nacimiento.strftime '%b %d' %> </li>
-		<% end %>
-	</ul>
-	<div id="customer_picture"> <%= image_tag @customer.picture_url(:thumb).to_s  %></div>
-<p><%= link_to "Editar" ,  edit_customer_path(@customer) %></p>
+						<div class="row">
 
-<h3>Actividad</h3>
-	<ul>
-	<% for order in @customer.ordenes_abiertas %>
-		<li> <%= link_to "#{order.created_at.strftime '%b %Y'}", customer_order_path(@customer, order)  %> </li>
-		<ul>
-			<% for item in order.items %>
-				<li> <%= item.item_type.item_type %> para <%= item.occasion.occasion %> </li>
-				<li><div id="item_picture"> <%= image_tag item.picture_url(:thumb).to_s  %></div></li>
+						<div id="" class="col-md-6">
+							<div id="customer_picture"> <%= image_tag @customer.picture_url(:thumb).to_s %></div>
+						</div>
+
+						 <div id="" class="col-md-6">
+
+							<ul id='customer-info'>
+								<li> <span class="glyphicon glyphicon-user" aria-hidden="true"></span> 
+									&nbsp; <%= @customer.nombre_completo %>      </li>
+								<li> <span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span>
+									&nbsp; <%= @customer.telefono  %>            </li>
+								<li> <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+									&nbsp; <%= @customer.direccion %>            </li>
+								<li> <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
+									&nbsp; <%= @customer.email %>                </li>
+								<% if @customer.fecha_de_nacimiento %>
+									<li> <span class="glyphicon glyphicon-gift" aria-hidden="true"></span>
+										&nbsp; <%= @customer.fecha_de_nacimiento.strftime '%b %d' %> </li>
+								<% end %>
+							<div class='customer-show-align-right'>
+							<li > <%= link_to "Editar" ,  edit_customer_path(@customer) %></li></div>
+							</ul>
+						</div>
+
+				</div>
+			</div>
+
+			<div id="medidas">
+				<h3>Medidas</h3>
+					<% if @measurement %>
+					<ul>
+						<li> Talle Frente  : <%= @measurement.talle_frente %> </li>
+						<li> Talle Espalda : <%= @measurement.talle_espalda %> </li>
+						<li> Imperio       : <%= @measurement.imperio %> </li>
+						<li> Contorno      : <%= @measurement.contorno %> </li>
+						<li> Espalda       : <%= @measurement.espalda %> </li>
+						<li> Busto         : <%= @measurement.busto %> </li>
+						<li> Cintura       : <%= @measurement.cintura %> </li>
+						<li> Cadera        : <%= @measurement.cadera %> </li>
+						<li> Costado       : <%= @measurement.costado %> </li>
+						<li> Cotilla       : <%= @measurement.cotilla %> </li>
+						<li> Hombro        : <%= @measurement.hombro %> </li>
+				  </ul>
+			  	<% end %>
+			  	<div class='customer-show-align-right'>
+			  	<p><%= link_to "Actualizar Medidas", new_customer_measurement_path(:customer_id => @customer.id) %></p>
+			  	</div>
+			 </div>
+
+		</div>
+
+		<div id="" class="show-col col-md-6">
+			<ul class="activity-history-header">
+				<li class= <%= @history == 'true' ? "show-active" : 'show-inactive' %>> <h3><%= link_to 'Historia', customer_path(@customer, history: true) %></h3></li>
+				<li class= <%= @history == 'true' ? "show-inactive" : 'show-active' %>> <h3><%= link_to 'Actividad', customer_path(@customer) %></h3></li>
+			</ul>
+			<% if @history %>
+
+				
+					<ul>
+					<% for order in @customer.ordenes_cerradas %>
+						<li> <%= link_to "#{order.created_at.strftime '%b %Y'}", customer_order_path(@customer, order)  %> </li>
+						<ul>
+							<% for item in order.items %>
+								<li> <%= item.item_type.item_type %> para <%= item.occasion.occasion %> </li>
+								<li><div id="item_picture"> <%= image_tag item.picture_url(:thumb).to_s  %></div></li>
+							<% end %>
+						</ul>
+					<% end %>
+				  </ul>
+
+			<% else %>
+
+			
+				<ul>
+				<% for order in @customer.ordenes_abiertas %>
+					<li> <%= link_to "#{order.created_at.strftime '%b %Y'}", customer_order_path(@customer, order)  %> </li>
+					<ul>
+					<% for item in order.items %>
+						<li> <%= item.item_type.item_type %> para <%= item.occasion.occasion %> </li>
+						<li><div id="item_picture"> <%= image_tag item.picture_url(:thumb).to_s  %></div></li>
+					<% end %>
+					</ul>
+				<% end %>
+			 </ul>
+
 			<% end %>
-		</ul>
-	<% end %>
-  </ul>
 
-<h3>Historia</h3>
-	<ul>
-	<% for order in @customer.ordenes_cerradas %>
-		<li> <%= link_to "#{order.created_at.strftime '%b %Y'}", customer_order_path(@customer, order)  %> </li>
-		<ul>
-			<% for item in order.items %>
-				<li> <%= item.item_type.item_type %> para <%= item.occasion.occasion %> </li>
-				<li><div id="item_picture"> <%= image_tag item.picture_url(:thumb).to_s  %></div></li>
-			<% end %>
-		</ul>
-	<% end %>
-  </ul>
+			<div class='customer-show-align-right'>
+				<% unless @customer.orders.empty? %>
+					<% unless @customer.has_open_order? %>
+						<p><%= link_to "Nueva Orden", new_customer_order_path(@customer) %></p>
+					<% end %>
+				<% else %>
+						<p><%= link_to "Nueva Orden", new_customer_order_path(@customer) %></p>
+				<% end %>
+						<p><%= link_to "Nueva Cita" ,  new_customer_appointment_path(@customer) %></p>
+			</div>
 
-<h3>Medidas</h3>
-	<% if @measurement %>
-	<ul>
-		<li> Talle Frente  : <%= @measurement.talle_frente %> </li>
-		<li> Talle Espalda : <%= @measurement.talle_espalda %> </li>
-		<li> Imperio       : <%= @measurement.imperio %> </li>
-		<li> Contorno      : <%= @measurement.contorno %> </li>
-		<li> Espalda       : <%= @measurement.espalda %> </li>
-		<li> Busto         : <%= @measurement.busto %> </li>
-		<li> Cintura       : <%= @measurement.cintura %> </li>
-		<li> Cadera        : <%= @measurement.cadera %> </li>
-		<li> Costado       : <%= @measurement.costado %> </li>
-		<li> Cotilla       : <%= @measurement.cotilla %> </li>
-		<li> Hombro        : <%= @measurement.hombro %> </li>
-  </ul>
-  <% end %>
+		</div>
+
+	</div>
+</div>
+
+
+
+
+
+
+
+
 	
-<p><%= link_to "Actualizar Medidas", new_customer_measurement_path(:customer_id => @customer.id) %></p>
-
-<% unless @customer.orders.empty? %>
-	<% unless @customer.has_open_order? %>
-		<p><%= link_to "Nueva Orden", new_customer_order_path(@customer) %></p>
-	<% end %>
-<% else %>
-	<p><%= link_to "Nueva Orden", new_customer_order_path(@customer) %></p>
-<% end %>
-
-<p><%= link_to "Nueva Cita" ,  new_customer_appointment_path(@customer) %></p>
 
 
