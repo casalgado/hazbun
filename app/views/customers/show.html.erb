@@ -26,10 +26,9 @@
 									<li> <span class="glyphicon glyphicon-gift" aria-hidden="true"></span>
 										&nbsp; <%= @customer.fecha_de_nacimiento.strftime '%b %d' %> </li>
 								<% end %>
-							<div class='customer-show-align-right'>
-							<li > <%= link_to "Editar" ,  edit_customer_path(@customer) %></li></div>
+								<li> &nbsp; </li>
+							<li > <%= link_to "Editar Datos" ,  edit_customer_path(@customer) %></li></div>
 							</ul>
-						</div>
 
 				</div>
 			</div>

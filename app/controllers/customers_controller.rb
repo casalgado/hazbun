@@ -34,7 +34,8 @@ class CustomersController < ApplicationController
 	def show
 		@customer = Customer.find(params[:id])
 		@measurement = @customer.measurements.last
-    @history = params[:history] || false
+    params[:history] ||= nil
+    @history = params[:history]
 	end
 
   def index

@@ -15,6 +15,11 @@
 		margin-left: 110px;
 	}
 
+	a {
+
+		color: #c4c4c4;
+	}
+
 	h3 {
 		display: inline;
 	}
@@ -34,8 +39,19 @@
 
 #customer-info {
 	position:relative;
-	right: 20px;
-	top: 10px;
+	right: 50px;
+	top: 17px;
+
+	li {
+		width: 220px;
+		text-overflow: ellipsis;
+		overflow: hidden;
+  	white-space: nowrap;
+	}
+
+	li:last-child {
+		text-align: right;
+	}
 
 }
 
@@ -53,6 +69,9 @@
 
 #datos {
 	margin-top: 0px;
+
+
+
 }
 
 .show-inactive {
