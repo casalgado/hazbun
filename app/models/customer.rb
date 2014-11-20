@@ -58,6 +58,16 @@ class Customer < ActiveRecord::Base
       true
     end
   end
+
+  # To determine if customer has a next appointment set
+
+  def has_appointment?
+    if self.appointments.last.date >= Date.today
+      true
+    else
+      false
+    end
+  end
   
   # Los siguientes tres metodos son para que una diseñadora pueda crear una customer sin contraseña.
   # Luego la customer puede crear una contraseña para entrar a su cuenta siguiendo el mail de confirmacion.

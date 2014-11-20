@@ -1,8 +1,9 @@
+<div class="app-width">
 <% @order.errors.each do |attr,msg|  %>
 	 <%=msg%>
 	<% end %>
 	
-<h3> <%= @customer.nombre_completo %> </h3>
+<h3> Nueva orden para <%= @customer.nombre_completo %> </h3>
 
 <%= form_for [@customer, @order] do |f| %>
 
@@ -22,3 +23,5 @@
 
 
 	<% end %>
+
+</div>

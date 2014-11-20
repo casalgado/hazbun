@@ -41,7 +41,7 @@ class CustomersController < ApplicationController
   def index
   	@search = current_brand.customers.search(params[:q])
   	@q = params[:q]
-    @results = @search.result
+    @results = @search.result.order("nombre ASC")
     @customers = []
     if params[:actividad] == '1'
     	@results.each do |customer|

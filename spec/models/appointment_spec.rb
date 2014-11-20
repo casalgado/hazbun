@@ -20,19 +20,19 @@ describe Appointment, :type => :model do
 
 		context "check positive test" do
 			it "should return only todays appointments" do
-				expect(Appointment.de_hoy).to eq [@from_dashboard, @today, @today_2]
+				expect(Appointment.today).to eq [@from_dashboard, @today, @today_2]
 			end
 		end
 
 		context "check negative test 1" do
 			it "should not return appointments from yesterday" do
-				expect(Appointment.de_hoy).not_to include @yesterday
+				expect(Appointment.today).not_to include @yesterday
 			end
 		end	
 
 		context "check negative test 2" do
 			it "should not return appointments from tomorrow" do
-				expect(Appointment.de_hoy).not_to include @tomorrow
+				expect(Appointment.today).not_to include @tomorrow
 			end
 		end
 

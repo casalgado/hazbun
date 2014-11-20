@@ -21,16 +21,9 @@ class Appointment < ActiveRecord::Base
 
 	# Methods:	
 
-	# Para validar
+	# To show todays events
 
-	def date_must_be_later_than_today
-		errors.add(:date, "Fecha invalida") if
-      !date.blank? and date < Date.today
-	end
-
-	# Para mostrar las citas del dia 
-
-	def self.de_hoy
+	def self.today
 		Appointment.where(date: Time.now.beginning_of_day..Time.now.end_of_day)
 	end
 
@@ -48,6 +41,15 @@ class Appointment < ActiveRecord::Base
 		color = '#ec7151' if self.appointment_type_id == 3
 		color = '#28abdb' if self.appointment_type_id == 4
 		color
+	end
+
+	private
+
+		# Para validar
+
+	def date_must_be_later_than_today
+		errors.add(:date, "Fecha invalida") if
+      !date.blank? and date < Date.today
 	end
 
 

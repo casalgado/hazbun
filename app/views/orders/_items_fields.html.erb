@@ -1,10 +1,11 @@
 
 <fieldset>
-<%= f.label :item_type %>
+<%= f.label :tipo_de_prenda %>
 <%= f.select(:item_type_id, @item_types.collect {|c| [ c.item_type, c.id ] }) %>
 
 <%= f.label :occasion %>
 <%= f.select(:occasion_id, @occasions.collect {|c| [ c.occasion, c.id ] }) %>
+
 
 <%= f.label :picture %>
 <%= f.file_field :picture %>
