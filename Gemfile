@@ -24,6 +24,7 @@ gem 'carrierwave', '0.10.0'
 gem 'bootstrap-sass', '3.2.0.2'
 gem 'autoprefixer-rails', '4.0.0.1'
 gem 'bootstrap_form'
+gem "faker", '1.4.3'
 
 group :doc do
   gem 'sdoc', require: false
@@ -45,7 +46,6 @@ group :development, :test do
 end
 
 group :test do
-	gem "faker", '1.4.3'
 	gem "capybara", '2.4.4'
 	gem "database_cleaner", '1.3.0'
 	gem "launchy", '2.4.3'
