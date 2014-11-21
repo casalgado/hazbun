@@ -5,9 +5,12 @@
 	
 <h3> Nueva orden para <%= @customer.nombre_completo %> </h3>
 
-<%= form_for [@customer, @order] do |f| %>
+<div class="container">
+	<div class="row">
 
-	<%= f.hidden_field :customer_id, value: @customer.id %>
+		<%= form_for [@customer, @order] do |f| %>
+
+	  <%= f.hidden_field :customer_id, value: @customer.id %>
 
 			<br />
 			<%= f.fields_for :items do |builder| %>
@@ -17,11 +20,19 @@
 
   		<% end %>
 
-  <%= link_to_add_fields "Agregar Prenda", f, :items %>
-
-	<%= f.submit %>
-
+  <div class="row">
+  	<div id="" class="app-width col-md-12">
+  		<div id="item-fields-add"><%= link_to_add_fields "Agregar Prenda", f, :items %></div>
+			<div class="submit-order"><%= f.submit "Crear Orden" %></div>
+		</div>
+	</div>
 
 	<% end %>
+
+	</div>
+</div>
+
+
+
 
 </div>

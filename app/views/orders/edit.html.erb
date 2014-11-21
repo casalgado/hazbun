@@ -1,15 +1,16 @@
-
+<div class="app-width">
 <% @order.errors.each do |attr,msg|  %>
 	 <%=msg%>
 	<% end %>
 
+<h3> Editar orden de <%= @customer.nombre_completo %> </h3>
 
-<h3> Edit </h3>
-<h3> <%= @customer.nombre_completo %> </h3>
+<div class="container">
+	<div class="row">
 
-<%= form_for [@customer, @order] do |f| %>
+		<%= form_for [@customer, @order] do |f| %>
 
-	<%= f.hidden_field :customer_id, value: @customer.id %>
+		<%= f.hidden_field :customer_id, value: @customer.id %>
 
 			<br />
 			<%= f.fields_for :items do |builder| %>
@@ -19,10 +20,20 @@
 
   		<% end %>
 
-  <%= link_to_add_fields "Agregar Prenda", f, :items %>		
-
-	<%= f.submit %>
-
+  <div class="row">
+  	<div id="" class="app-width col-md-12">
+  <div id="item-fields-add"><%= link_to_add_fields "Agregar Prenda", f, :items %></div>
+  <br />
+	<div id="submit-order"><%= f.submit "Editar Orden" %></div>
+		</div>
+	</div>
 
 	<% end %>
 
+	</div>
+</div>
+
+
+
+
+</div>

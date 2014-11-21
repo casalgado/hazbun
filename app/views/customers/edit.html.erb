@@ -1,36 +1,30 @@
+<div class="app-width">
 
-<ul>
-<% @customer.errors.each do |attr,msg|  %>
-	 <li><%=msg%></li>
-	<% end %>
-</ul>
+<%= bootstrap_form_for @customer, :html => { :multipart => true } do |f| %>
 
-<%= form_for @customer, :html => { :multipart => true } do |f| %>
+  <div class="customer-form-margin"> 
+    <%= f.text_field :nombre, layout: :horizontal %> </div>
 
-	<%= f.label :nombre %>
-  <%= f.text_field(:nombre) %>
+  <div class="customer-form-margin"> 
+    <%= f.text_field :apellido, layout: :horizontal %> </div>
 
-  <%= f.label :apellido %>
-  <%= f.text_field(:apellido) %>
+  <div class="customer-form-margin"> 
+    <%= f.text_field :email, layout: :horizontal %> </div>
 
-  <%= f.label :email %>
-  <%= f.text_field(:email) %>
+  <div class="customer-form-margin"> 
+    <%= f.text_field :direccion, layout: :horizontal %> </div>
 
- 	<%= f.label :direccion %>
-  <%= f.text_field(:direccion) %>
+  <div class="customer-form-margin"> 
+    <%= f.text_field :telefono, layout: :horizontal %> </div>
 
- 	<%= f.label :telefono %>
-  <%= f.text_field(:telefono) %>
-  
-  <%= f.label :fecha_de_nacimiento %>
-  <%= f.date_select :fecha_de_nacimiento, :order => [:day, :month, :year], :start_year => Time.now.year - 70, :end_year => Time.now.year - 10 %>
+  <div class="customer-form-margin"> 
+    <%= f.date_select :fecha_de_nacimiento, layout: :horizontal, :order => [:day, :month, :year], :start_year => Time.now.year - 70, :end_year => Time.now.year - 10 %> </div>
+  <div class="customer-file-form-margin"> 
+    <%= f.file_field :picture, layout: :horizontal, label: "Imagen" %> </div>
+  <div class="customerfile-form-margin"> 
+    <%= f.text_field :remote_picture_url, layout: :horizontal, label: "Url de Imagen" %> </div>
 
-  <%= f.label :picture %>
-  <%= f.file_field :picture %>
-
-  <%= f.label :remote_picture_url %>
-  <%= f.text_field :remote_picture_url %>
-
-  <%= f.submit "Actualizar"%>
+  <%= f.submit "Actualizar" %>
 
 <% end %>
+</div>

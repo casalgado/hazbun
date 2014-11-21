@@ -11,6 +11,7 @@
  *= require jquery-ui/datepicker
  *= require jquery-ui/slider
  *= require fullcalendar
+ *= require rails_bootstrap_forms
  *= require_self
  *= require_tree .
  */
@@ -25,6 +26,10 @@
 li.back-hover a:hover { 
 	background-color: black !important; 
 	color: lightgray !important;
+}
+
+.test-borders {
+	border: 1px solid lightgray;
 }
 
 .dropdown-menu li:hover .sub-menu {
@@ -61,6 +66,12 @@ li.back-hover a:hover {
 	margin-right: auto;
 	margin-left: auto;
 	}
+
+.inline {
+	display: inline;
+	margin-top: 400px;
+}
+
 
 
 #calendar {

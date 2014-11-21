@@ -62,8 +62,10 @@ class Customer < ActiveRecord::Base
   # To determine if customer has a next appointment set
 
   def has_appointment?
-    if self.appointments.last.date >= Date.today
-      true
+    unless self.appointments.empty?
+      if self.appointments.last.date >= Date.today
+        true
+      end
     else
       false
     end
