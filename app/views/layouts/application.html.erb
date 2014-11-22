@@ -8,12 +8,13 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<div class="app-width">
 <%= render 'layouts/header' %>
 
 <%= yield %>
 
 <%= render 'layouts/footer' %>
+</div>
 
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>

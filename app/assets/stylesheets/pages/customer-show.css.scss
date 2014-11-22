@@ -69,9 +69,6 @@
 
 #datos {
 	margin-top: 0px;
-
-
-
 }
 
 .show-inactive {
@@ -84,4 +81,14 @@
 		a:visited {
 		color: #333333;
 	}
+}
+
+.picture-container {
+	width: 200px;
+}
+
+.picture-container img {
+	display: block;
+	margin: 0px auto;
+
 }
