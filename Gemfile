@@ -24,7 +24,6 @@ gem 'bootstrap-sass', '3.2.0.2'
 gem 'autoprefixer-rails', '4.0.0.1'
 gem 'bootstrap_form'
 gem "faker", '1.4.3'
-gem 'debugger', '1.6.8'
 gem 'byebug', '3.5.1'
 
 group :doc do
@@ -41,6 +40,7 @@ group :development, :test do
 	gem "factory_girl_rails", "4.5.0"
 	gem 'guard', '2.8.2'
 	gem "guard-rspec", '4.3.1'
+	gem 'debugger', '1.6.8'
 
 
 end
