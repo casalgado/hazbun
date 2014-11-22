@@ -1,7 +1,8 @@
 <div class="app-width">
-<div class="container">
-	<div class="row">
-		<div id="customer-search-form" class="col-md-7">
+	<div class="container">
+		<div class="row">
+
+			<div id="customer-search-form" class="col-md-6">
 			<%= search_form_for @search do |f| %>
 			<%= f.label :nombre_cont, "Nombre" %>
 			<%= f.text_field :nombre_cont %>
@@ -11,51 +12,48 @@
 
 			<%= f.submit "Buscar" %>
 			
-		<% end %>
-		</div>
-		<div id="" class="col-md-5">
-		<button type="button" class="btn btn-primary"><%= link_to "Activas" , customers_path(:actividad => "1", :q => @q) %></button>
-		<button type="button" class="btn btn-primary"><%= link_to "Inactivas", customers_path(:actividad => "2", :q => @q) %></button>
-		<button type="button" class="btn btn-primary"><%= link_to "Todas", customers_path %></button>
-		<button type="button" class="btn btn-info"><%= link_to("Nueva Clienta", new_customer_path) %></button>
+			<% end %>
+			</div>
+
+			<div id="" class="col-md-4">
+			<button type="button" class="btn btn-primary"><%= link_to "Activas" , customers_path(:actividad => "1", :q => @q) %></button>
+			<button type="button" class="btn btn-primary"><%= link_to "Inactivas", customers_path(:actividad => "2", :q => @q) %></button>
+			<button type="button" class="btn btn-primary"><%= link_to "Todas", customers_path %></button>
+			<button type="button" class="btn btn-info"><%= link_to("Nueva Clienta", new_customer_path) %></button>
+
+			</div>
 
 		</div>
+
 	</div>
-</div>
 
 
+	<br />
+	<br />
 
 
+	<table class="table table-condensed table-hover table-settings">
+		<tr>
+			<th> Nombre </th>
+			<th> Estado </th>
+			<th> Agenda </th>
+		</tr> 
+		<% for customer in @customers %>
+		<tr>
+			<td><%= link_to("#{customer.nombre_completo}", customer_path(:id => customer.id)) %> </td>
+				<% unless customer.ordenes_abiertas.empty? %> 
+				  <td> <%= link_to("Activa", customer_order_path(customer, customer.orders.last)) %> </td>
+				<% else %> 
+				  <td> <%= link_to("Inactiva", new_customer_order_path(customer)) %> </td>
+				<% end %>
 
-
-<br />
-<br />
-
-
-<table class="table table-condensed table-hover table-settings">
-	<tr>
-		<th> Nombre </th>
-		<th> Estado </th>
-		<th> Agenda </th>
-	</tr> 
-	<% for customer in @customers %>
-	<tr>
-		<td><%= link_to("#{customer.nombre_completo}", customer_path(:id => customer.id)) %> </td>
-			<% unless customer.ordenes_abiertas.empty? %> 
-			  <td> <%= link_to("Activa", customer_order_path(customer, customer.orders.last)) %> </td>
-			<% else %> 
-			  <td> <%= link_to("Inactiva", new_customer_order_path(customer)) %> </td>
+				<% if customer.has_appointment? %>
+				  <td> <%= "#{customer.appointments.last.date.strftime "%b %d"}" %> </td>
+				<% else %>
+				  <td> <%= link_to("nueva cita" , new_customer_appointment_path(customer)) %> </td>
+				<% end %>
 			<% end %>
-
-			<% if customer.has_appointment? %>
-			  <td> <%= "#{customer.appointments.last.date.strftime "%b %d"}" %> </td>
-			<% else %>
-			  <td> <%= link_to("nueva cita" , new_customer_appointment_path(customer)) %> </td>
-			<% end %>
-		<% end %>
-	</tr>
-</table>
-
-
+		</tr>
+	</table>
 
 </div>

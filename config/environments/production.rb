@@ -79,5 +79,23 @@ Hazbun::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   # Agregado por mi
-  config.action_mailer.default_url_options = {:host => 'informedigital.herokuapp.com'}
+  config.action_mailer.default_url_options = {:host => 'hazbun.herokuapp.com'}
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+  address: "smtp.gmail.com",
+  port: 587,
+  domain: "hazbun.herokuapp.com",
+  authentication: "plain",
+  enable_starttls_auto: true,
+  user_name: ENV["GMAIL_USERNAME"],
+  password:  ENV["GMAIL_PASSWORD"]
+}
+
+  # config.action_mailer.default_url_options = { :host => 'reportedigital.herokuapp.com' }
+  # # ActionMailer Config
+  # # Setup for production - deliveries, no errors raised
+  # config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.default :charset => "utf-8"
 end
