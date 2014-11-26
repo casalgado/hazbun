@@ -25,6 +25,8 @@ gem 'autoprefixer-rails', '4.0.0.1'
 gem 'bootstrap_form'
 gem "faker", '1.4.3'
 gem 'byebug', '3.5.1'
+gem "fog", "~> 1.3.1"
+gem 'figaro'
 
 group :doc do
   gem 'sdoc', require: false
