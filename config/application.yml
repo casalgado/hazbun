@@ -9,3 +9,6 @@
 GMAIL_USERNAME: "hazbun.app@gmail.com"
 GMAIL_PASSWORD: "1Awareness"
 
+AWS_ACCESS_KEY: "asdfasdfasdf"
+AWS_SECRET_KEY: "asdfasdfasdfasdf"
+AWS_BUCKET: "enter-your-bucket-name-here"
