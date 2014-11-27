@@ -59,5 +59,6 @@
 		</tr>
 	</table>
 
-	<%= will_paginate @customers %>
+
+	<div class="center paginate-links"><%= will_paginate @customers, renderer: BootstrapPagination::Rails %></div>
 </div>

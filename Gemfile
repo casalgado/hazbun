@@ -32,6 +32,7 @@ gem 'roo', '~> 1.13.2'
 gem 'axlsx', '~> 2.0.1'
 gem 'axlsx_rails', '~> 0.2.0'
 gem 'will_paginate', '~> 3.0.6'
+gem 'will_paginate-bootstrap'
 
 
 group :doc do
