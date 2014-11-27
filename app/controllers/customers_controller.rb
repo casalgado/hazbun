@@ -39,21 +39,26 @@ class CustomersController < ApplicationController
 	end
 
   def index
-  	@search = current_brand.customers.search(params[:q])
-  	@q = params[:q]
-    @results = @search.result.order("first_name ASC")
-    @customers = []
+    @actividad = params[:actividad] || nil
     if params[:actividad] == '1'
-    	@results.each do |customer|
-    		@customers << customer if customer.activa?
-    	end
+      @active_customers = current_brand.customers.active
+      @search = @active_customers.search(params[:q])
+      @q = params[:q]
+      @results = @search.result.order("first_name ASC")
+
     elsif params[:actividad] == '2'
-    	 @results.each do |customer|
-    		@customers << customer unless customer.activa?
-    	end
+      @inactive_customers = current_brand.customers.inactive
+      @search = @inactive_customers.search(params[:q])
+      @q = params[:q]
+      @results = @search.result.order("first_name ASC")
+
     else
-    	@customers = @results
+      @search = current_brand.customers.search(params[:q])
+      @q = params[:q]
+      @results = @search.result.order("first_name ASC")
     end
+
+    @customers = @results.paginate(:page => params[:page], :per_page => 15)
   end
 
   private

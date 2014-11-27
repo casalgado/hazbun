@@ -6,7 +6,7 @@ FactoryGirl.define do
   		first_name  "Judy"
 			last_name   "Hazbun"
 			brand_name  "Judy Hazbun"
-			email       "judy@hazbun.com"
+			email       "test@hazbun.com"
 			password    'domidomi'
 			password_confirmation 'domidomi'
 

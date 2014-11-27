@@ -32,6 +32,14 @@ class Customer < ActiveRecord::Base
     joins(:appointments).group("customers.id").merge(Appointment.appointment_in_future)
    }
 
+  scope :active,   -> { 
+    joins(:orders).group("customers.id").merge(Order.open)
+  }
+
+  scope :inactive, -> { 
+    where.not(id: [Customer.active.collect { |customer| customer.id }]) 
+  }
+
   # Uploader:
 
   mount_uploader :picture, PictureUploader
@@ -39,24 +47,15 @@ class Customer < ActiveRecord::Base
   # Methods:
 
 
-  # Este metodo devuelve el nombre completo de una customer
+  # This method returns the customers full name
   def full_name
   	[self.first_name, self.last_name].join(" ")
   end
 
-  # Estos dos metodos devuelven las open/closed orders que la customer tenga. 
-  def ordenes_abiertas
-    self.orders.where(:closed => false)
-  end
-
-  def ordenes_cerradas
-    self.orders.where(:closed => true)
-  end
-
-  # para determinar si la customer esta activa o no.
+  # Next method determines if customer is active. 
 
   def activa?
-    if self.ordenes_abiertas.empty? == true
+    if self.orders.open.empty? == true
       false
     else
       true

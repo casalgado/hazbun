@@ -102,7 +102,7 @@ RSpec.describe CustomersController, :type => :controller do
 				it "updates customer attributes" do
 					put :update, id: @customer, customer: attributes_for(:customer, first_name: "new_name")
 					@customer.reload
-					expect(@customer.first_name).to eq("new_name")
+					expect(@customer.first_name).to eq("New_name")
 				end
 
 				it "redirects to customer show page" do

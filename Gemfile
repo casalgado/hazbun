@@ -31,6 +31,7 @@ gem "spreadsheet", "0.9.8"
 gem 'roo', '~> 1.13.2'
 gem 'axlsx', '~> 2.0.1'
 gem 'axlsx_rails', '~> 0.2.0'
+gem 'will_paginate', '~> 3.0.6'
 
 
 group :doc do
