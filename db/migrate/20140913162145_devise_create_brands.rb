@@ -2,11 +2,12 @@ class DeviseCreateBrands < ActiveRecord::Migration
   def change
     create_table(:brands) do |t|
       ## Database authenticatable
-      t.string :nombre
-      t.string :apellido
-      t.string :direccion
-      t.string :telefono
-      t.string :marca
+      t.string :first_name
+      t.string :last_name
+      t.string :address
+      t.string :land_phone
+      t.string :mobile_phone
+      t.string :brand_name
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
 

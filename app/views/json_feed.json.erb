@@ -2,7 +2,7 @@
 [
 <% for appointment in @appointments %>
 {
-  title: <%= appointment.customer.nombre_completo %>,
+  title: <%= appointment.customer.full_name %>,
   start: <%= appointment.fecha %>
 }, 
 

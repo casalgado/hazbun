@@ -27,7 +27,7 @@
 					<% for appointment in @citas_de_hoy %>
 						<ul >
 							<li><%= appointment.appointment_type.appointment_type %> </li>
-							<li><%= link_to("#{appointment.customer.nombre_completo}", customer_path(:id => appointment.customer.id)) %> </li>
+							<li><%= link_to("#{appointment.customer.full_name}", customer_path(:id => appointment.customer.id)) %> </li>
 							<li><%= appointment.date.strftime "%l:%M %P" %> </li>
 							<br />
 						</ul>

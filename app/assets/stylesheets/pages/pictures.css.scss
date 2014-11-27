@@ -1,0 +1,39 @@
+// css for thumb pictures
+
+.thumb-container {
+	width: 200px;
+	height: 200px;
+	overflow: hidden;
+}
+
+.thumb-container img {
+	display: block;
+	margin: auto;
+}
+
+// css for mini pictures
+
+.mini-container {
+	width: 100px;
+	height: 100px;
+	overflow: hidden;
+}
+
+.mini-container img {
+	display: block;
+	margin: auto;
+}
+
+// css for large pictures
+
+.picture-container {
+	width: 480;
+	height: 480;
+	overflow: hidden;
+	padding: 0px;
+}
+
+.picture-container img {
+	display: block;
+	margin: auto;
+}

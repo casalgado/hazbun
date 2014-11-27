@@ -3,11 +3,16 @@ class DeviseCreateCustomers < ActiveRecord::Migration
     create_table(:customers) do |t|
       ## Database authenticatable
       t.belongs_to :brand
-      t.string     :nombre
-      t.string     :apellido
-      t.string     :direccion
-      t.string     :telefono
-      t.date       :fecha_de_nacimiento
+      t.string     :first_name
+      t.string     :last_name
+      t.string     :address
+      t.string     :marriage
+      t.string     :workplace
+      t.string     :city
+      t.string     :land_phone
+      t.string     :mobile_phone
+      t.date       :date_of_birth
+      t.string     :id_number
       t.string     :email,              null: false, default: ""
       t.string     :encrypted_password, null: false, default: ""
 

@@ -8,5 +8,4 @@ class Brand < ActiveRecord::Base
   has_many :appointments, through: :customers
   has_many :orders, through: :customers
 
-  # Marca.new(email:'judy@judy.com', password:'judyjudy', password_confirmation:'judyjudy')
 end

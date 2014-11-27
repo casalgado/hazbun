@@ -3,18 +3,18 @@ require 'faker'
 
 FactoryGirl.define do
   factory :brand do
-  		nombre    "Judy"
-			apellido  "Hazbun"
-			marca     "Judy Hazbun"
-			email     "judy@hazbun.com"
-			password  'domidomi'
+  		first_name  "Judy"
+			last_name   "Hazbun"
+			brand_name  "Judy Hazbun"
+			email       "judy@hazbun.com"
+			password    'domidomi'
 			password_confirmation 'domidomi'
 
 		factory :amalin_brand do
-			nombre   "Amalin"
-			apellido "de Hazbun"
-			marca  	 "Amalin de Hazbun"
-			email    "amalin@hazbun.com"
+			first_name "Amalin"
+			last_name  "de Hazbun"
+			brand_name "Amalin de Hazbun"
+			email      "amalin@hazbun.com"
 		end
     
   end

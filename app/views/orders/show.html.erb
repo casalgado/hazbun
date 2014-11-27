@@ -1,7 +1,7 @@
 <h1>Orden</h1>
 
 <ul>
-	<li><%= link_to "#{@order.customer.nombre_completo}", customer_path(@customer) %> </li>
+	<li><%= link_to "#{@order.customer.full_name}", customer_path(@customer) %> </li>
 	<% for item in @order.items %>
 		<ul>
 			<li><%= item.item_type.item_type %></li>
@@ -11,7 +11,7 @@
 	<!--		<li> <%= supply.supplies_per_items.last.quantity %> </li>   -->
 				</ul>
 				<% end %>
-			<li><div id="item_picture"> <%= image_tag item.picture_url(:thumb).to_s  %></div></li>
+			<li><div class="thumb-container"> <%= image_tag item.picture_url(:thumb).to_s  %></div></li>
 			<li><%= item.occasion.occasion %> </li>
 		</ul>
 	<% end %>

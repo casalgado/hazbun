@@ -18,11 +18,11 @@ class ApplicationController < ActionController::Base
 	protected
 
 	def configure_permitted_parameters
-	  devise_parameter_sanitizer.for(:sign_up) << :nombre
-	  devise_parameter_sanitizer.for(:sign_up) << :apellido
+	  devise_parameter_sanitizer.for(:sign_up) << :first_name
+	  devise_parameter_sanitizer.for(:sign_up) << :last_name
 
-    devise_parameter_sanitizer.for(:account_update) << :nombre
-    devise_parameter_sanitizer.for(:account_update) << :apellido
+    devise_parameter_sanitizer.for(:account_update) << :first_name
+    devise_parameter_sanitizer.for(:account_update) << :last_name
   end
 
   # --

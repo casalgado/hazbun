@@ -4,7 +4,7 @@
 <% for order in @orders %>
 
 	<ul>
-		<li><%= link_to("#{order.customer.nombre_completo}", customer_path(order.customer)) %></li>
+		<li><%= link_to("#{order.customer.full_name}", customer_path(order.customer)) %></li>
 		<ul>
 			<% for item in order.items %>
 				<li><%= item.item_type.item_type %> para <%= item.occasion.occasion %> </li>

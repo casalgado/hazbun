@@ -7,6 +7,10 @@ class Customer < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
+  # Callbacks
+
+  before_save :capitalize_names
+
   # Associations:
 
   belongs_to :brand
@@ -17,10 +21,10 @@ class Customer < ActiveRecord::Base
 
   # Validations:
 
-  validates :nombre  , presence: { message: "Nombre no debe estar en blanco" }  , length: { minimum: 3, message: "Nombre muy corto (minimo 3 caracteres)" } 
-  validates :apellido, presence: { message: "Apellido no debe estar en blanco" }, length: { minimum: 3, message: "Apellido muy corto (minimo 3 caracteres)" }
+  validates :first_name, presence: { message: "Nombre no debe estar en blanco" }  , length: { minimum: 3, message: "Nombre muy corto (minimo 3 caracteres)" } 
+  validates :last_name, presence: { message: "Apellido no debe estar en blanco" }, length: { minimum: 3, message: "Apellido muy corto (minimo 3 caracteres)" }
   validates :brand_id, presence: true
-  validates :email, presence: { message: "Email no debe estar en blanco" }, format: { with: /\A[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})\z/, message: "Email invalido" }
+  # validates :email, presence: { message: "Email no debe estar en blanco" }, format: { with: /\A[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})\z/, message: "Email invalido" }
 
   # Scopes
 
@@ -36,8 +40,8 @@ class Customer < ActiveRecord::Base
 
 
   # Este metodo devuelve el nombre completo de una customer
-  def nombre_completo
-  	[self.nombre, self.apellido].join(" ")
+  def full_name
+  	[self.first_name, self.last_name].join(" ")
   end
 
   # Estos dos metodos devuelven las open/closed orders que la customer tenga. 
@@ -97,6 +101,28 @@ class Customer < ActiveRecord::Base
     else
       false
     end
-    
   end
+
+  # this method creates customer instances from an excell spreadsheet
+
+  def self.load_from_excel
+    doc = Roo::Excelx.new(Rails.root.join('lib/assets/hazbun_customer_database.xlsx').to_s)
+    header = doc.row(1)
+      (2..2039).each do |count|
+        db_row = doc.row(count)
+        params = Hash[header.zip db_row]
+        customer = Customer.new(params)
+        customer.save
+      end   
+  end
+
+  # To capitalize database names before save
+
+  def capitalize_names
+    self.first_name = self.first_name.capitalize
+    self.last_name = self.last_name.capitalize
+  end
+
+
+
 end

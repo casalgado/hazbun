@@ -5,8 +5,6 @@ Hazbun::Application.routes.draw do
 
   devise_for :brands, controllers: { sessions: "brands/sessions" }
   devise_for :customers, path: 'c', :controllers => {:confirmations => 'confirmations'}
-	devise_for :marcas
-
   
 
   devise_scope :customer do

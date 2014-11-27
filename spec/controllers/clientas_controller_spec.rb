@@ -100,13 +100,13 @@ RSpec.describe CustomersController, :type => :controller do
 				end
 
 				it "updates customer attributes" do
-					put :update, id: @customer, customer: attributes_for(:customer, nombre: "new_name")
+					put :update, id: @customer, customer: attributes_for(:customer, first_name: "new_name")
 					@customer.reload
-					expect(@customer.nombre).to eq("new_name")
+					expect(@customer.first_name).to eq("new_name")
 				end
 
 				it "redirects to customer show page" do
-					put :update, id: @customer, customer: attributes_for(:customer, nombre: "new_name")
+					put :update, id: @customer, customer: attributes_for(:customer, first_name: "new_name")
 					expect(response).to redirect_to customer_path(@customer)
 				end
 

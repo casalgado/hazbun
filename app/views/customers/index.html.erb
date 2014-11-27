@@ -4,11 +4,11 @@
 
 			<div id="customer-search-form" class="col-md-6">
 			<%= search_form_for @search do |f| %>
-			<%= f.label :nombre_cont, "Nombre" %>
-			<%= f.text_field :nombre_cont %>
+			<%= f.label :first_name_cont, "Nombre" %>
+			<%= f.text_field :first_name_cont %>
 
-			<%= f.label :apellido_cont, "Apellido" %>
-			<%= f.text_field :apellido_cont %>
+			<%= f.label :last_name_cont, "Apellido" %>
+			<%= f.text_field :last_name_cont %>
 
 			<%= f.submit "Buscar" %>
 			
@@ -40,11 +40,11 @@
 		</tr> 
 		<% for customer in @customers %>
 		<tr>
-			<td><%= link_to("#{customer.nombre_completo}", customer_path(:id => customer.id)) %> </td>
+			<td><%= link_to("#{customer.full_name}", customer_path(:id => customer.id)) %> </td>
 				<% unless customer.ordenes_abiertas.empty? %> 
-				  <td> <%= link_to("Activa", customer_order_path(customer, customer.orders.last)) %> </td>
+				  <td> <%= link_to("#{customer.orders.last.created_at.strftime '%b %Y'}", customer_order_path(customer, customer.orders.last)) %> </td>
 				<% else %> 
-				  <td> <%= link_to("Inactiva", new_customer_order_path(customer)) %> </td>
+				  <td> <%= link_to("Nueva Orden", new_customer_order_path(customer)) %> </td>
 				<% end %>
 
 				<% if customer.has_appointment? %>

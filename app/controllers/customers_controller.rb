@@ -41,7 +41,7 @@ class CustomersController < ApplicationController
   def index
   	@search = current_brand.customers.search(params[:q])
   	@q = params[:q]
-    @results = @search.result.order("nombre ASC")
+    @results = @search.result.order("first_name ASC")
     @customers = []
     if params[:actividad] == '1'
     	@results.each do |customer|
@@ -59,7 +59,7 @@ class CustomersController < ApplicationController
   private
 
   def customer_params
-    allow = [:nombre, :apellido, :direccion, :telefono, :email, :fecha_de_nacimiento, :picture, :remote_picture_url]
+    allow = [:first_name, :last_name, :address, :land_phone, :email, :date_of_birth, :picture, :remote_picture_url]
     params.require(:customer).permit(allow)
   end
 

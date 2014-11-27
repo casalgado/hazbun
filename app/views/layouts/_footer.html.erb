@@ -2,9 +2,25 @@
 
 		<% if customer_signed_in? or brand_signed_in? %>
 		<% else %>
-		<div id="navbar-links" class="center">
-			<ul class="center">
-		<%= render 'layouts/navbar_links' %>
-			</ul>
-		</div>
+		
+<nav class="navbar navbar-inverse navbar-footer" role="navigation">
+  <div class="container-fluid">
+
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+      <ul class="nav navbar-nav">
+      </ul>
+      
+      <ul class="nav navbar-nav navbar-footer-li">
+		   	<%= render 'layouts/navbar_links' %>
+      	<%= render 'layouts/navbar_dropdown' %>
+      </ul>
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+
 		<% end %>

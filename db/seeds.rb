@@ -27,3 +27,10 @@
   supply_names.each do |supply|
     Supply.find_or_create_by!(:supply_name => supply, :supply_color => 'azul', :supply_type => 'tela')
   end
+
+Brand.create!(:first_name    => "Judy",
+              :last_name     => "Habun",
+              :brand_name    => "Judy Hazbun",
+              :email         => "judy@hazbun.com",
+              :password      => '12341234',
+              :password_confirmation => '12341234')

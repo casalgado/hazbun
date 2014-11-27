@@ -3,22 +3,22 @@
 <%= bootstrap_form_for @customer, :html => { :multipart => true } do |f| %>
 
   <div class="customer-form-margin"> 
-    <%= f.text_field :nombre, layout: :horizontal %> </div>
+    <%= f.text_field :first_name, layout: :horizontal %> </div>
 
   <div class="customer-form-margin"> 
-    <%= f.text_field :apellido, layout: :horizontal %> </div>
+    <%= f.text_field :last_name, layout: :horizontal %> </div>
 
   <div class="customer-form-margin"> 
     <%= f.text_field :email, layout: :horizontal %> </div>
 
   <div class="customer-form-margin"> 
-    <%= f.text_field :direccion, layout: :horizontal %> </div>
+    <%= f.text_field :address, layout: :horizontal %> </div>
 
   <div class="customer-form-margin"> 
-    <%= f.text_field :telefono, layout: :horizontal %> </div>
+    <%= f.text_field :land_phone, layout: :horizontal %> </div>
 
   <div class="customer-form-margin"> 
-    <%= f.date_select :fecha_de_nacimiento, layout: :horizontal, :order => [:day, :month, :year], :start_year => Time.now.year - 70, :end_year => Time.now.year - 10 %> </div>
+    <%= f.date_select :date_of_birth, layout: :horizontal, :order => [:day, :month, :year], :start_year => Time.now.year - 70, :end_year => Time.now.year - 10 %> </div>
   <div class="customer-file-form-margin"> 
     <%= f.file_field :picture, layout: :horizontal, label: "Imagen" %> </div>
   <div class="customerfile-form-margin"> 
@@ -30,10 +30,3 @@
 </div>
 
 
-<!--
-  <%= "f.label :nombre %>
-  <%= f.label :apellido %>
-  <%= f.label :email %>
-  <%= f.label :direccion %>
-  <%= f.label :telefono %>
-  <%= f.label :fecha_de_nacimiento "%> -->

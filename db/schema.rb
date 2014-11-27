@@ -29,11 +29,12 @@ ActiveRecord::Schema.define(version: 20141105170944) do
   end
 
   create_table "brands", force: true do |t|
-    t.string   "nombre"
-    t.string   "apellido"
-    t.string   "direccion"
-    t.string   "telefono"
-    t.string   "marca"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "address"
+    t.string   "land_phone"
+    t.string   "mobile_phone"
+    t.string   "brand_name"
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -53,11 +54,16 @@ ActiveRecord::Schema.define(version: 20141105170944) do
 
   create_table "customers", force: true do |t|
     t.integer  "brand_id"
-    t.string   "nombre"
-    t.string   "apellido"
-    t.string   "direccion"
-    t.string   "telefono"
-    t.date     "fecha_de_nacimiento"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "address"
+    t.string   "marriage"
+    t.string   "workplace"
+    t.string   "city"
+    t.string   "land_phone"
+    t.string   "mobile_phone"
+    t.date     "date_of_birth"
+    t.string   "id_number"
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -95,29 +101,6 @@ ActiveRecord::Schema.define(version: 20141105170944) do
     t.datetime "updated_at"
     t.string   "picture"
   end
-
-  create_table "marcas", force: true do |t|
-    t.string   "nombre"
-    t.string   "apellido"
-    t.string   "direccion"
-    t.string   "telefono"
-    t.string   "marca"
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "marcas", ["email"], name: "index_marcas_on_email", unique: true
-  add_index "marcas", ["reset_password_token"], name: "index_marcas_on_reset_password_token", unique: true
 
   create_table "measurements", force: true do |t|
     t.integer  "customer_id"

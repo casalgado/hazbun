@@ -31,7 +31,7 @@ class Appointment < ActiveRecord::Base
 
 	def to_event_format
 		new_time = self.date.one_hour
-		event = {title: self.customer.nombre_completo, start: self.date, end: new_time, backgroundColor: self.background_color, borderColor: self.background_color}
+		event = {title: self.customer.full_name, start: self.date, end: new_time, backgroundColor: self.background_color, borderColor: self.background_color}
 		event
 	end
 
