@@ -72,6 +72,7 @@ class Customer < ActiveRecord::Base
       if self.land_phone.include?"."
         aa = self.land_phone.split(".")
         self.land_phone = aa[0]
+        self.save
       end 
     end
     self.save
