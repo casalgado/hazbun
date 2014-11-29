@@ -4,12 +4,12 @@
 		<div id="" class="col-md-6">
 		</div>
 
-		<div id="appointment-column" class="col-md-6 test-borders">
+		<div id="appointment-column" class="col-md-6 ">
 
 				<div class="row">
 
 					<div id="" class="col-md-3">
-						<div id= "dash-date-box" style="width:50px" class="test-borders">
+						<div id= "dash-date-box" class="">
 							<ul>
 									<li id="appointment-day"><%=@hoy.mday%></li>
 									<li id="appointment-day-text"><%=@hoy.nombrar_dia.upcase%></li>
@@ -17,35 +17,47 @@
 						</div>
 					</div>
 
-					<div id="" class="col-md-9 test-borders">
-
-						<h3> Citas </h3>
+					<div id="" class="col-md-9">
+						<div id="dash-title-box">
+							<h3> Citas </h3>
+						</div>
 					</div>
 
 				</div>
 		
 
-				<div class='center appointment-width'>
-					<% for appointment in @citas_de_hoy %>
-					<div class="test-borders">
-						<ul >
-							<li><%= appointment.appointment_type.appointment_type %> </li>
-							<li><%= link_to("#{appointment.customer.full_name}", customer_path(:id => appointment.customer.id)) %> </li>
-							<li><%= appointment.date.strftime "%l:%M %P" %> </li>
-							<% if  appointment.customer.land_phone %>
-							<li> Tel: <%= "#{appointment.customer.land_phone}" %> </li>
+				<div class='center'>
+					
+					<div id="dash-table" class="">
+						<table class="table table-hover">
+							<tr>
+								<th>  </th>
+								<th>  </th>
+							</tr> 
+							<% for appointment in @citas_de_hoy %>
+							<tr>
+								<td class="" style="width:70px"> <%= image_tag("appointment_type#{appointment.appointment_type_id}.png") %> </td>
+								<td> 
+									<ul> 
+										<li><%= link_to("#{appointment.customer.full_name}", customer_path(:id => appointment.customer.id)) %> </li>
+										<li><%= appointment.date.strftime "%l:%M %P" %> </li>
+											<% if  appointment.customer.land_phone %>
+												<li> Tel: <%= "#{appointment.customer.land_phone}" %> </li>
+											<% else %>
+												<br />
+											<% end %>
+									</ul>
+								</td>
+							</tr>
 							<% end %>
-							<br />
-						</ul>
+						</table>
 					</div>
-					<% end %>
+					
 				</div>
 
 		</div>
 	</div>
 </div>
-
-
 
 
 

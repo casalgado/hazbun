@@ -62,22 +62,6 @@ class Customer < ActiveRecord::Base
     end
   end
 
-  def print_phones
-    aa = self.land_phone
-    puts aa
-  end
-
-  def fix_phones
-    if self.land_phone
-      if self.land_phone.include?"."
-        aa = self.land_phone.split(".")
-        self.land_phone = aa[0]
-        self.save
-      end 
-    end
-    self.save
-  end
-
   # To determine if customer has a next appointment set
 
   def has_appointment?
