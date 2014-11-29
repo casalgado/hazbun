@@ -9,7 +9,7 @@ class Customer < ActiveRecord::Base
 
   # Callbacks
 
-  before_save :titlelize_names
+  before_save :titleize_names
 
   # Associations:
 
@@ -117,9 +117,9 @@ class Customer < ActiveRecord::Base
 
   # To capitalize database names before save
 
-  def titlelize_names
-    self.first_name = self.first_name.titlelize
-    self.last_name = self.last_name.titlelize
+  def titleize_names
+    self.first_name = self.first_name.titleize
+    self.last_name = self.last_name.titleize
   end
 
 
