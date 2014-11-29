@@ -1,8 +1,8 @@
-<div class="app-width">
-	<div class="container">
+
+	<div class="container app-width">
 		<div class="row">
 
-			<div id="customer-search-form" class="col-md-6">
+			<div id="customer-search-form" class="show-col2 col-lg-7 col-md-7 col-sm-7 col-xs-12">
 			<%= search_form_for @search do |f| %>
 			<%= f.label :first_name_cont, "Nombre" %>
 			<%= f.text_field :first_name_cont %>
@@ -15,7 +15,7 @@
 			<% end %>
 			</div>
 
-			<div id="" class="col-md-4">
+			<div id="" class="show-col2 col-lg-5 col-md-5 col-sm-5 col-xs-12">
 			<button type="button" class="btn btn-primary"><%= link_to "Activas" , 
 			customers_path(:actividad => "1", :q => @q) %></button>
 			<button type="button" class="btn btn-primary"><%= link_to "Inactivas", 
@@ -61,4 +61,3 @@
 
 
 	<div class="center paginate-links"><%= will_paginate @customers, renderer: BootstrapPagination::Rails %></div>
-</div>

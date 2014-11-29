@@ -1,17 +1,17 @@
-<div class="container customer-show">
+<div class="container customer-show app-width">
 	<div class="row">
-		<div id="" class="show-col col-md-6">
+		<div id="" class="show-col col-lg-6 col-md-6 col-sm-6 col-xs-12">
 
-				<div >
+			<div >
 					<h3 id="datos">Datos</h3>
-
+ 
 						<div class="row">
 
-						<div id="" class="col-md-6">
+						<div id="" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
 							<div class="thumb-container"> <%= image_tag @customer.picture_url(:thumb).to_s %></div>
 						</div>
 
-						 <div id="" class="col-md-6">
+						 <div id="" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
 
 							<ul id='customer-info'>
 								<li> <span class="glyphicon glyphicon-user" aria-hidden="true"></span> 
@@ -28,8 +28,7 @@
 								<% end %>
 								<li> &nbsp; </li>
 							<li > <%= link_to "Editar Datos" ,  edit_customer_path(@customer) %></li></div>
-							</ul>
-
+					</ul>
 				</div>
 			</div>
 
@@ -54,10 +53,9 @@
 			  	<p><%= link_to "Actualizar Medidas", new_customer_measurement_path(:customer_id => @customer.id) %></p>
 			  	</div>
 			 </div>
-
 		</div>
 
-		<div id="" class="show-col col-md-6">
+		<div id="" class="show-col col-lg-6 col-md-6 col-sm-6 col-xs-12">
 			<ul class="activity-history-header">
 				<li class= <%= @history == 'true' ? "show-active" : 'show-inactive' %>> <h3><%= link_to 'Historia', customer_path(@customer, history: true) %></h3></li>
 				<li class= <%= @history == 'true' ? "show-inactive" : 'show-active' %>> <h3><%= link_to 'Actividad', customer_path(@customer) %></h3></li>
@@ -104,7 +102,6 @@
 				<% end %>
 						<p><%= link_to "Nueva Cita" ,  new_customer_appointment_path(@customer) %></p>
 			</div>
-
 		</div>
 
 	</div>

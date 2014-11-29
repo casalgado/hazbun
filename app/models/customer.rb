@@ -9,7 +9,7 @@ class Customer < ActiveRecord::Base
 
   # Callbacks
 
-  before_save :capitalize_names
+  before_save :titlelize_names
 
   # Associations:
 
@@ -37,7 +37,7 @@ class Customer < ActiveRecord::Base
   }
 
   scope :inactive, -> { 
-    where.not(id: [Customer.active.collect { |customer| customer.id }]) 
+    where.not(id: Customer.active.collect { |customer| customer.id } ) 
   }
 
   # Uploader:
@@ -117,9 +117,9 @@ class Customer < ActiveRecord::Base
 
   # To capitalize database names before save
 
-  def capitalize_names
-    self.first_name = self.first_name.capitalize
-    self.last_name = self.last_name.capitalize
+  def titlelize_names
+    self.first_name = self.first_name.titlelize
+    self.last_name = self.last_name.titlelize
   end
 
 
