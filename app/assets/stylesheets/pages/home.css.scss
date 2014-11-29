@@ -2,13 +2,16 @@
 .welcome {
 	border: 1px solid lightgray;
 	padding: 1%;
-	background-color: black;
 	margin-top: 20px;
 	overflow: hidden;
 }
 
 .welcome img {
 	width: 100%;
+}
+
+.max-960 {
+	max-width: 960px;
 }
 
 

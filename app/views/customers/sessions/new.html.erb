@@ -2,7 +2,7 @@
 
 <div class="container app-width">
   <div class="row">
-    <div id="client-login" class="welcome col-md-6 picture-container center">
+    <div id="client-login" class="welcome col-md-6 col-sm-12">
       <h2>Log in</h2>
 
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -31,7 +31,7 @@
         <%= render "customers/shared/links" %>
 
     </div>
-    <div class="welcome col-md-6 picture-container center">
+    <div class="welcome col-md-6 col-sm-12">
       <%= link_to image_tag("WelcomeDesign.jpg"),   new_brand_session_path %>
     </div>
   </div>
