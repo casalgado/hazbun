@@ -64,7 +64,7 @@
 
 				
 					<ul>
-					<% for order in @customer.closed_orders %>
+					<% for order in @customer.orders.closed %>
 						<li> <%= link_to "#{order.created_at.strftime '%b %Y'}", customer_order_path(@customer, order)  %> </li>
 						<ul>
 							<% for item in order.items %>

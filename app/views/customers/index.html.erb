@@ -1,5 +1,5 @@
 
-	<div class="container app-width">
+	<div class="container">
 		<div class="row">
 
 			<div id="customer-search-form" class="show-col2 col-lg-7 col-md-7 col-sm-7 col-xs-12">
@@ -34,30 +34,31 @@
 	<br />
 	<br />
 
+	<div class="table-width">
+		<table class="table table-condensed table-hover table-settings">
+			<tr>
+				<th> Nombre </th>
+				<th> Estado </th>
+				<th> Agenda </th>
+			</tr> 
+			<% for customer in @customers %>
+			<tr>
+				<td><%= link_to("#{customer.full_name}", customer_path(:id => customer.id)) %> </td>
+					<% unless customer.orders.open.empty? %> 
+					  <td> <%= link_to("#{customer.orders.last.created_at.strftime '%b %Y'}", customer_order_path(customer, customer.orders.last)) %> </td>
+					<% else %> 
+					  <td> <%= link_to("Nueva Orden", new_customer_order_path(customer)) %> </td>
+					<% end %>
 
-	<table class="table table-condensed table-hover table-settings">
-		<tr>
-			<th> Nombre </th>
-			<th> Estado </th>
-			<th> Agenda </th>
-		</tr> 
-		<% for customer in @customers %>
-		<tr>
-			<td><%= link_to("#{customer.full_name}", customer_path(:id => customer.id)) %> </td>
-				<% unless customer.orders.open.empty? %> 
-				  <td> <%= link_to("#{customer.orders.last.created_at.strftime '%b %Y'}", customer_order_path(customer, customer.orders.last)) %> </td>
-				<% else %> 
-				  <td> <%= link_to("Nueva Orden", new_customer_order_path(customer)) %> </td>
+					<% if customer.has_appointment? %>
+					  <td> <%= "#{customer.appointments.last.date.strftime "%b %d"}" %> </td>
+					<% else %>
+					  <td> <%= link_to("nueva cita" , new_customer_appointment_path(customer)) %> </td>
+					<% end %>
 				<% end %>
-
-				<% if customer.has_appointment? %>
-				  <td> <%= "#{customer.appointments.last.date.strftime "%b %d"}" %> </td>
-				<% else %>
-				  <td> <%= link_to("nueva cita" , new_customer_appointment_path(customer)) %> </td>
-				<% end %>
-			<% end %>
-		</tr>
-	</table>
+			</tr>
+		</table>
+	</div>
 
 
 	<div class="center paginate-links"><%= will_paginate @customers, renderer: BootstrapPagination::Rails %></div>

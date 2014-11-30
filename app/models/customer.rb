@@ -40,6 +40,7 @@ class Customer < ActiveRecord::Base
     where.not(id: Customer.active.collect { |customer| customer.id } ) 
   }
 
+
   # Uploader:
 
   mount_uploader :picture, PictureUploader
