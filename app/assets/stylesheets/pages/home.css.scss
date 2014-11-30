@@ -2,11 +2,15 @@
 .welcome {
 	border: 1px solid lightgray;
 	padding: 1%;
-	height: 490px;
-	width: 50%;
 	margin-top: 20px;
 	overflow: hidden;
+
+	img {
+		width: 100%;
+	}
 }
+
+
 
 
 
