@@ -23,6 +23,10 @@
 
 // Navbar
 
+@media(min-width:768px) {
+
+}
+
 li.back-hover a:hover { 
 	background-color: black !important; 
 	color: lightgray !important;
@@ -45,11 +49,6 @@ li.back-hover a:hover {
 	top: -12px;
 }
 
-.navbar {
-	width: 970px;
-	margin-left: auto;
-	margin-right: auto;
-}
 
 // Positioning
 
