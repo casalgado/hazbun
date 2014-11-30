@@ -20,7 +20,7 @@ gem 'fullcalendar-rails', "2.0.2.0"
 gem 'gon', '5.2.3'
 gem 'mini_magick', "~> 4.0.0.rc"
 gem 'carrierwave', '0.10.0'
-# gem 'bootstrap-sass', '3.2.0.2'
+gem 'bootstrap-sass', '3.2.0.2'
 gem 'autoprefixer-rails', '4.0.0.1'
 gem 'bootstrap_form'
 gem "faker", '1.4.3'
