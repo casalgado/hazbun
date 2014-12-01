@@ -60,38 +60,6 @@
 				<li class= <%= @history == 'true' ? "show-active" : 'show-inactive' %>> <h3><%= link_to 'Historia', customer_path(@customer, history: true) %></h3></li>
 				<li class= <%= @history == 'true' ? "show-inactive" : 'show-active' %>> <h3><%= link_to 'Actividad', customer_path(@customer) %></h3></li>
 			</ul>
-			<% if @history %>
-
-				
-					<ul>
-					<% for order in @customer.orders.closed %>
-						<li> <%= link_to "#{order.created_at.strftime '%b %Y'}", customer_order_path(@customer, order)  %> </li>
-						<ul>
-							<% for item in order.items %>
-								<li> <%= item.item_type.item_type %> para <%= item.occasion.occasion %> </li>
-								<li><div class="mini-container"> <%= image_tag item.picture_url(:mini).to_s  %></div></li>
-							<% end %>
-						</ul>
-					<% end %>
-				  </ul>
-
-			<% else %>
-
-			
-				<ul>
-				<% for order in @customer.orders.open %>
-					<li> <%= link_to "#{order.created_at.strftime '%b %Y'}", customer_order_path(@customer, order)  %> </li>
-					<ul>
-					<% for item in order.items %>
-						<li> <%= item.item_type.item_type %> para <%= item.occasion.occasion %> </li>
-						<li><div class="mini-container"> <%= image_tag item.picture_url(:mini).to_s  %></div></li>
-					<% end %>
-					</ul>
-				<% end %>
-			 </ul>
-
-			<% end %>
-
 			<div class='customer-show-align-center light-border-bottom'>
 				<% if @customer.has_appointment? %>
 					 Proxima Cita: <span class='glyphicon glyphicon-stop aptype<%= @appointment.appointment_type_id %>-color'></span> <%= @appointment.date.strftime "%b %e %l:%M %P" %> <%= link_to "Editar", edit_customer_appointment_path(@customer, @appointment) %>
@@ -104,6 +72,38 @@
 				<% unless @customer.active? %>
 					<p><%= link_to "Abrir Orden", new_customer_order_path(@customer) %></p>						
 				<% end %>
+			</div>
+			<div class="order-list">
+			<% if @history %>
+					<ul>
+					<% for order in @customer.orders.closed %>
+						<li> <%= link_to "Orden cerrada en #{order.updated_at.strftime '%b %Y'}", customer_order_path(@customer, order)  %> </li>
+						<ul>
+							<% for item in order.items %>
+								<li> <%= item.item_type.item_type %> para <%= item.occasion.occasion %> </li>
+								<li class="mini-container"> <%= image_tag item.picture_url(:mini).to_s  %></li>
+							<% end %>
+						</ul>
+					<% end %>
+				  </ul>
+
+			<% else %>
+
+			
+				<ul >
+				<% for order in @customer.orders.open %>
+					<li class="center"> <%= link_to "Orden abierta en #{order.created_at.strftime '%b %Y'}", customer_order_path(@customer, order)  %> </li>
+					<ul>
+					<% for item in order.items %>
+						<li> <%= item.item_type.item_type %> para <%= item.occasion.occasion %> </li>
+						<li class="mini-container"> <%= image_tag item.picture_url(:mini).to_s  %></li>
+					<% end %>
+					</ul>
+				<% end %>
+			 </ul>
+
+			<% end %>
+
 			</div>
 
 		</div>

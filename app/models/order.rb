@@ -10,7 +10,7 @@ class Order < ActiveRecord::Base
 
 	# Validations: 
 
-	validates_uniqueness_of :closed, scope: :customer_id, message: "Customer ya tiene una orden abierta"
+	#validates_uniqueness_of :closed, scope: :customer_id, message: "Customer ya tiene una orden abierta"
 	validates_presence_of :customer_id
 
 	# Scopes:
@@ -38,15 +38,7 @@ class Order < ActiveRecord::Base
 	end
 
 	def cerrable?
-		if self.total_value == nil
-			true
-		else
-			if self.total_value <= self.total_abonado
-				true
-			else
-				false
-			end
-		end
+		true
 	end
 
 	# (1) para calcular si tiene y cuando es la proxima cita

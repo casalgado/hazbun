@@ -1,26 +1,39 @@
-<h1>Orden</h1>
+<div class="app-width order-show">
+<h3>Orden para <%= link_to "#{@order.customer.full_name}", customer_path(@customer) %> </h3>
 
-<ul>
-	<li><%= link_to "#{@order.customer.full_name}", customer_path(@customer) %> </li>
-	<% for item in @order.items %>
+	<h5> <% if @order.closed == false %>
+				<%= link_to "Editar", edit_customer_order_path(:id => @order.id)%>
+			 <% end %> 
+	</h5>
+<br />
+<br />
+<h4> Prendas: </h4>	
+
 		<ul>
-			<li><%= item.item_type.item_type %></li>
-			<% for supply in item.supplies %>
-				<ul>
+			<% for item in @order.items %>
+				<li><%= item.item_type.item_type %> para <%= item.occasion.occasion %></li>
+				<% for supply in item.supplies %>
 					<li> <%= supply.supply_name %> - <%= supply.supply_color %> </li>
-	<!--		<li> <%= supply.supplies_per_items.last.quantity %> </li>   -->
-				</ul>
+		<!--	<li> <%= supply.supplies_per_items.last.quantity %> </li>   -->
 				<% end %>
-			<li><div class="thumb-container"> <%= image_tag item.picture_url(:thumb).to_s  %></div></li>
-			<li><%= item.occasion.occasion %> </li>
+				<li> <%= image_tag item.picture_url(:thumb).to_s  %> </li>
+				<% end %>
 		</ul>
-	<% end %>
-
-	<% if @order.closed == false %>
-		<%= link_to "editar orden", edit_customer_order_path(:id => @order.id)%>
-	<% end %>
+<h5>
+<% if @order.closed == false %>
+	<%= link_to "Cerrar Orden", customer_order_path(@customer, @order, :cerrar => '1')%>
+<% end %></h5>
 	
-<h3>Abonos</h3>
+<br />
+<br />
+	<h4> Nueva Cita: </h4>
+	<br />
+	<%= render "orders/form_for_appointment" %>
+
+
+</div>
+
+<!-- <h3>Abonos</h3>
 
 	<p> Valor total de la Orden: <%= @order.total_value %>
 	
@@ -36,18 +49,4 @@
 	<% end %>
 	
 	<p> Nuevo Pago: <p>
-	<%= render "orders/form_for_payment" %>
-
-<h3>Citas</h3>
-
-	<p> Nueva Cita: <p>
-	<%= render "orders/form_for_appointment" %>
-
-<br />
-<br />
-
-<% if @order.closed == false %>
-	<%= link_to "cerrar orden", customer_order_path(@customer, @order, :cerrar => '1')%>
-<% end %>
-
-</ul>
+	<%= render "orders/form_for_payment" %> -->

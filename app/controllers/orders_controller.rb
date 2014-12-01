@@ -55,10 +55,11 @@ class OrdersController < ApplicationController
 
   def show
     @order       = Order.find(params[:id])
-    @customer     = Customer.find(params[:customer_id])
+    @customer    = Customer.find(params[:customer_id])
     @payment     = Payment.new
     @appointment = Appointment.new
     if params[:cerrar]
+      
       if @order.cerrable?
         @order.cerrar
       else
