@@ -92,16 +92,20 @@
 
 			<% end %>
 
-			<div class='customer-show-align-right'>
-				<% unless @customer.orders.empty? %>
-					<% unless @customer.has_open_order? %>
-						<p><%= link_to "Nueva Orden", new_customer_order_path(@customer) %></p>
-					<% end %>
+			<div class='customer-show-align-center light-border-bottom'>
+				<% if @customer.has_appointment? %>
+					 Proxima Cita: <span class='glyphicon glyphicon-stop aptype<%= @appointment.appointment_type_id %>-color'></span> <%= @appointment.date.strftime "%b %e %l:%M %P" %> <%= link_to "Editar", edit_customer_appointment_path(@customer, @appointment) %>
 				<% else %>
-						<p><%= link_to "Nueva Orden", new_customer_order_path(@customer) %></p>
+					 <%= link_to "Nueva Cita" , new_customer_appointment_path(@customer) %>
 				<% end %>
-						<p><%= link_to "Nueva Cita" ,  new_customer_appointment_path(@customer) %></p>
 			</div>
+
+			<div class='customer-show-align-center'>
+				<% unless @customer.active? %>
+					<p><%= link_to "Abrir Orden", new_customer_order_path(@customer) %></p>						
+				<% end %>
+			</div>
+
 		</div>
 
 	</div>

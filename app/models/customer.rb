@@ -40,10 +40,13 @@ class Customer < ActiveRecord::Base
     where.not(id: Customer.active.collect { |customer| customer.id } ) 
   }
 
-
   # Uploader:
 
   mount_uploader :picture, PictureUploader
+
+  # Birthdays:
+
+  acts_as_birthday :date_of_birth
 
   # Methods:
 
@@ -55,7 +58,7 @@ class Customer < ActiveRecord::Base
 
   # Next method determines if customer is active. 
 
-  def activa?
+  def active?
     if self.orders.open.empty? == true
       false
     else
@@ -93,16 +96,6 @@ class Customer < ActiveRecord::Base
     password == password_confirmation && !password.blank?
   end
 
-  # el siguiente metodo es para determinar si la customer tiene una open order. 
-
-  def has_open_order?
-    if self.orders.last.closed == false
-      true
-    else
-      false
-    end
-  end
-
   # this method creates customer instances from an excell spreadsheet
 
   def self.load_from_excel
@@ -123,6 +116,7 @@ class Customer < ActiveRecord::Base
     self.last_name = self.last_name.titleize
   end
 
+  # To have a list of customers with birthday => Date
 
 
 end

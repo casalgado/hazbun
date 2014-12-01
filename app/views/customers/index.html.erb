@@ -1,33 +1,32 @@
 
 	<div class="container">
 		<div class="row">
+			<div id="customer-search-form" class=" col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
-			<div id="customer-search-form" class="show-col2 col-lg-7 col-md-7 col-sm-7 col-xs-12">
-			<%= search_form_for @search do |f| %>
-			<%= f.label :first_name_cont, "Nombre" %>
-			<%= f.text_field :first_name_cont %>
+				<div class="search-field " >	
+					<%= search_form_for @search do |f| %>
+					<%= f.label :first_name_cont, "Nombre" %>
+					<%= f.text_field :first_name_cont %>
 
-			<%= f.label :last_name_cont, "Apellido" %>
-			<%= f.text_field :last_name_cont %>
+					<%= f.label :last_name_cont, "Apellido" %>
+					<%= f.text_field :last_name_cont %>
 
-			<%= f.button :Buscar , name: "actividad", value: "#{@actividad}" %>
-			
-			<% end %>
+					<%= f.button :Buscar , name: "actividad", value: "#{@actividad}" %>
+					
+					<% end %>
+				</div>
+				<div class="search-buttons"  >
+					<button type="button" class="btn btn-primary"><%= link_to "Activas" , 
+					customers_path(:actividad => "1", :q => @q) %></button>
+					<button type="button" class="btn btn-primary"><%= link_to "Inactivas", 
+					customers_path(:actividad => "2", :q => @q) %></button>
+					<button type="button" class="btn btn-primary"><%= link_to "Todas", 
+					customers_path(:q => @q) %></button>
+					<button type="button" class="btn btn-info"><%= link_to("Nueva Clienta", new_customer_path) %></button>
+				</div>
+
 			</div>
-
-			<div id="" class="show-col2 col-lg-5 col-md-5 col-sm-5 col-xs-12">
-			<button type="button" class="btn btn-primary"><%= link_to "Activas" , 
-			customers_path(:actividad => "1", :q => @q) %></button>
-			<button type="button" class="btn btn-primary"><%= link_to "Inactivas", 
-			customers_path(:actividad => "2", :q => @q) %></button>
-			<button type="button" class="btn btn-primary"><%= link_to "Todas", 
-			customers_path(:q => @q) %></button>
-			<button type="button" class="btn btn-info"><%= link_to("Nueva Clienta", new_customer_path) %></button>
-
-			</div>
-
 		</div>
-
 	</div>
 
 

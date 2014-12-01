@@ -2,7 +2,53 @@
 	<div class="row">
 
 		<div id="" class="col-md-6">
+
+				<div class="row">
+
+					<div id="" class="col-md-3 col-sm-3 col-xs-3">
+						<div id= "dash-date-box" class="">
+							<ul>
+									<li> </li>
+									<li> </li>
+							</ul>
+						</div>
+					</div>
+
+					<div id="" class="col-md-9 col-sm-9 col-xs-9">
+						<div id="dash-title-box">
+							<h3> Cumpleaños </h3>
+						</div>
+					</div>
+
+				</div>
+		
+
+				<div class='center'>
+					
+					<div id="dash-table" class="">
+						<table class="table table-hover">
+							<tr>
+								<th>  </th>
+								<th>  </th>
+							</tr> 
+							<% for customer in Customer.find_date_of_births_for(@hoy) %>
+							<tr>
+								<td class="" style="width:70px">  </td>
+								<td> 
+									<ul> 
+										<li><%= link_to("#{customer.full_name}", customer_path(:id => customer.id)) %> </li>
+									</ul>
+								</td>
+							</tr>
+							<% end %>
+							<div id="dash-after-table"> </div>
+						</table>
+					</div>
+					
+				</div>
+
 		</div>
+
 
 		<div id="appointment-column" class="col-md-6 ">
 
@@ -19,7 +65,10 @@
 
 					<div id="" class="col-md-9 col-sm-9 col-xs-9">
 						<div id="dash-title-box">
-							<h3> Citas </h3>
+							<h3> <%= link_to "<", dashboard_staticpages_path(:shift_day => '2', :hoy => @hoy) %> 
+									 &nbsp;&nbsp;Citas &nbsp;&nbsp;
+							 <%= link_to ">", dashboard_staticpages_path(:shift_day => '1', :hoy => @hoy) %> 
+							 </h3>
 						</div>
 					</div>
 
@@ -40,7 +89,7 @@
 								<td> 
 									<ul> 
 										<li><%= link_to("#{appointment.customer.full_name}", customer_path(:id => appointment.customer.id)) %> </li>
-										<li><%= appointment.date.strftime "%l:%M %P" %> </li>
+										<li><%= appointment.date.strftime "%l:%M %P" %> <%= link_to "Editar", edit_customer_appointment_path(appointment.customer, appointment) %></li>
 											<% if  appointment.customer.land_phone %>
 												<li> Tel: <%= "#{appointment.customer.land_phone}" %> </li>
 											<% else %>

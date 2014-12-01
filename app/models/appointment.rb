@@ -23,8 +23,8 @@ class Appointment < ActiveRecord::Base
 
 	# To show todays events
 
-	def self.today
-		Appointment.where(date: Time.now.beginning_of_day..Time.now.end_of_day)
+	def self.at_(date)
+		Appointment.where(date: date.beginning_of_day..date.end_of_day)
 	end
 
 	# (2) Para meter al array que va a .js (se usa en static_pages#calendario)

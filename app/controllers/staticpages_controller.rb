@@ -4,8 +4,20 @@ class StaticpagesController < ApplicationController
 	before_action :authenticate_brand!, :only => [:dashboard, :calendario]
 
 	def dashboard
-		@citas_de_hoy = current_brand.appointments.today.order("date ASC")
-		@hoy = Date.today
+		if params[:hoy]
+			@hoy = Date.parse(params[:hoy])
+		else
+			@hoy = Date.today
+		end
+		if params[:shift_day] == '1'
+      @hoy += 1
+    elsif params[:shift_day] == '2'
+      @hoy -= 1    
+    else
+      @hoy = Date.today
+    end 
+    @citas_de_hoy = current_brand.appointments.at_(@hoy).order("date ASC")
+         
 	end
 
 	def calendario
