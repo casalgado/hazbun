@@ -11,6 +11,8 @@ Things you may want to cover:
 
 * Configuration
 
+before running terminal run "source ~/.bashrc (to load ENV variables in Development)"
+
 * Database creation
 
 	run 
