@@ -3,7 +3,7 @@
 <%= bootstrap_form_for @customer, :html => { :multipart => true } do |f| %>
 
   <div class="customer-form-margin"> 
-    <%= f.text_field :first_name, layout: :horizontal %> </div>
+    <%= f.text_field :first_name, layout: :horizontal, label: "Nombre" %> </div>
 
   <div class="customer-form-margin"> 
     <%= f.text_field :last_name, layout: :horizontal %> </div>
