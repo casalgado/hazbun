@@ -5,7 +5,7 @@
 	
 <h3> Nueva orden para <%= @customer.full_name %> </h3>
 
-<div class="container">
+<div class="container app-width">
 	<div class="row">
 
 		<%= form_for [@customer, @order] do |f| %>
@@ -21,7 +21,7 @@
   		<% end %>
 
   <div class="row">
-  	<div id="" class="app-width col-md-12">
+  	<div id="" class="col-lg12 col-md-12 col-sm-12 col-xs-12">
   		<div id="item-fields-add"><%= link_to_add_fields "Agregar Prenda", f, :items %></div>
 			<div class="submit-order"><%= f.submit "Crear Orden" %></div>
 		</div>

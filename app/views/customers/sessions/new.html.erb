@@ -3,7 +3,8 @@
 <div class="container app-width">
   <div class="row">
     <div class="welcome col-lg-6 col-md-6 col-sm-12 col-sm-12 center">
-      <h2>Log in</h2>
+      <div class="sign-in-form">
+      <h3>Iniciar Sesion Clienta</h3>
 
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
           <div class="field">
@@ -12,24 +13,24 @@
           </div>
 
           <div class="field">
-            <%= f.label :password %><br />
+            <%= f.label :contraseña %><br />
             <%= f.password_field :password, autocomplete: "off" %>
           </div>
 
           <% if devise_mapping.rememberable? -%>
             <div class="field">
               <%= f.check_box :remember_me %>
-              <%= f.label :remember_me %>
+              <%= f.label :recuerdame %>
             </div>
           <% end -%>
 
           <div class="actions">
-            <%= f.submit "Log in" %>
+            <%= f.submit "Iniciar Sesion" %>
           </div>
         <% end %>
 
         <%= render "customers/shared/links" %>
-
+      </div>
     </div>
     <div class="welcome col-lg-6 col-md-6 col-sm-12 col-sm-12 center">
       <%= link_to image_tag("WelcomeDesign.jpg"),   new_brand_session_path %>

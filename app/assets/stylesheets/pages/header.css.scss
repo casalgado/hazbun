@@ -6,26 +6,23 @@
 
 .logo-container {
 	width: $app-width;
-	border: 1px solid lightgrey;
 	margin-top: 15px;
 }
 
 #big-logo {
-	overflow: auto;
-	width: $big-logo-width;
-	border: $big-logo-border solid black;
+	overflow: hidden;
+	width: 360px;
 }
 
 // Navbar
 
 .navbar-footer {
-	margin-top: 15px;
 
 	li {
 	width: 60px;
 	text-align: center;
-	margin-right: 80px;
-	margin-left: 80px;
+	margin-right: 40px;
+	margin-left: 40px;
 	}
 
 }

@@ -9,8 +9,7 @@
 GMAIL_USERNAME: "hazbun.app@gmail.com"
 GMAIL_PASSWORD: "asdfasdfasdf"
 
-AWS_ACCESS_KEY: "asdfasdfasdf"
+AWS_ACCESS_KEY: "betoistheman"
 AWS_SECRET_KEY: "asdfasdfasdfasdf"
 AWS_BUCKET: "enter-your-bucket-name-here"
 
-This File is Ignored
