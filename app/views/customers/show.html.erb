@@ -14,20 +14,40 @@
 						 <div id="" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
 
 							<ul id='customer-info'>
+								<% if @customer.full_name.blank? == false %>
 								<li> <span class="glyphicon glyphicon-user" aria-hidden="true"></span> 
-									&nbsp; <%= @customer.full_name %>      </li>
+									&nbsp; <%= @customer.full_name %> </li>	
+								<% end %>	
+								<% if  @customer.marriage.blank? == false %>						
+								<li> <span class="glyphicon glyphicon-heart" aria-hidden="true"></span> 
+									&nbsp; <%= @customer.marriage %> </li>
+								<% end %>	
+								<% if  @customer.land_phone.blank? == false %>
 								<li> <span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span>
-									&nbsp; <%= @customer.land_phone  %>            </li>
+									&nbsp; <%= @customer.land_phone %> </li>
+								<% end %>	
+								<% if  @customer.mobile_phone.blank? == false %>
+								<li> <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span> 
+									&nbsp; <%= @customer.mobile_phone %> </li>
+								<% end %>	
+								<% if  @customer.address.blank? == false %>
 								<li> <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
-									&nbsp; <%= @customer.address %>            </li>
+									&nbsp; <%= @customer.address %> </li>
+								<% end %>	
+								<% if  @customer.workplace.blank? == false %>
+								<li> <span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span>
+									&nbsp; <%= @customer.workplace %> </li>
+								<% end %>	
+								<% if  @customer.email.blank? == false %>
 								<li> <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
-									&nbsp; <%= @customer.email %>                </li>
+									&nbsp; <%= @customer.email %> </li>
+								<% end %>	
 								<% if @customer.date_of_birth %>
 									<li> <span class="glyphicon glyphicon-gift" aria-hidden="true"></span>
 										&nbsp; <%= @customer.date_of_birth.strftime '%b %d' %> </li>
 								<% end %>
 								<li> &nbsp; </li>
-							<li > <%= link_to "Editar Datos" ,  edit_customer_path(@customer) %></li></div>
+							<li> <%= link_to "Editar Datos", edit_customer_path(@customer) %> </li></div>
 					</ul>
 				</div>
 			</div>

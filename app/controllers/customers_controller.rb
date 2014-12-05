@@ -58,7 +58,7 @@ class CustomersController < ApplicationController
   private
 
   def customer_params
-    allow = [:first_name, :last_name, :address, :land_phone, :email, :date_of_birth, :picture, :remote_picture_url]
+    allow = [:first_name, :last_name, :marriage, :id_number, :address, :land_phone, :mobile_phone, :workplace, :email, :date_of_birth, :picture, :remote_picture_url]
     params.require(:customer).permit(allow)
   end
 

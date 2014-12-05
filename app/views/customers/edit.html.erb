@@ -2,20 +2,32 @@
 
 <%= bootstrap_form_for @customer, :html => { :multipart => true } do |f| %>
 
-  <div class="customer-form-margin"> 
-    <%= f.text_field :first_name, layout: :horizontal %> </div>
-
-  <div class="customer-form-margin"> 
-    <%= f.text_field :last_name, layout: :horizontal %> </div>
-
-  <div class="customer-form-margin"> 
-    <%= f.text_field :email, layout: :horizontal %> </div>
-
-  <div class="customer-form-margin"> 
-    <%= f.text_field :address, layout: :horizontal %> </div>
-
-  <div class="customer-form-margin"> 
-    <%= f.text_field :land_phone, layout: :horizontal %> </div>
+    <div class="customer-form-margin"> 
+    <%= f.text_field :first_name,   layout: :horizontal, label: "Nombre" %> </div>
+    
+    <div class="customer-form-margin"> 
+    <%= f.text_field :last_name,    layout: :horizontal, label: "Apellido" %> </div>
+    
+    <div class="customer-form-margin"> 
+    <%= f.text_field :marriage,     layout: :horizontal, label: "Pareja" %> </div>
+    
+    <div class="customer-form-margin"> 
+    <%= f.text_field :id_number,    layout: :horizontal, label: "c.c." %> </div>
+    
+    <div class="customer-form-margin"> 
+    <%= f.text_field :email,        layout: :horizontal, label: "Email" %> </div>
+    
+    <div class="customer-form-margin"> 
+    <%= f.text_field :address,      layout: :horizontal, label: "Direccion" %> </div>
+    
+    <div class="customer-form-margin"> 
+    <%= f.text_field :workplace,    layout: :horizontal, label: "Trabajo" %> </div>
+    
+    <div class="customer-form-margin"> 
+    <%= f.text_field :land_phone,   layout: :horizontal, label: "Telefono" %> </div>
+    
+    <div class="customer-form-margin"> 
+    <%= f.text_field :mobile_phone, layout: :horizontal, label: "Celular" %> </div>
 
   <div class="customer-form-margin"> 
     <%= f.date_select :date_of_birth, layout: :horizontal, :order => [:day, :month, :year], :start_year => Time.now.year - 70, :end_year => Time.now.year - 10 %> </div>
