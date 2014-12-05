@@ -13,6 +13,8 @@ Things you may want to cover:
 
 before running terminal run "source ~/.bashrc (to load ENV variables in Development)"
 
+add ENV keys to heroku with heroku config:add KEY_NAME=key-value
+
 * Database creation
 
 	run 

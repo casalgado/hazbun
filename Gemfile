@@ -55,6 +55,7 @@ group :development, :test do
 	gem 'guard', '2.8.2'
 	gem "guard-rspec", '4.3.1'
 	gem 'debugger', '1.6.8'
+	gem 'mailcatcher'
 
 
 end
