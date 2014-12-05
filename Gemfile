@@ -20,12 +20,12 @@ gem 'fullcalendar-rails', "2.0.2.0"
 gem 'gon', '5.2.3'
 gem 'mini_magick', "~> 4.0.0.rc"
 gem 'carrierwave', '0.10.0'
+gem 'carrierwave-aws'
 gem 'bootstrap-sass', '3.2.0.2'
 gem 'autoprefixer-rails', '4.0.0.1'
 gem 'bootstrap_form'
 gem "faker", '1.4.3'
 gem 'byebug', '3.5.1'
-gem "fog", "~> 1.3.1"
 gem 'figaro'
 gem "spreadsheet", "0.9.8"
 gem 'roo', '~> 1.13.2'
