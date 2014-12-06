@@ -35,8 +35,9 @@ add ENV keys to heroku with heroku config:add KEY_NAME=key-value
 
 * Deployment instructions
 
-* ...
+* User Interface
 
+	To eliminate the date of birth of a customer set year to 1944
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
