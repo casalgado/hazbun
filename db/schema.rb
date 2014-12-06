@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141105170944) do
+ActiveRecord::Schema.define(version: 20141206202516) do
 
   create_table "appointment_types", force: true do |t|
     t.string   "appointment_type"
@@ -84,7 +84,7 @@ ActiveRecord::Schema.define(version: 20141105170944) do
   end
 
   add_index "customers", ["confirmation_token"], name: "index_customers_on_confirmation_token", unique: true
-  add_index "customers", ["email"], name: "index_customers_on_email", unique: true
+  add_index "customers", ["email", "brand_id"], name: "index_customers_on_email_and_brand_id", unique: true
   add_index "customers", ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
 
   create_table "item_types", force: true do |t|

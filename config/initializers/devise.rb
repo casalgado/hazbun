@@ -12,7 +12,9 @@ Devise.setup do |config|
   config.strip_whitespace_keys = [ :email ]
   
   config.skip_session_storage = [:http_auth]
-  
+
+  config.authentication_keys = [:email, :brand_id]
+
   config.stretches = Rails.env.test? ? 1 : 10
   
   config.reconfirmable = false

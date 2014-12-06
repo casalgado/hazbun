@@ -29,8 +29,12 @@
     <div class="customer-form-margin"> 
     <%= f.text_field :mobile_phone, layout: :horizontal, label: "Celular" %> </div>
 
-  <div class="customer-form-margin"> 
-    <%= f.date_select :date_of_birth, layout: :horizontal, :order => [:day, :month, :year], :start_year => Time.now.year - 70, :end_year => Time.now.year - 10 %> </div>
+    <div class="customer-form-margin"> 
+    <%= f.date_select :date_of_birth, layout: :horizontal, :order => [:day, :month, :year], :start_year => Time.now.year - 70, :end_year => Time.now.year - 10 %> 
+    </div>
+
+
+
   <div class="customer-file-form-margin"> 
     <%= f.file_field :picture, layout: :horizontal, label: "Imagen" %> </div>
   <div class="customerfile-form-margin"> 

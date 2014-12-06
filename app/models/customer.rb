@@ -5,7 +5,7 @@ class Customer < ActiveRecord::Base
       # Include default devise modules. Others available are:
       # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :confirmable
+         :recoverable, :rememberable, :trackable, :confirmable, request_keys: [:brand_id]
 
   # Callbacks
 
@@ -24,8 +24,7 @@ class Customer < ActiveRecord::Base
   validates :first_name, presence: { message: "Nombre no debe estar en blanco" }  , length: { minimum: 3, message: "Nombre muy corto (minimo 3 caracteres)" } 
   validates :last_name, presence: { message: "Apellido no debe estar en blanco" }, length: { minimum: 3, message: "Apellido muy corto (minimo 3 caracteres)" }
   validates :brand_id, presence: true
-  # validates :email, presence: { message: "Email no debe estar en blanco" }, format: { with: /\A[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})\z/, message: "Email invalido" }
-
+  validates :email, presence: { message: "Email no debe estar en blanco" }, format: { with: /\A[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})\z/, message: "Email invalido" }
   # Scopes
 
   scope :has_appointment, -> {
@@ -116,7 +115,13 @@ class Customer < ActiveRecord::Base
     self.last_name = self.last_name.titleize
   end
 
-  # To have a list of customers with birthday => Date
+  protected
+
+  # For devise to authenticate with email + scope
+
+  def self.find_for_authentication(warden_conditions)
+    where(:email => warden_conditions[:email], :brand_id => warden_conditions[:brand_id]).first
+  end
 
 
 end

@@ -8,12 +8,15 @@ class CustomersController < ApplicationController
 	end
 
 	def create
-		@customer = current_brand.customers.new(customer_params)
-    if
-		@customer.save
-    redirect_to customer_path(@customer)
+	 @customer = current_brand.customers.new(customer_params)
+    if @customer.save
+      if customer_params["date_of_birth(1i)"] == '1944'
+        @customer.date_of_birth = nil 
+        @customer.save
+      end
+      redirect_to customer_path(@customer)
     else
-    render :action => 'new'
+      render :action => 'new'
     end
 	end
 
@@ -23,8 +26,11 @@ class CustomersController < ApplicationController
 
   def update
     @customer = Customer.find(params[:id])
-    if
-      @customer.update(customer_params)
+    if @customer.update(customer_params)
+      if customer_params["date_of_birth(1i)"] == '1944'
+        @customer.date_of_birth = nil
+        @customer.save
+      end
       redirect_to customer_path(:id => @customer.id)
     else
       render :action => 'edit'
