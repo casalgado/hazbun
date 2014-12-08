@@ -17,6 +17,16 @@
             <%= f.password_field :password, autocomplete: "off" %>
           </div>
 
+          <div class="field">
+            <%= f.radio_button :brand_id, '1' %>
+            <%= f.label :brand_id, 'Judy', :value => '1' %>
+             
+            <%= f.radio_button :brand_id, '2' %>
+            <%= f.label :brand_id, 'Amalin', :value => '2' %>
+          </div>
+
+          <br />
+
           <% if devise_mapping.rememberable? -%>
             <div class="field">
               <%= f.check_box :remember_me %>

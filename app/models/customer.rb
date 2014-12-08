@@ -5,7 +5,7 @@ class Customer < ActiveRecord::Base
       # Include default devise modules. Others available are:
       # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :confirmable, request_keys: [:brand_id]
+         :recoverable, :rememberable, :trackable, :confirmable, :authentication_keys => [:email, :brand_id]
 
   # Callbacks
 
