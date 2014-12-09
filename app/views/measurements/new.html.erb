@@ -1,55 +1,69 @@
+<div class="app-width">
 
+	<h3> Actualizar Medidas </h3>
 
-<h3> <%= @customer.full_name %> </h3>
+	<div class="appointment-fields">
 
-<%= form_for [@customer, @measurement] do |f| %>
+		<h4> <%= @customer.full_name %> </h4>
 
-	<%= f.hidden_field :customer_id, value: @customer.id %>
+			<br />
+			<br />
 
-	<%= f.label :talle_frente %>
-  <%= f.text_field :talle_frente %>
-  <br />
-  
-  <%= f.label :talle_espalda %>
-  <%= f.text_field :talle_espalda %>
-  <br />
-  
-  <%= f.label :imperio %>
-	<%= f.text_field :imperio %>
-	<br />
-	
-	<%= f.label :contorno %>
-	<%= f.text_field :contorno %>
-	<br />
-	
-	<%= f.label :espalda %>
-	<%= f.text_field :espalda %>
-	<br />
-	
-	<%= f.label :busto %>
-	<%= f.text_field :busto %>
-	<br />
-	
-	<%= f.label :cintura %>
-	<%= f.text_field :cintura %>
-	<br />
-	
-	<%= f.label :cadera %>
-	<%= f.text_field :cadera %>
-	<br />
-	
-	<%= f.label :costado %>
-	<%= f.text_field :costado %>
-	<br />
-	
-	<%= f.label :cotilla %>
-	<%= f.text_field :cotilla %>
-	<br />
-	
-	<%= f.label :hombro %>
-	<%= f.text_field :hombro %>
-	<br />
-	
-	<%= f.submit %>
+			 <div class="container app-width">
+        <div class="row">
+			<%= bootstrap_form_for [@customer, @measurement] do |f| %>
 
-	<% end %>
+				<%= f.hidden_field :customer_id, value: @customer.id %>
+
+				<div class="measurement-form-margin col-lg-3 col-md-3 col-sm-3 col-xs-3"> 
+			  <%= f.text_field :talle_frente, layout: :horizontal, label: "Talle Frente"  %>
+			  </div>
+			  
+				<div class="measurement-form-margin col-lg-3 col-md-3 col-sm-3 col-xs-3"> 
+			  <%= f.text_field :talle_espalda, layout: :horizontal, label: "Talle Espalda" %>
+			  </div>
+			  
+				<div class="measurement-form-margin col-lg-3 col-md-3 col-sm-3 col-xs-3"> 
+				<%= f.text_field :imperio, layout: :horizontal, label: "Imperio" %>
+				</div>
+				
+				<div class="measurement-form-margin col-lg-3 col-md-3 col-sm-3 col-xs-3"> 
+				<%= f.text_field :contorno, layout: :horizontal, label: "Contorno" %>
+				</div>
+				
+				<div class="measurement-form-margin col-lg-3 col-md-3 col-sm-3 col-xs-3"> 
+				<%= f.text_field :espalda, layout: :horizontal, label: "Espalda" %>
+				</div>
+				
+				<div class="measurement-form-margin col-lg-3 col-md-3 col-sm-3 col-xs-3"> 
+				<%= f.text_field :busto, layout: :horizontal, label: "Busto" %>
+				</div>
+				
+				<div class="measurement-form-margin col-lg-3 col-md-3 col-sm-3 col-xs-3"> 
+				<%= f.text_field :cintura, layout: :horizontal, label: "Cintura" %>
+				</div>
+				
+				<div class="measurement-form-margin col-lg-3 col-md-3 col-sm-3 col-xs-3"> 
+				<%= f.text_field :cadera, layout: :horizontal, label: "Cadera" %>
+				</div>
+				
+				<div class="measurement-form-margin col-lg-3 col-md-3 col-sm-3 col-xs-3"> 
+				<%= f.text_field :costado, layout: :horizontal, label: "Costado" %>
+				</div>
+				
+				<div class="measurement-form-margin col-lg-3 col-md-3 col-sm-3 col-xs-3"> 
+				<%= f.text_field :cotilla, layout: :horizontal, label: "Cotilla" %>
+				</div>
+				
+				<div class="measurement-form-margin col-lg-3 col-md-3 col-sm-3 col-xs-3"> 
+				<%= f.text_field :hombro, layout: :horizontal, label: "Hombro" %>
+				</div>
+			</div>
+		</div>
+				<br />
+
+				<%= f.submit "Actualizar" %>
+
+				<% end %>
+	</div>
+</div>

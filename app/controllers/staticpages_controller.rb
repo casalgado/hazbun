@@ -37,4 +37,9 @@ class StaticpagesController < ApplicationController
 		end
 	end
 
+	def settings
+		@occasion  = Occasion.new
+		@item_type = ItemType.new
+	end
+
 end

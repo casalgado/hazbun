@@ -1,0 +1,82 @@
+
+
+<div class="app-width">
+
+	<div class="container app-width">
+		<div class="row">
+
+      <div class="customer-form-margin col-lg-6 col-md-6 col-sm-6 col-xs-6"> 
+
+				<h3> Ocasiones </h3>
+
+				<div id="dash-table" class="">
+					<table class="table table-hover">
+						<tr>
+							<th>  </th>
+							<th>  </th>
+						</tr> 
+						<% for occasion in Occasion.all %>
+						<tr>
+							<td class="">  </td>
+							<td> 
+								<ul> 
+									<li class="float-left"><%= "#{occasion.occasion}" %> </li>
+									<li class="float-right" style="margin-left:45px"><%= link_to "Eliminar", occasion_path(occasion), :method => :delete %> </li>
+								</ul>
+							</td>
+						</tr>
+						<% end %>
+						<div id="dash-after-table"> </div>
+					</table>
+				</div>
+
+				<%= bootstrap_form_for @occasion do |f| %>
+
+			  <%= f.text_field :occasion, layout: :horizontal, label: "Ocasion"  %>
+
+				<%= f.submit "Agregar" %>
+
+				<% end %>
+
+
+			</div>
+
+			<div class="customer-form-margin col-lg-6 col-md-6 col-sm-6 col-xs-6"> 
+
+				<h3> Prendas </h3>
+
+				<div id="dash-table" class="">
+					<table class="table table-hover">
+						<tr>
+							<th>  </th>
+							<th>  </th>
+						</tr> 
+						<% for item_type in ItemType.all %>
+						<tr>
+							<td class="">  </td>
+							<td class=""> 
+								<ul> 
+									<li class="float-left"><%= "#{item_type.item_type}" %> </li>
+									<li class="float-right" style="margin-left:45px"><%= link_to "Eliminar", item_type_path(item_type), :method => :delete %> </li>
+								</ul>
+							</td>
+						</tr>
+						<% end %>
+						<div id="dash-after-table"> </div>
+					</table>
+				</div>
+
+				<%= bootstrap_form_for @item_type do |f| %>
+
+			  <%= f.text_field :item_type, layout: :horizontal, label: "Prenda"  %>
+
+				<%= f.submit "Agregar" %>
+
+				<% end %>
+
+			</div>
+
+		</div>
+	</div>
+
+</div>

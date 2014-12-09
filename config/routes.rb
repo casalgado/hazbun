@@ -17,6 +17,7 @@ Hazbun::Application.routes.draw do
 		get 'dashboard'
     get 'calendario'
     get 'json_feed'
+    get 'settings'
 	end
 
   resources :customers do
@@ -28,5 +29,8 @@ Hazbun::Application.routes.draw do
   resources :orders do
     resources :payments
   end
+
+  resources :occasions
+  resources :item_types
 
 end
