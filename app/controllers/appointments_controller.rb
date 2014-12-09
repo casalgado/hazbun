@@ -34,6 +34,12 @@ class AppointmentsController < ApplicationController
     end
   end
 
+  def destroy
+    @appointment = Appointment.find(params[:id])
+    @appointment.destroy
+    redirect_to dashboard_staticpages_path
+  end
+
 
 
   private 
