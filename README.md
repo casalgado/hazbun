@@ -4,10 +4,12 @@
 ## On Local Server
 
 
-Before running rails server on terminal, execute
+To load ENV variables in development execute
  
- 	source ~/.bashrc (to load ENV variables in Development)
+ 	source ~/.bashrc 
  	
+before running rails server.
+
 To modify ENV variables in heroku use:
 
 	heroku config:add KEY_NAME=key-value
