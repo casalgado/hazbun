@@ -10,7 +10,7 @@ class Order < ActiveRecord::Base
 
 	# Validations: 
 
-	#validates_uniqueness_of :closed, scope: :customer_id, message: "Customer ya tiene una orden abierta"
+	validates_uniqueness_of :closed, scope: :customer_id, message: "Customer ya tiene una orden abierta"
 	validates_presence_of :customer_id
 
 	# Scopes:

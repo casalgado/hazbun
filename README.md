@@ -1,43 +1,33 @@
-== README
+# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+## On Local Server
 
-* Ruby version
 
-* System dependencies
+Before running rails server on terminal, execute
+ 
+ 	source ~/.bashrc (to load ENV variables in Development)
+ 	
+To modify ENV variables in heroku use:
 
-* Configuration
+	heroku config:add KEY_NAME=key-value
 
-before running terminal run "source ~/.bashrc (to load ENV variables in Development)"
+## Database creation
 
-add ENV keys to heroku with heroku config:add KEY_NAME=key-value
-
-* Database creation
-
-	run 
+If you reset the database, it's important to run  
 	
 		rake db:seed 
 	
-	after migrating
+after migrating.
 
-* Database initialization
 
-* How to run the test suite
+## Test suite
 
-	before test run:
+Before test run:
 	
 		RAILS_ENV=test rake db:prepare
 
-* Services (job queues, cache servers, search engines, etc.)
+## Functionality
 
-* Deployment instructions
+To eliminate the date of birth of a customer set year to 1944.
 
-* User Interface
-
-	To eliminate the date of birth of a customer set year to 1944
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
