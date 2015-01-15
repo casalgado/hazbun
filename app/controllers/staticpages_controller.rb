@@ -1,7 +1,7 @@
 
 class StaticpagesController < ApplicationController
 
-	before_action :authenticate_brand!, :only => [:dashboard, :calendario]
+	before_action :authenticate_employee!, :only => [:dashboard, :calendario]
 
 	def dashboard
 		if params[:hoy]
@@ -16,7 +16,7 @@ class StaticpagesController < ApplicationController
     else
       @hoy = Date.today
     end 
-    @citas_de_hoy = current_brand.appointments.at_(@hoy).order("date ASC")
+    @citas_de_hoy = current_employee.brand.appointments.at_(@hoy).order("date ASC")
          
 	end
 
@@ -32,7 +32,7 @@ class StaticpagesController < ApplicationController
   end
 	
 	def home
-		if brand_signed_in?
+		if employee_signed_in?
 			redirect_to dashboard_staticpages_path
 		end
 	end

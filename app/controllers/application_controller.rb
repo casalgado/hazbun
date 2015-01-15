@@ -9,6 +9,9 @@ class ApplicationController < ActionController::Base
     if current_brand
       dashboard_staticpages_path(resource)
     end
+    if current_employee
+      dashboard_staticpages_path(resource.brand)
+    end
   end
 
   # De aqui hasta -- es para agregar custom fields a devise

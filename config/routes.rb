@@ -3,7 +3,7 @@ Hazbun::Application.routes.draw do
 
 
 
-  devise_for :employees
+  devise_for :employees, controllers: { sessions: "employees/sessions" }
   devise_for :brands, controllers: { sessions: "brands/sessions" }
   devise_for :customers, path: 'c', :controllers => {:confirmations => 'confirmations'}
   

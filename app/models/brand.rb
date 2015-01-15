@@ -5,6 +5,7 @@ class Brand < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :authentication_keys => [:email]
 
   has_many :customers
+  has_many :employees
   has_many :appointments, through: :customers
   has_many :orders, through: :customers
 

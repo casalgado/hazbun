@@ -3,4 +3,9 @@ class Employee < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  belongs_to :brand
+  has_many :appointments
+  has_many :orders
+  
 end

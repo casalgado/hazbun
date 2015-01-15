@@ -3,6 +3,7 @@ class Appointment < ActiveRecord::Base
 	# Associations:
 
 	belongs_to :customer
+	belongs_to :employee
 	belongs_to :appointment_type
 	belongs_to :item
 

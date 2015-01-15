@@ -3,6 +3,7 @@ class Order < ActiveRecord::Base
 	# Associations:
 
 	belongs_to :customer
+	belongs_to :employee
 	has_many   :payments
 	
 	has_many   :items, :dependent => :destroy
