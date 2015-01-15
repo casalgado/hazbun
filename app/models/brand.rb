@@ -6,7 +6,7 @@ class Brand < ActiveRecord::Base
 
   has_many :customers
   has_many :employees
-  has_many :appointments, through: :customers
-  has_many :orders, through: :customers
+  has_many :appointments
+  has_many :orders
 
 end

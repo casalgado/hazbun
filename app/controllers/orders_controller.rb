@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
 
-  before_action :authenticate_brand!, :except => [:show]
+  before_action :authenticate_employee!, :except => [:show]
 
   def new
     @order      = Order.new
@@ -69,7 +69,7 @@ class OrdersController < ApplicationController
   end
 
   def index
-    @orders = current_brand.orders.where(:closed => false)
+    @orders = current_employee.brand.orders.where(:closed => false)
   end
 
   def destroy
@@ -78,6 +78,6 @@ class OrdersController < ApplicationController
   private 
 
   def order_params
-    params.require(:order).permit(:id, :customer_id, items_attributes: [:id, :item_type_id, :occasion_id, :_destroy, :picture, :remote_picture_url, supplies_per_items_attributes: [:id, :supply_id, :quantity, :_destroy]])
+    params.require(:order).permit(:id, :customer_id, :brand_id, :employee_id, items_attributes: [:id, :item_type_id, :occasion_id, :_destroy, :picture, :remote_picture_url, supplies_per_items_attributes: [:id, :supply_id, :quantity, :_destroy]])
   end
 end

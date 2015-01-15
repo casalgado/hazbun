@@ -3,18 +3,19 @@ class Appointment < ActiveRecord::Base
 	# Associations:
 
 	belongs_to :customer
+	belongs_to :brand
 	belongs_to :employee
 	belongs_to :appointment_type
 	belongs_to :item
 
 	# Validations:
 
-	# no se p dos a l misma hora
+	# no se pueden dos a la misma hora
 
-	validates :appointment_type, presence: { message: "Debe seleccionar tipo de cita"}
-	validates :customer_id, presence: true
-	validates :date, presence: true
-	validate  :date_must_be_later_than_today
+  validates :appointment_type, presence: { message: "Debe seleccionar tipo de cita"}
+  validates :customer_id, presence: true
+  validates :date, presence: true
+  validate  :date_must_be_later_than_today
 
 	# Scopes:
 

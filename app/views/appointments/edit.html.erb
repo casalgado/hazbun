@@ -9,31 +9,7 @@
 			 <%=msg%>
 			<% end %>
 
-		<%= form_for [@customer, @appointment] do |f| %>
-
-			<%= f.hidden_field :customer_id, value: @customer.id %>
-
-			<%= f.radio_button :appointment_type_id, '1' %>
-			<%= f.label :appointment_type_id, 'Primera', :value => '1' %>
-			<br />	  
-			<%= f.radio_button :appointment_type_id, '2' %>
-			<%= f.label :appointment_type_id, 'Medicion', :value => '2' %>
-			<br />	  
-			<%= f.radio_button :appointment_type_id, '3' %>
-			<%= f.label :appointment_type_id, 'Medicion Final', :value => '3' %>
-			<br />
-			<%= f.radio_button :appointment_type_id, '4' %>
-			<%= f.label :appointment_type_id, 'Entrega', :value => '4' %> 
-
-			<br />
-			<br />
-
-			<%= f.label :date, 'Fecha' %>
-			<%= f.text_field :date  %>
-
-			<%= f.submit "Agendar"%>
-
-		<% end %>
+		<%= render 'form_for_appointment' %>
 
 
 	</div>

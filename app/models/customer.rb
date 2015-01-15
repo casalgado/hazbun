@@ -4,7 +4,7 @@ class Customer < ActiveRecord::Base
 
       # Include default devise modules. Others available are:
       # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable, # :validatable
+  devise :database_authenticatable, :registerable, :validatable,
          :recoverable, :rememberable, :trackable, :confirmable, :authentication_keys => [:email, :brand_id]
 
   # Callbacks
@@ -23,7 +23,6 @@ class Customer < ActiveRecord::Base
 
   validates :first_name, presence: { message: "Nombre no debe estar en blanco" }  , length: { minimum: 3, message: "Nombre muy corto (minimo 3 caracteres)" } 
   validates :last_name, presence: { message: "Apellido no debe estar en blanco" }, length: { minimum: 3, message: "Apellido muy corto (minimo 3 caracteres)" }
-  validates :brand_id, presence: true
   validates :email, presence: { message: "Email no debe estar en blanco" }, format: { with: /\A[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})\z/, message: "Email invalido" }
   
   # Scopes
@@ -58,8 +57,8 @@ class Customer < ActiveRecord::Base
 
   # Next method determines if customer is active. 
 
-  def active?
-    if self.orders.open.empty? == true
+  def active?(current_employee)
+    if Order.where(customer_id: self.id, brand_id: current_employee.brand.id).open.empty? == true
       false
     else
       true
@@ -68,9 +67,10 @@ class Customer < ActiveRecord::Base
 
   # To determine if customer has a next appointment set
 
-  def has_appointment?
-    unless self.appointments.empty?
-      if self.appointments.last.date >= Date.today
+  def has_appointment?(current_employee)
+    appointments = current_employee.brand.appointments.where(customer_id: self.id)
+    unless appointments.empty?
+      if appointments.last.date >= Date.today
         true
       end
     else

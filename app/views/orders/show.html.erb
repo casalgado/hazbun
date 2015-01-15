@@ -19,16 +19,16 @@
 				<li> <%= image_tag item.picture_url(:thumb).to_s  %> </li>
 				<% end %>
 		</ul>
-<h5>
 <% if @order.closed == false %>
+<h5>
 	<%= link_to "Cerrar Orden", customer_order_path(@customer, @order, :cerrar => '1')%>
-<% end %></h5>
+</h5>
 	
 <br />
 <br />
 	<h4> Nueva Cita: </h4>
 	<br />
-	<%= render "orders/form_for_appointment" %>
+	<%= render "appointments/form_for_appointment" %>
 
 
 <br />
@@ -50,5 +50,5 @@
 	
 	<p> Nuevo Pago: <p>
 	<%= render "orders/form_for_payment" %>
-
+<% end %>
 	</div>

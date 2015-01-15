@@ -3,6 +3,7 @@ Hazbun::Application.routes.draw do
 
 
 
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :employees, controllers: { sessions: "employees/sessions" }
   devise_for :brands, controllers: { sessions: "brands/sessions" }
   devise_for :customers, path: 'c', :controllers => {:confirmations => 'confirmations'}

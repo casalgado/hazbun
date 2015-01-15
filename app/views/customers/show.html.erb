@@ -81,7 +81,7 @@
 				<li class= <%= @history == 'true' ? "show-inactive" : 'show-active' %>> <h3><%= link_to 'Actividad', customer_path(@customer) %></h3></li>
 			</ul>
 			<div class='customer-show-align-center light-border-bottom'>
-				<% if @customer.has_appointment? %>
+				<% if @customer.has_appointment?(current_employee) %>
 					 Proxima Cita: <span class='glyphicon glyphicon-stop aptype<%= @appointment.appointment_type_id %>-color'></span> <%= @appointment.date.strftime "%b %e %l:%M %P" %> <%= link_to "Editar", edit_customer_appointment_path(@customer, @appointment) %>
 				<% else %>
 					 <%= link_to "Nueva Cita" , new_customer_appointment_path(@customer) %>
@@ -89,14 +89,14 @@
 			</div>
 
 			<div class='customer-show-align-center'>
-				<% unless @customer.active? %>
+				<% unless @customer.active?(current_employee) %>
 					<p><%= link_to "Abrir Orden", new_customer_order_path(@customer) %></p>						
 				<% end %>
 			</div>
 			<div class="order-list">
 			<% if @history %>
 					<ul>
-					<% for order in @customer.orders.closed %>
+					<% for order in current_employee.brand.orders.where(customer_id: @customer.id).closed %>
 						<li> <%= link_to "Orden cerrada en #{order.updated_at.strftime '%b %Y'}", customer_order_path(@customer, order)  %> </li>
 						<ul>
 							<% for item in order.items %>
@@ -111,7 +111,7 @@
 
 			
 				<ul >
-				<% for order in @customer.orders.open %>
+				<% for order in current_employee.brand.orders.where(customer_id: @customer.id).open %>
 					<li class="center"> <%= link_to "Orden abierta en #{order.created_at.strftime '%b %Y'}", customer_order_path(@customer, order)  %> </li>
 					<ul>
 					<% for item in order.items %>

@@ -1,6 +1,6 @@
 class AppointmentsController < ApplicationController
   
-  before_action :authenticate_brand!
+  before_action :authenticate_employee!
 
   def new
   	@customer = Customer.find(params[:customer_id])
@@ -44,7 +44,7 @@ class AppointmentsController < ApplicationController
   private 
 
   def appointment_params
-    params.require(:appointment).permit(:id, :customer_id, :appointment_type_id, :date)
+    params.require(:appointment).permit(:id, :customer_id, :employee_id, :appointment_type_id, :brand_id, :date)
   end
 
 end

@@ -49,7 +49,7 @@
 					  <td> <%= link_to("Nueva Orden", new_customer_order_path(customer)) %> </td>
 					<% end %>
 
-					<% if customer.has_appointment? %>
+					<% if customer.has_appointment?(current_employee) %>
 					  <td> <%= "#{customer.appointments.last.date.strftime "%b %d"}" %> </td>
 					<% else %>
 					  <td> <%= link_to("Nueva Cita" , new_customer_appointment_path(customer)) %> </td>

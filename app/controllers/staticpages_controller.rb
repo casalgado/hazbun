@@ -22,12 +22,12 @@ class StaticpagesController < ApplicationController
 
 	def calendario
 		# agregar citas desde el calendar view
-		@appointments = current_brand.appointments
+		@appointments = current_employee.brand.appointments
 		gon.appointments = @appointments.to_fullcalendar
   end
 
   def json_feed
-  	@appointments = current_brand.appointments.all
+  	@appointments = current_employee.brand.appointments.all
   	render :file => "json_feed.json.erb", :content_type => 'application/json'
   end
 	

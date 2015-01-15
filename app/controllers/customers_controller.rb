@@ -1,14 +1,14 @@
 
 class CustomersController < ApplicationController
 
-	before_action :authenticate_brand!, :only => [:new, :create]
+	before_action :authenticate_employee!, :only => [:new, :create]
 
 	def new
 	  @customer = Customer.new
 	end
 
 	def create
-	 @customer = current_brand.customers.new(customer_params)
+	 @customer = current_employee.brand.customers.new(customer_params)
     if @customer.save
       if customer_params["date_of_birth(1i)"] == '1944'
         @customer.date_of_birth = nil 
@@ -40,7 +40,7 @@ class CustomersController < ApplicationController
 	def show
 		@customer = Customer.find(params[:id])
 		@measurement = @customer.measurements.last
-    @appointment = @customer.appointments.last
+    @appointment = current_employee.brand.appointments.where(customer_id: @customer.id).last
     params[:history] ||= nil
     @history = params[:history]
 	end
@@ -48,11 +48,11 @@ class CustomersController < ApplicationController
   def index
     
     if params[:actividad] == '1'
-      @search_domain = current_brand.customers.active
+      @search_domain = Customer.active
     elsif params[:actividad] == '2'
-      @search_domain = current_brand.customers.inactive   
+      @search_domain = Customer.inactive   
     else
-      @search_domain = current_brand.customers
+      @search_domain = Customer.all
     end        
       @search  = @search_domain.search(params[:q])
       @results = @search.result.order("first_name ASC")
@@ -64,7 +64,7 @@ class CustomersController < ApplicationController
   private
 
   def customer_params
-    allow = [:first_name, :last_name, :marriage, :brand_id, :id_number, :address, :land_phone, :mobile_phone, :workplace, :email, :date_of_birth, :picture, :remote_picture_url]
+    allow = [:first_name, :last_name, :marriage, :id_number, :address, :land_phone, :mobile_phone, :workplace, :email, :date_of_birth, :picture, :remote_picture_url]
     params.require(:customer).permit(allow)
   end
 
