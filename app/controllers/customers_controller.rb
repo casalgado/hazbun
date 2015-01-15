@@ -4,7 +4,7 @@ class CustomersController < ApplicationController
 	before_action :authenticate_brand!, :only => [:new, :create]
 
 	def new
-		@customer = Customer.new
+	  @customer = Customer.new
 	end
 
 	def create

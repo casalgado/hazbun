@@ -26,8 +26,7 @@ class AppointmentsController < ApplicationController
   def create
     @customer = Customer.find(appointment_params[:customer_id])
     @appointment = Appointment.new(appointment_params)
-    if
-      @appointment.save
+    if @appointment.save
       redirect_to customer_path(@customer)
     else
       render :action => 'new'

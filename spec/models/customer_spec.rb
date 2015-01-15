@@ -18,8 +18,8 @@ RSpec.describe Customer, :type => :model do
 
 	it "is invalid with duplicate email address" do
 		@email = Faker::Internet.email
-		create(:customer, email: @email)
-		expect(build(:customer, email: @email)).not_to be_valid
+		create(:customer, email: "#{@email}")
+		expect(build(:customer, email: "#{@email}")).not_to be_valid
 	end
 
 	it "full_name method returns full name" do

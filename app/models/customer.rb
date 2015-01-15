@@ -4,7 +4,7 @@ class Customer < ActiveRecord::Base
 
       # Include default devise modules. Others available are:
       # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :registerable, # :validatable
          :recoverable, :rememberable, :trackable, :confirmable, :authentication_keys => [:email, :brand_id]
 
   # Callbacks
@@ -25,6 +25,7 @@ class Customer < ActiveRecord::Base
   validates :last_name, presence: { message: "Apellido no debe estar en blanco" }, length: { minimum: 3, message: "Apellido muy corto (minimo 3 caracteres)" }
   validates :brand_id, presence: true
   validates :email, presence: { message: "Email no debe estar en blanco" }, format: { with: /\A[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})\z/, message: "Email invalido" }
+  
   # Scopes
 
   scope :has_appointment, -> {

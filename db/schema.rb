@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141206202516) do
+ActiveRecord::Schema.define(version: 20150115171044) do
 
   create_table "appointment_types", force: true do |t|
     t.string   "appointment_type"
@@ -86,6 +86,35 @@ ActiveRecord::Schema.define(version: 20141206202516) do
   add_index "customers", ["confirmation_token"], name: "index_customers_on_confirmation_token", unique: true
   add_index "customers", ["email", "brand_id"], name: "index_customers_on_email_and_brand_id", unique: true
   add_index "customers", ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
+
+  create_table "employees", force: true do |t|
+    t.integer  "brand_id"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "address"
+    t.string   "marriage"
+    t.string   "position"
+    t.string   "city"
+    t.string   "land_phone"
+    t.string   "mobile_phone"
+    t.date     "date_of_birth"
+    t.string   "id_number"
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "employees", ["email"], name: "index_employees_on_email", unique: true
+  add_index "employees", ["reset_password_token"], name: "index_employees_on_reset_password_token", unique: true
 
   create_table "item_types", force: true do |t|
     t.string   "item_type"

@@ -17,7 +17,7 @@ class OrdersController < ApplicationController
 
   def create
     @order      = Order.new(order_params)
-    @customer    = Customer.find(order_params[:customer_id])
+    @customer   = Customer.find(order_params[:customer_id])
     @item_types = ItemType.all
     @occasions  = Occasion.all
     @supplies   = Supply.all
@@ -34,14 +34,14 @@ class OrdersController < ApplicationController
     @occasions  = Occasion.all
     @supplies   = Supply.all
     @order      = Order.find(params[:id])
-    @customer    = Customer.find(params[:customer_id])
+    @customer   = Customer.find(params[:customer_id])
   end
 
   def update
     @item_types = ItemType.all
     @occasions  = Occasion.all
     @supplies   = Supply.all
-    @customer    = Customer.find(params[:customer_id])
+    @customer   = Customer.find(params[:customer_id])
     @params     = order_params
     @order      = Order.find(params[:id])
     if
