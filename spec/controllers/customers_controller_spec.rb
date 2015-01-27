@@ -2,14 +2,11 @@ require 'rails_helper'
 
 RSpec.describe CustomersController, :type => :controller do
 
-	 	before(:all) do
-			@brand = Brand.first
-		end
-
 		before(:each) do
+			@employee = create(:employee)
 			@customer = create(:customer)
-			@request.env["devise.mapping"] = Devise.mappings[:brand]
-			sign_in @brand
+			@request.env["devise.mapping"] = Devise.mappings[:employee]
+			sign_in @employee
 		end
 
 

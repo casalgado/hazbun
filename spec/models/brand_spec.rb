@@ -8,7 +8,7 @@ RSpec.describe Brand, :type => :model do
 
 	it "allows create if previous orders are closed" do
 		customer = create(:customer)
-		create(:order, customer: customer closed: true)
+		create(:order, customer: customer, closed: true)
 		expect(build(:order, customer: customer)).to be_valid
 	end
 

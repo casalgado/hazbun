@@ -2,9 +2,9 @@ require 'spec_helper'
 
 RSpec.describe MeasurementsController, :type => :controller do
 
-	 	before(:all) do
+	 	before(:each) do
 			@customer = create(:customer)
-			@brand   = Brand.first
+			@brand    = Brand.first
 		end
 
 		before(:each) do

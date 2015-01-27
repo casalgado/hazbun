@@ -25,9 +25,13 @@ after migrating.
 
 ## Test suite
 
-Before test run:
+To reset taste databse run:
 	
 		RAILS_ENV=test rake db:prepare
+
+To run test run:
+		
+		bundle exec rspec
 
 ## Functionality
 

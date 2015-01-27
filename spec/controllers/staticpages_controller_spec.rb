@@ -3,17 +3,14 @@ require 'spec_helper'
 RSpec.describe StaticpagesController, :type => :controller do
 
 
-	 describe "brand acces" do
+	 describe "employee acces" do
 
-	 	before(:all) do
-			@brand   = Brand.find(1)
-			@customer = create(:customer)
-			@appointments   = create(:appointment, customer: @customer)
-		end
-
-		before(:each) do
-			@request.env["devise.mapping"] = Devise.mappings[:brand]
-			sign_in @brand
+	 	before(:each) do
+			@brand        = Brand.find(1)
+			@customer     = create(:customer)
+			@employee     = create(:employee)
+			@request.env["devise.mapping"] = Devise.mappings[:employee]
+			sign_in @employee
 		end
 
 		 describe 'GET #dashboard' do
@@ -24,8 +21,10 @@ RSpec.describe StaticpagesController, :type => :controller do
 			end
 
 			it "shows todays appointments" do
+				appointment1 = create(:appointment, customer: @customer)
+				appointment2 = create(:appointment, customer: @customer)
 				get :dashboard
-				expect(assigns(:citas_de_hoy)).to eq([@appointments])
+				expect(assigns(:citas_de_hoy)).to eq([appointment1, appointment2])
 			end
 
 	 

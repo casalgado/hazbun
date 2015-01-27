@@ -3,19 +3,14 @@ require 'rails_helper'
 RSpec.describe AppointmentsController, :type => :controller do
 	render_views
 
-	 	before(:all) do
-			@brand = create(:brand)
-		end
-
 		before(:each) do
+			@employee = create(:employee)
 			@customer = create(:customer)
-			@request.env["devise.mapping"] = Devise.mappings[:brand]
-			sign_in @brand
+			@request.env["devise.mapping"] = Devise.mappings[:employee]
+			sign_in @employee
 		end
 
 		describe 'GET #new' do
-
-
 
 			it "assigns a new appointment" do
 				get :new, customer_id: @customer.id

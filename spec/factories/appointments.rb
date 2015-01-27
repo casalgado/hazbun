@@ -3,6 +3,7 @@ FactoryGirl.define do
 	factory :appointment do
 		association :customer
 		appointment_type_id '1'
+		brand_id '1'
 		date Time.new(Date.today.year, Date.today.month, Date.today.mday, 14, 00, 00)
 
 		factory :next_month_appointment do
