@@ -90,16 +90,14 @@
 									<ul> 
 										<li><%= link_to("#{appointment.customer.full_name}", customer_path(:id => appointment.customer.id)) %> </li>
 										<li><%= appointment.date.strftime "%l:%M %P" %> <%= link_to "Editar", edit_customer_appointment_path(appointment.customer, appointment) %></li>
-											<% if  appointment.customer.land_phone %>
-												<li> Tel: <%= "#{appointment.customer.land_phone}" %> </li>
+											<% if  appointment.customer.mobile_phone.present? %>
+												<li> Cel: <%= "#{appointment.customer.mobile_phone}" %> </li>
 											<% else %>
-												<br />
 											<% end %>
 									</ul>
 								</td>
 							</tr>
 							<% end %>
-							<div id="dash-after-table"> </div>
 						</table>
 					</div>
 					

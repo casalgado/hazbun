@@ -26,9 +26,9 @@ var ready = function() {
     	events: gon.appointments,
         theme: true,
         height: 550,
-        header: {left:  'today',
+        header: {left: 'today',
         	   center: 'prev title next',
-    			right:  'month,agendaWeek,agendaDay' },
+    			right: 'month,agendaWeek,agendaDay' },
     	themeButtonIcons: false,
     	minTime: '08:00',
     	maxTime: '21:00'
