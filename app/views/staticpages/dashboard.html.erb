@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="row">
 
-		<div id="" class="col-md-6">
+		<div id="" class="col-md-6 hidden-xs">
 
 				<div class="row">
 
@@ -31,7 +31,7 @@
 								<th>  </th>
 								<th>  </th>
 							</tr> 
-							<% for customer in Customer.find_date_of_births_for(@hoy) %>
+							<% for customer in Customer.find_date_of_births_for(@today) %>
 							<tr>
 								<td class="" style="width:70px">  </td>
 								<td> 
@@ -50,24 +50,24 @@
 		</div>
 
 
-		<div id="appointment-column" class="col-md-6 ">
+		<div id="appointment-column" class="col-md-6 col-xs-12">
 
 				<div class="row">
 
 					<div id="" class="col-md-3 col-sm-3 col-xs-3">
 						<div id= "dash-date-box" class="">
 							<ul>
-									<li id="appointment-day"><%=@hoy.mday%></li>
-									<li id="appointment-day-text"><%=@hoy.nombrar_dia.upcase%></li>
+									<li id="appointment-day"><%=@today.mday%></li>
+									<li id="appointment-day-text"><%=@today.nombrar_dia.upcase%></li>
 							</ul>
 						</div>
 					</div>
 
 					<div id="" class="col-md-9 col-sm-9 col-xs-9">
 						<div id="dash-title-box">
-							<h3> <%= link_to "<", dashboard_staticpages_path(:shift_day => '2', :hoy => @hoy) %> 
+							<h3> <%= link_to "<", dashboard_staticpages_path(:shift_day => '-1', :today => @today) %> 
 									 &nbsp;&nbsp;Citas &nbsp;&nbsp;
-							 <%= link_to ">", dashboard_staticpages_path(:shift_day => '1', :hoy => @hoy) %> 
+							 <%= link_to ">", dashboard_staticpages_path(:shift_day => '1', :today => @today) %> 
 							 </h3>
 						</div>
 					</div>
@@ -83,7 +83,7 @@
 								<th>  </th>
 								<th>  </th>
 							</tr> 
-							<% for appointment in @citas_de_hoy %>
+							<% for appointment in @todays_appointments %>
 							<tr>
 								<td class="" style="width:70px"> <%= image_tag("appointment_type#{appointment.appointment_type_id}.png") %> </td>
 								<td> 

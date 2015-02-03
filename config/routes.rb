@@ -17,7 +17,7 @@ Hazbun::Application.routes.draw do
 
 	resource :staticpages, :path => '' do 
 		get 'dashboard'
-    get 'calendario'
+    get 'calendar'
     get 'json_feed'
     get 'settings'
 	end

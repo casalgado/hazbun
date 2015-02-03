@@ -1,34 +1,20 @@
-
 class StaticpagesController < ApplicationController
 
-	before_action :authenticate_employee!, :only => [:dashboard, :calendario]
+	before_action :authenticate_employee!, :only => [:dashboard, :calendar]
 
 	def dashboard
-		if params[:hoy]
-			@hoy = Date.parse(params[:hoy])
+		if params[:today]
+			@today = Date.parse(params[:today]) 
+			@today += params[:shift_day].to_i
 		else
-			@hoy = Date.today
+			@today = Date.today
 		end
-		if params[:shift_day] == '1'
-      @hoy += 1
-    elsif params[:shift_day] == '2'
-      @hoy -= 1    
-    else
-      @hoy = Date.today
-    end 
-    @citas_de_hoy = current_employee.brand.appointments.at_(@hoy).order("date ASC")
-         
+    @todays_appointments = current_employee.brand.appointments.at_(@today).order("date ASC")
 	end
 
-	def calendario
-		# agregar citas desde el calendar view
+	def calendar
 		@appointments = current_employee.brand.appointments
 		gon.appointments = @appointments.to_fullcalendar
-  end
-
-  def json_feed
-  	@appointments = current_employee.brand.appointments.all
-  	render :file => "json_feed.json.erb", :content_type => 'application/json'
   end
 	
 	def home

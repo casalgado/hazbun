@@ -1,4 +1,3 @@
-
 class ConfirmationsController < Devise::ConfirmationsController
  
 

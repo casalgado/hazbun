@@ -1,4 +1,3 @@
-
 class CustomersController < ApplicationController
 
 	before_action :authenticate_employee!, :only => [:new, :create]

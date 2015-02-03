@@ -24,7 +24,7 @@ RSpec.describe StaticpagesController, :type => :controller do
 				appointment1 = create(:appointment, customer: @customer)
 				appointment2 = create(:appointment, customer: @customer)
 				get :dashboard
-				expect(assigns(:citas_de_hoy)).to eq([appointment1, appointment2])
+				expect(assigns(:todays_appointments)).to eq([appointment1, appointment2])
 			end
 
 	 

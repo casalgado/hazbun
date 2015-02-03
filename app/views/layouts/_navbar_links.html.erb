@@ -3,7 +3,7 @@
 <% if employee_signed_in? %>
 
 	<li class="back-hover"> <%= link_to("Clientas",   customers_path) %> </li>
-	<li class="back-hover"> <%= link_to("Calendario", calendario_staticpages_path, method: :get) %> </li>
+	<li class="back-hover"> <%= link_to("Calendario", calendar_staticpages_path, method: :get) %> </li>
 
 <% elsif customer_signed_in? %>
 

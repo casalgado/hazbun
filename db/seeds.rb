@@ -39,14 +39,14 @@ Brand.create!(:first_name    => "Judy",
 Employee.create(:first_name    => "Empleado",
                 :last_name     => "Judy",
                 :brand_id      => 1,
-                :email         => "emp@judy.com",
+                :email         => "judy@hazbun.com",
                 :password      => '12341234',
                 :password_confirmation => '12341234')
 
 Employee.create(:first_name    => "Empleado",
                 :last_name     => "Amalin",
                 :brand_id      => 2,
-                :email         => "emp@amalin.com",
+                :email         => "amalin@hazbun.com",
                 :password      => '12341234',
                 :password_confirmation => '12341234')
                 

@@ -14,9 +14,8 @@ class AppointmentsController < ApplicationController
 
   def update
     @customer = Customer.find(appointment_params[:customer_id])
-    @appointment = Appointment.new(appointment_params)
-    if
-    @appointment.save
+    @appointment = Appointment.find(params[:id])
+    if @appointment.update(appointment_params)
       redirect_to customer_path(@customer)
     else
       render :action => 'edit'
@@ -38,8 +37,6 @@ class AppointmentsController < ApplicationController
     @appointment.destroy
     redirect_to dashboard_staticpages_path
   end
-
-
 
   private 
 

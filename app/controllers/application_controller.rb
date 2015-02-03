@@ -1,16 +1,15 @@
 class ApplicationController < ActionController::Base
 
-
   protect_from_forgery with: :exception
 
   # El siguiente method es para determinar adonde va devise leugo del sign-in
 
   def after_sign_in_path_for(resource)
     if current_brand
-      dashboard_staticpages_path(resource)
+      dashboard_staticpages_path
     end
     if current_employee
-      dashboard_staticpages_path(resource.brand)
+      dashboard_staticpages_path
     end
   end
 

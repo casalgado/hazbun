@@ -29,7 +29,7 @@ class Appointment < ActiveRecord::Base
 		Appointment.where(date: date.beginning_of_day..date.end_of_day)
 	end
 
-	# (2) Para meter al array que va a .js (se usa en static_pages#calendario)
+	# (2) Para meter al array que va a .js (se usa en static_pages#calendar)
 
 	def to_event_format
 		new_time = self.date.one_hour

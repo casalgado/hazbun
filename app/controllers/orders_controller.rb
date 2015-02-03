@@ -5,7 +5,7 @@ class OrdersController < ApplicationController
   def new
     @order      = Order.new
     @item       = Item.new
-    @customer    = Customer.find(params[:customer_id])
+    @customer   = Customer.find(params[:customer_id])
     @item_types = ItemType.all
     @occasions  = Occasion.all
     1.times do 
